@@ -1,0 +1,75 @@
+/**
+ * This file should get overwritten if Method 1 is used. If Method 2 is chosen,
+ * remove this comment and start adding your styles to this file.
+ */
+
+
+
+/* begin: jQuery UI Datepicker moving pixels fix */
+table.ui-datepicker-calendar {border-collapse: separate;}
+.ui-datepicker-calendar td {border: 1px solid transparent;}
+/* end: jQuery UI Datepicker moving pixels fix */
+
+/* begin: jQuery UI Datepicker emphasis on selected dates */
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+	background: #743620 none;
+	color: white;
+}
+/* end: jQuery UI Datepicker emphasis on selected dates */
+
+
+/* begin: jQuery UI Datepicker hide datepicker helper */
+#ui-datepicker-div {display:none;}
+/* end: jQuery UI Datepicker hide datepicker helper */
+
+/* home page */
+.slo1 {
+  padding: 40px;
+  text-align: center;
+  color:#A8A8A8;
+  font-family:arial,helvetica,sans-serif;
+  font: normal normal bold 15px/1.4em fantasy;
+}
+
+.slo1 p {
+  font-size:24px;
+}
+
+.slo2 {
+  padding: 40px;
+  text-align: center;
+  color: #606060;
+  background-color: rgba(169, 138, 0, 0.34902);
+}
+
+.slo2 p {
+  font-size:18px;
+}
+
+.slo3 {
+  padding: 40px;
+  text-align: center;
+  color: #606060;
+  background-color: rgba(84, 69, 0, 0.219608);
+}
+
+.slo3 p {
+  font-size:18px;
+}
+
+
+.slo4 {
+  padding: 40px;
+  text-align: center;
+  color: #606060;
+  background-color: rgba(255, 203, 5, 0.368627);
+}
+
+.slo4 p {
+  font-size:18px;
+}
+
+
+
+
+
