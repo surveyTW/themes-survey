@@ -172,7 +172,6 @@
              $('#selecttime').append(row);
           },      
 	  minDate: 0,
-	  maxDate: "+1y" 
       });   
             
       $( '#edit-submit' ).click(function() {
