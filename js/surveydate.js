@@ -170,7 +170,9 @@
              $(row).append(div_time);
              //$(row).append(div_add);                          
              $('#selecttime').append(row);
-          }      
+          },      
+	  minDate: 0,
+	  maxDate: "+1y" 
       });   
             
       $( '#edit-submit' ).click(function() {
