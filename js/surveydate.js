@@ -78,45 +78,14 @@
       $('#edit-date').val(ayDate.join());
    }    
 
-   $(document).ready( function () {
+   function buildSelectTime()
+   {
+      $("#selecttime").html("");
 
-      //google.maps.event.addDomListener(window, 'load', gmapInitialize);
-
-      $('#edit-date').hide();
-
-      $('#1st-Next').on('click', function(){
-	      $('#second-step').removeClass('hidden').addClass('show');
-	      $('#first-step').removeClass('show').addClass('hidden');
-      });
-      $('#2nd-Prev').on('click', function(){
-	      $('#second-step').removeClass('show').addClass('hidden');
-	      $('#first-step').removeClass('hidden').addClass('show');
-      });
-      $('#2nd-Next').on('click', function(){
-	      $('#second-step').removeClass('show').addClass('hidden');
-	      if(!gmap_inited){
-	      	gmapInitialize();
-		gmap_inited = 1;
-	      }
-	      $('#third-step').removeClass('hidden').addClass('show');
-      });
-      $('#3rd-Prev').on('click', function(){
-	      $('#third-step').removeClass('show').addClass('hidden');
-	      $('#second-step').removeClass('hidden').addClass('show');
-      });
-      $('#3rd-Next').on('click', function(){
-	      $('#third-step').removeClass('show').addClass('hidden');
-	      $('#forth-step').removeClass('hidden').addClass('show');
-      });
-      $('#4th-Prev').on('click', function(){
-	      $('#forth-step').removeClass('show').addClass('hidden');
-	      $('#third-step').removeClass('hidden').addClass('show');
-      });
-      
-      $('#selectdate').multiDatesPicker({
-          onSelect: function(dateText, inst) {
-
-             tmp = dateText.split('/');
+      var selectedDate = $('#selectdate').multiDatesPicker('getDates');
+      var partsOfStr = selectedDate.toString().split(',');
+      for(i=0; i<partsOfStr.length ; i++){
+	     tmp = partsOfStr[i].split('/');
              dateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
              var row = document.createElement('div');
              var div_date = document.createElement('div');
@@ -170,7 +139,46 @@
              $(row).append(div_time);
              //$(row).append(div_add);                          
              $('#selecttime').append(row);
-          },      
+      }
+   }
+
+   $(document).ready( function () {
+
+      //google.maps.event.addDomListener(window, 'load', gmapInitialize);
+
+      $('#edit-date').hide();
+
+      $('#1st-Next').on('click', function(){
+	      $('#second-step').removeClass('hidden').addClass('show');
+	      $('#first-step').removeClass('show').addClass('hidden');
+	      buildSelectTime();
+      });
+      $('#2nd-Prev').on('click', function(){
+	      $('#second-step').removeClass('show').addClass('hidden');
+	      $('#first-step').removeClass('hidden').addClass('show');
+      });
+      $('#2nd-Next').on('click', function(){
+	      $('#second-step').removeClass('show').addClass('hidden');
+	      if(!gmap_inited){
+	      	gmapInitialize();
+		gmap_inited = 1;
+	      }
+	      $('#third-step').removeClass('hidden').addClass('show');
+      });
+      $('#3rd-Prev').on('click', function(){
+	      $('#third-step').removeClass('show').addClass('hidden');
+	      $('#second-step').removeClass('hidden').addClass('show');
+      });
+      $('#3rd-Next').on('click', function(){
+	      $('#third-step').removeClass('show').addClass('hidden');
+	      $('#forth-step').removeClass('hidden').addClass('show');
+      });
+      $('#4th-Prev').on('click', function(){
+	      $('#forth-step').removeClass('show').addClass('hidden');
+	      $('#third-step').removeClass('hidden').addClass('show');
+      });
+      
+      $('#selectdate').multiDatesPicker({
 	  minDate: 0,
       });   
             
