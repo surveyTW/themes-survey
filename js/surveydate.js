@@ -78,67 +78,105 @@
       $('#edit-date').val(ayDate.join());
    }    
 
+   function addNewDate(dateText, currentRow){
+	   var row = document.createElement('div');
+	   var div_date = document.createElement('div');
+	   var div_time = document.createElement('div');
+	   var div_add = document.createElement('div');
+
+	   row.className = 'row selectdateRow';
+	   div_date.className = 'col-md-6';
+
+	   var input = document.createElement('input');
+	   input.className = 'form-control date';
+	   $(input).val(dateText);
+	   $(div_date).append(input);
+
+	   div_time.className = 'col-md-4';
+
+	   var div_input_group = document.createElement('div');
+	   div_input_group.className = 'input-group';
+
+	   var input_time = document.createElement('input');
+	   input_time.className = 'form-control bootstrap-timepicker';             
+	   $(input_time).timepicker({defaultTime: false});
+	   $(input_time).attr('type','text');                      
+
+	   var button_timepicker = document.createElement('button');             
+	   button_timepicker.className = 'btn btn-default timepicker';              
+	   $(button_timepicker).attr('type','button');             
+	   $(button_timepicker).append('<span class="glyphicon glyphicon-time"></span>');              
+	   $(button_timepicker).click(function() {
+		   var div = $(this).parents('div .input-group').eq(0);
+		   $(div).find('input').eq(0).click();
+	   });             
+
+	   var span = document.createElement('span');
+	   span.className = 'input-group-btn';                
+	   $(span).append(button_timepicker);
+
+	   $(div_input_group).append(input_time);             
+	   $(div_input_group).append(span);
+	   $(div_time).append(div_input_group);
+
+	   /*div_add.className = 'col-md-2';
+
+	     var button = document.createElement('button');
+	     button.className = 'btn btn-default addtime'; 
+	     $(button).attr('type','button');
+	     $(button).append('<span class="glyphicon glyphicon-plus"></span>');             
+	     $(div_add).append(button);*/
+
+	   $(row).append(div_date);
+	   $(row).append(div_time);
+	   //$(row).append(div_add);
+	   if(currentRow == -1){
+		$('#selecttime').append(row);
+	   }
+	   else{
+	   	var selectTimeElement = document.getElementById('selecttime');
+	   	selectTimeElement.insertBefore(row, selectTimeElement.childNodes[currentRow]);	
+	   }
+   }
+
    function buildSelectTime()
    {
-      $("#selecttime").html("");
-
       var selectedDate = $('#selectdate').multiDatesPicker('getDates');
       var partsOfStr = selectedDate.toString().split(',');
-      for(i=0; i<partsOfStr.length ; i++){
-	     tmp = partsOfStr[i].split('/');
-             dateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
-             var row = document.createElement('div');
-             var div_date = document.createElement('div');
-             var div_time = document.createElement('div');
-             var div_add = document.createElement('div');
-
-             row.className = 'row';
-             div_date.className = 'col-md-6';
-             
-             var input = document.createElement('input');
-             input.className = 'form-control date';
-             $(input).val(dateText);
-             $(div_date).append(input);
-             
-             div_time.className = 'col-md-4';
-             
-             var div_input_group = document.createElement('div');
-             div_input_group.className = 'input-group';
-             
-             var input_time = document.createElement('input');
-             input_time.className = 'form-control bootstrap-timepicker';             
-             $(input_time).timepicker({defaultTime: false});
-             $(input_time).attr('type','text');                      
-             
-             var button_timepicker = document.createElement('button');             
-             button_timepicker.className = 'btn btn-default timepicker';              
-             $(button_timepicker).attr('type','button');             
-             $(button_timepicker).append('<span class="glyphicon glyphicon-time"></span>');              
-             $(button_timepicker).click(function() {
-                var div = $(this).parents('div .input-group').eq(0);
-                $(div).find('input').eq(0).click();
-             });             
-             
-             var span = document.createElement('span');
-             span.className = 'input-group-btn';                
-             $(span).append(button_timepicker);
-             
-             $(div_input_group).append(input_time);             
-             $(div_input_group).append(span);
-             $(div_time).append(div_input_group);
-
-             /*div_add.className = 'col-md-2';
-             
-             var button = document.createElement('button');
-             button.className = 'btn btn-default addtime'; 
-             $(button).attr('type','button');
-             $(button).append('<span class="glyphicon glyphicon-plus"></span>');             
-             $(div_add).append(button);*/
-             
-             $(row).append(div_date);
-             $(row).append(div_time);
-             //$(row).append(div_add);                          
-             $('#selecttime').append(row);
+      var row = document.getElementsByClassName('selectdateRow');
+      for(oI = 0, nI = 0; oI < row.length && nI < partsOfStr.length; oI++, nI++){
+	     //var child = value.getElementsByClassName('date')[0].value;
+	     //alert(row[oI].getElementsByClassName('date')[0].value);
+	     oldDateText = row[oI].getElementsByClassName('date')[0].value;
+	     tmp = partsOfStr[nI].split('/');
+             newDateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
+	     var date1 = new Date(newDateText);
+	     var date2 = new Date(oldDateText);
+	     if(date1 > date2){
+		     /*remove old date*/
+		     row[oI].remove();
+		     nI--;
+		     oI--;
+	     }
+	     else if(date2 > date1){
+		     /*add new date*/
+		     addNewDate(newDateText, oI);
+	     }
+      	     else{
+		     /*both move to next*/
+	     }
+      }
+      if(oI < row.length){
+	      for( ; oI < row.length; oI++){
+		      row[oI].remove();
+	      }
+      }
+      if(nI < partsOfStr.length){
+	      for( ; nI < partsOfStr.length; nI++){
+		      tmp = partsOfStr[nI].split('/');
+		      newDateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
+		      addNewDate(newDateText, -1);
+	      }
       }
    }
 
