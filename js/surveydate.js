@@ -180,6 +180,16 @@
       }
    }
 
+   function validation1(){
+	if($('#selectdate').multiDatesPicker('getDates').toString() == ""){
+		alert('請至少選擇一天');
+		return 0;
+	}
+	else{
+		return 1;
+	}
+   }
+
    $(document).ready( function () {
 
       //google.maps.event.addDomListener(window, 'load', gmapInitialize);
@@ -187,9 +197,11 @@
       $('#edit-date').hide();
 
       $('#1st-Next').on('click', function(){
-	      $('#second-step').removeClass('hidden').addClass('show');
-	      $('#first-step').removeClass('show').addClass('hidden');
-	      buildSelectTime();
+	      if(validation1()){
+	      	$('#second-step').removeClass('hidden').addClass('show');
+	      	$('#first-step').removeClass('show').addClass('hidden');
+	      	buildSelectTime();
+	      }
       });
       $('#2nd-Prev').on('click', function(){
 	      $('#second-step').removeClass('show').addClass('hidden');
