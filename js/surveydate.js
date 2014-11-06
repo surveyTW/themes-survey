@@ -1,6 +1,7 @@
 (function ($) {
 
    var gmap_inited = 0;
+   var timeSlotNumber = 1;
 
    function gmapInitialize() {
 	var markers = [];
@@ -78,20 +79,8 @@
       $('#edit-date').val(ayDate.join());
    }    
 
-   function addNewDate(dateText, currentRow){
-	   var row = document.createElement('div');
-	   var div_date = document.createElement('div');
+   function addDivTime(row){
 	   var div_time = document.createElement('div');
-	   var div_add = document.createElement('div');
-
-	   row.className = 'row selectdateRow';
-	   div_date.className = 'col-md-6';
-
-	   var input = document.createElement('input');
-	   input.className = 'form-control date';
-	   $(input).val(dateText);
-	   $(div_date).append(input);
-
 	   div_time.className = 'col-md-4';
 
 	   var div_input_group = document.createElement('div');
@@ -118,18 +107,25 @@
 	   $(div_input_group).append(input_time);             
 	   $(div_input_group).append(span);
 	   $(div_time).append(div_input_group);
+	   $(row).append(div_time);
+   }
 
-	   /*div_add.className = 'col-md-2';
+   function addNewDate(dateText, currentRow){
+	   var row = document.createElement('div');
+	   var div_date = document.createElement('div');
 
-	     var button = document.createElement('button');
-	     button.className = 'btn btn-default addtime'; 
-	     $(button).attr('type','button');
-	     $(button).append('<span class="glyphicon glyphicon-plus"></span>');             
-	     $(div_add).append(button);*/
+	   row.className = 'row selectdateRow';
+	   div_date.className = 'col-md-4';
+
+	   var input = document.createElement('input');
+	   input.className = 'form-control date';
+	   $(input).val(dateText);
+	   $(div_date).append(input);
 
 	   $(row).append(div_date);
-	   $(row).append(div_time);
-	   //$(row).append(div_add);
+	   for(i=0; i<timeSlotNumber; i++){
+	   	addDivTime(row);
+	   }
 	   if(currentRow == -1){
 		$('#selecttime').append(row);
 	   }
@@ -180,6 +176,13 @@
       }
    }
 
+   function addOneTimeSlot(){
+	   timeSlotNumber++;
+	   $('.selectdateRow').each(function(i, val){
+		addDivTime(val);
+	   });
+   }
+
    function validation1(){
 	if($('#selectdate').multiDatesPicker('getDates').toString() == ""){
 		alert('請至少選擇一天');
@@ -227,6 +230,8 @@
 	      $('#forth-step').removeClass('show').addClass('hidden');
 	      $('#third-step').removeClass('hidden').addClass('show');
       });
+
+      $('#add-timeslots').on('click', addOneTimeSlot);
       
       $('#selectdate').multiDatesPicker({
 	  minDate: 0,
