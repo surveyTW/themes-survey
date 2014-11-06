@@ -183,6 +183,17 @@
 	   });
    }
 
+   function copyFromFirstRow(){
+	   for(i=0; i<timeSlotNumber; i++){
+		   $('.selectdateRow').each(function(index, val){
+			   if(index != 0){
+		   		   cloneOne = $('.selectdateRow')[0].childNodes[i+1].cloneNode(true);
+				   $(val.childNodes[i+1]).replaceWith(cloneOne);
+			   }
+		   });
+	   }
+   }
+
    function validation1(){
 	if($('#selectdate').multiDatesPicker('getDates').toString() == ""){
 		alert('請至少選擇一天');
@@ -232,6 +243,7 @@
       });
 
       $('#add-timeslots').on('click', addOneTimeSlot);
+      $('#copy-from-first-row').on('click', copyFromFirstRow);
       
       $('#selectdate').multiDatesPicker({
 	  minDate: 0,

@@ -20,9 +20,8 @@
 <span id="1st-Next" type="button" class="btn btn-primary">Next</span>
 </div>
 <div id="second-step" class="hidden">
-<div class="timeSlotAfter">
-	<button id="add-timeslots" type="button" class="btn btn-primary">增加一欄時間</button>
-</div>
+<button id="add-timeslots" type="button" class="btn btn-primary">增加一欄時間</button>
+<button id="copy-from-first-row" type="button" class="btn btn-primary">從第一列複製時間</button>
 <div class="row">
    <div id="selecttime" class="col-md-6"></div>
 </div>
