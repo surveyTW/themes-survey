@@ -73,8 +73,11 @@
    function setTextDate() 
    {
       var ayDate = [];
-      $('#selecttime .row').each(function( index ) {
-         ayDate.push($(this).find('.date').eq(0).val() + ' ' + $(this).find('.bootstrap-timepicker').eq(0).val());
+      $('#selecttime .row').each(function( index, date) {
+         //ayDate.push($(this).find('.date').eq(0).val() + ' ' + $(this).find('.bootstrap-timepicker').eq(0).val());
+	 $(this).find('.bootstrap-timepicker').each(function( index1, time){
+		 ayDate.push($(date).find('.date').eq(0).val() + ' ' + $(time).val());
+	 });
       });
       $('#edit-date').val(ayDate.join());
    }    
