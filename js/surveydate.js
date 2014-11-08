@@ -72,14 +72,45 @@
 
    function setTextDate() 
    {
-      var ayDate = [];
-      $('#selecttime .row').each(function( index, date) {
-         //ayDate.push($(this).find('.date').eq(0).val() + ' ' + $(this).find('.bootstrap-timepicker').eq(0).val());
-	 $(this).find('.bootstrap-timepicker').each(function( index1, time){
-		 ayDate.push($(date).find('.date').eq(0).val() + ' ' + $(time).val());
-	 });
-      });
-      $('#edit-date').val(ayDate.join());
+	   var ayDate = [];
+	   $('#selecttime .row').each(function( index, date) {
+		   var localAyDate = [];
+		   var otherTime = 0;
+		   //ayDate.push($(this).find('.date').eq(0).val() + ' ' + $(this).find('.bootstrap-timepicker').eq(0).val());
+		   $(this).find('.bootstrap-timepicker').each(function( index1, time){
+			   var duplicate = 0;
+			   var tmpTime = $(date).find('.date').eq(0).val() + ' ' + $(time).val();
+			   if($(time).val() != ''){
+				   otherTime = 1;
+			   }
+			   //see if this duplicates before array value
+			   for(i=0; i<localAyDate.length; i++){
+				   console.log(localAyDate[i]);
+				   console.log(tmpTime.localeCompare(localAyDate[i]));
+				   if(!tmpTime.localeCompare(localAyDate[i])){
+					   duplicate = 1;
+					   break;
+				   }
+			   }
+			   if(!duplicate){
+				   //localAyDate.push($(date).find('.date').eq(0).val() + ' ' + $(time).val());
+				   localAyDate.push(tmpTime);
+			   }
+
+		   });
+		   if(otherTime == 1){
+			   //remove time.val() == ''
+			   for(i=0; i<localAyDate.length; i++){
+				   if(localAyDate[i] == ($(date).find('.date').eq(0).val() + ' ')){
+					   delete localAyDate[i];
+					   break;
+				   }
+			   }
+		   }
+
+		   ayDate.push(localAyDate);
+	   });
+	   $('#edit-date').val(ayDate.join());
    }    
 
    function addDivTime(row){
