@@ -102,7 +102,7 @@
 			   //remove time.val() == ''
 			   for(i=0; i<localAyDate.length; i++){
 				   if(localAyDate[i] == ($(date).find('.date').eq(0).val() + ' ')){
-					   delete localAyDate[i];
+					   localAyDate.splice(i, 1);
 					   break;
 				   }
 			   }
