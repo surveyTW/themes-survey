@@ -109,8 +109,8 @@
       setSurveyDate();     
       
       $('#update-survey' ).click(function() {
-         var curpath = $(location).attr('pathname');
-         curpath = curpath.substr(1,curpath.length-1);       
+         var curpath = $(location).attr('search');
+         curpath = curpath.substr(3,curpath.length-1);       
          
          var inputs = $('.survey-date tbody tr:last').find('input');
          
@@ -135,7 +135,7 @@
          oSend.data = oSurvey;
          
          $.ajax({
-            url: 'update_surveydate',
+            url: '?q=update_surveydate',
             type: 'post',         
             dataType: 'json',
             data: JSON.stringify(oSend),
