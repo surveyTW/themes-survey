@@ -109,8 +109,8 @@
       setSurveyDate();     
       
       $('#update-survey' ).click(function() {
-         var curpath = $(location).attr('search');
-         curpath = curpath.substr(3,curpath.length-1);       
+         var curpath = $(location).attr('pathname');
+         curpath = curpath.substr(8,curpath.length-1);       
          
          var inputs = $('.survey-date tbody tr:last').find('input');
          
