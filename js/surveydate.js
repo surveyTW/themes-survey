@@ -236,53 +236,61 @@
 
    $(document).ready( function () {
 
-      //google.maps.event.addDomListener(window, 'load', gmapInitialize);
+	   //google.maps.event.addDomListener(window, 'load', gmapInitialize);
 
-      $('#edit-date').hide();
+	   document.onkeydown = function (e){ 
+		   if(event.keyCode == 13){ 
+			   event.returnValue=false;        
+			   event.cancel = true;      
+		   }
+	   }
 
-      $('#1st-Next').on('click', function(){
-	      if(validation1()){
-	      	$('#second-step').removeClass('hidden').addClass('show');
-	      	$('#first-step').removeClass('show').addClass('hidden');
-	      	buildSelectTime();
-	      }
-      });
-      $('#2nd-Prev').on('click', function(){
-	      $('#second-step').removeClass('show').addClass('hidden');
-	      $('#first-step').removeClass('hidden').addClass('show');
-      });
-      $('#2nd-Next').on('click', function(){
-	      $('#second-step').removeClass('show').addClass('hidden');
-	      if(!gmap_inited){
-	      	gmapInitialize();
-		gmap_inited = 1;
-	      }
-	      $('#third-step').removeClass('hidden').addClass('show');
-      });
-      $('#3rd-Prev').on('click', function(){
-	      $('#third-step').removeClass('show').addClass('hidden');
-	      $('#second-step').removeClass('hidden').addClass('show');
-      });
-      $('#3rd-Next').on('click', function(){
-	      $('#third-step').removeClass('show').addClass('hidden');
-	      $('#forth-step').removeClass('hidden').addClass('show');
-      });
-      $('#4th-Prev').on('click', function(){
-	      $('#forth-step').removeClass('show').addClass('hidden');
-	      $('#third-step').removeClass('hidden').addClass('show');
-      });
 
-      $('#add-timeslots').on('click', addOneTimeSlot);
-      $('#copy-from-first-row').on('click', copyFromFirstRow);
-      
-      $('#selectdate').multiDatesPicker({
-	  minDate: 0,
-      });   
-            
-      $( '#edit-submit' ).click(function() {
-         setTextDate();
-      });
-   
+	   $('#edit-date').hide();
+
+	   $('#1st-Next').on('click', function(){
+		   if(validation1()){
+			   $('#second-step').removeClass('hidden').addClass('show');
+			   $('#first-step').removeClass('show').addClass('hidden');
+			   buildSelectTime();
+		   }
+	   });
+	   $('#2nd-Prev').on('click', function(){
+		   $('#second-step').removeClass('show').addClass('hidden');
+		   $('#first-step').removeClass('hidden').addClass('show');
+	   });
+	   $('#2nd-Next').on('click', function(){
+		   $('#second-step').removeClass('show').addClass('hidden');
+		   if(!gmap_inited){
+			   gmapInitialize();
+			   gmap_inited = 1;
+		   }
+		   $('#third-step').removeClass('hidden').addClass('show');
+	   });
+	   $('#3rd-Prev').on('click', function(){
+		   $('#third-step').removeClass('show').addClass('hidden');
+		   $('#second-step').removeClass('hidden').addClass('show');
+	   });
+	   $('#3rd-Next').on('click', function(){
+		   $('#third-step').removeClass('show').addClass('hidden');
+		   $('#forth-step').removeClass('hidden').addClass('show');
+	   });
+	   $('#4th-Prev').on('click', function(){
+		   $('#forth-step').removeClass('show').addClass('hidden');
+		   $('#third-step').removeClass('hidden').addClass('show');
+	   });
+
+	   $('#add-timeslots').on('click', addOneTimeSlot);
+	   $('#copy-from-first-row').on('click', copyFromFirstRow);
+
+	   $('#selectdate').multiDatesPicker({
+		   minDate: 0,
+	   });   
+
+	   $( '#edit-submit' ).click(function() {
+		   setTextDate();
+	   });
+
    });
 
 })(jQuery);
