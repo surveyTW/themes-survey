@@ -123,7 +123,8 @@
       
       $('#update-survey' ).click(function() {
          var curpath = $(location).attr('pathname');
-         curpath = curpath.substr(8,curpath.length-1);       
+	 var pathary = curpath.split('/');
+         curpath = pathary[pathary.length - 1];       
          
          var inputs = $('.survey-date tbody tr:last').find('input');
          
@@ -148,7 +149,7 @@
          oSend.data = oSurvey;
          
          $.ajax({
-            url: '?q=update_surveydate',
+            url: 'update_surveydate',
             type: 'post',         
             dataType: 'json',
             data: JSON.stringify(oSend),
