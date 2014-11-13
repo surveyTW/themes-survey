@@ -29,10 +29,23 @@
       $.each( ay_survey_date, function( key, value ) {     
          if ( value != '' ) {
             var tmp = value.split(' ');
+	    var survey_year = tmp[0].substr(0,4);
             var survey_date = tmp[0].substr(5,5);
             var survey_time = tmp[1];
             var survey_flag = tmp[2];        
-            $('.survey-date thead tr:last').append('<th class="success">' + survey_date + '<br />' + survey_time + survey_flag + '</th>');            
+	    var weekday=new Array(7)
+	    weekday[0]="Sun"
+	    weekday[1]="Mon"
+	    weekday[2]="Tue"
+	    weekday[3]="Wed"
+	    weekday[4]="Thu"
+	    weekday[5]="Fri"
+	    weekday[6]="Sat"
+	    var d = new Date(tmp[0]);
+            if(!survey_flag){
+		    survey_flag = '';
+	    }
+            $('.survey-date thead tr:last').append('<th class="success">' + survey_date +'/' + survey_year + '<br />' + weekday[d.getDay()] + ' ' + survey_time + survey_flag + '</th>');            
             //var d = value.substr(0,5);
             //$('.survey-date thead tr:last').append('<th class="success">' + d + '</th>');
          }
