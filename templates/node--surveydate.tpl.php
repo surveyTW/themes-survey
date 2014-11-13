@@ -110,6 +110,8 @@
     ?>
   </div>
   <div class="col-md-4">發起人: <?php print $node->field_name[LANGUAGE_NONE][0]['value'];?></div><div class="col-md-8">細節: <?php print $node->field_description[LANGUAGE_NONE][0]['value'];?></div>
+  <div class="col-md-8">地點: <?php print $node->field_location[LANGUAGE_NONE][0]['value'];?><br></div>
+  <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value'];?></div>
   <div id="surveydate-map" class="col-md-12"></div>
   <div class="row">
      <div class="year"></div>
@@ -124,7 +126,6 @@
   </div>  
   
   
-  <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value'];?></div>
   <div id="date" class="hide"><?php print $node->field_date[LANGUAGE_NONE][0]['value'];?></div>
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value'];?></div>
   
