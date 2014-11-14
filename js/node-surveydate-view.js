@@ -83,7 +83,9 @@
 	      $('.survey-date tfoot').append('<tr>');         
 	      $('.survey-date tfoot tr:last').append('<td class="col-md-3 tmp-username">result</td>');
 	      $.each(ay_survey_result, function(key, value){
-		      $('.survey-date tfoot tr:last').append('<td>' + value + '</td>');
+		      if(key != 'name'){
+			      $('.survey-date tfoot tr:last').append('<td>' + value + '</td>');
+		      }
 	      });
       }
          
