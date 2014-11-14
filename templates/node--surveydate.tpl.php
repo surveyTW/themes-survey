@@ -83,8 +83,12 @@
 
 <?php
   drupal_add_js('https://maps.google.com/maps/api/js?v=3.exp&sensor=false&libraries=places');
+  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zweatherfeed/jquery.zweatherfeed.min.js');
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/node-surveydate-view.js');
+
+  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/zweatherfeed.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
+
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
@@ -105,7 +109,7 @@
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
-      hide($content['links']);           
+      hide($content['links']);
       //print render($content);
     ?>
   </div>
@@ -125,15 +129,16 @@
 	   </tfoot>
         </table>
      </div>
-  </div>  
-  
-  
+  </div>
+
+
   <div id="date" class="hide"><?php print $node->field_date[LANGUAGE_NONE][0]['value'];?></div>
+  <div id="yqlWeather"></div>
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value'];?></div>
   <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value'];?></div>
-  
+
   <button class="btn btn-primary" id="update-survey" type="submit" data-thmr="thmr_178">Save</button>
-  
+
   <?php print render($content['links']); ?>
 
   <?php print render($content['comments']); ?>

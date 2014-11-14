@@ -184,6 +184,9 @@
          });
       });
 
+      $('#yqlWeather').weatherfeed(['12703523'],{
+        woeid: true
+      });
    });
 
 })(jQuery);
