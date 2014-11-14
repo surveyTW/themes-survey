@@ -77,6 +77,15 @@
       $.each( ay_survey_date, function( key, value ) {
          $('.survey-date tbody tr:last').append('<td><input id="' + key + '" type="checkbox"></td>');   
       });    
+      
+      if($('#result').text() != ''){
+	      var ay_survey_result = JSON.parse($('#result').text()); 
+	      $('.survey-date tfoot').append('<tr>');         
+	      $('.survey-date tfoot tr:last').append('<td class="col-md-3 tmp-username">result</td>');
+	      $.each(ay_survey_result, function(key, value){
+		      $('.survey-date tfoot tr:last').append('<td>' + value + '</td>');
+	      });
+      }
          
    }
       

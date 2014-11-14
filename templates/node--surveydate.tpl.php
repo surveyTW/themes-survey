@@ -121,6 +121,8 @@
            </thead>
            <tbody>
            </tbody>
+	   <tfoot>
+	   </tfoot>
         </table>
      </div>
   </div>  
@@ -128,6 +130,7 @@
   
   <div id="date" class="hide"><?php print $node->field_date[LANGUAGE_NONE][0]['value'];?></div>
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value'];?></div>
+  <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value'];?></div>
   
   <button class="btn btn-primary" id="update-survey" type="submit" data-thmr="thmr_178">Save</button>
   
