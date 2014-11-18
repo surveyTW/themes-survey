@@ -133,8 +133,23 @@
       setSurveyDate();     
       
       $('#update-survey' ).click(function() {
+      
+      //Block UI...by Dun
+      
+        $.blockUI({ css: { 
+            border: 'none', 
+            padding: '15px', 
+            backgroundColor: '#000', 
+            '-webkit-border-radius': '10px', 
+            '-moz-border-radius': '10px', 
+            opacity: .5, 
+            color: '#fff' 
+        } }); 
+ 
+      
+      //Block UI end
          var curpath = $(location).attr('pathname');
-	 var pathary = curpath.split('/');
+	 	 var pathary = curpath.split('/');
          curpath = pathary[pathary.length - 1];       
          
          var inputs = $('.survey-date tbody tr:last').find('input');
@@ -170,10 +185,19 @@
             success: function (data) {             
                console.log(data);
                if (data.code == '1') {
-                  alert(data.message);
-                  location.reload();            
+               
+               $.unblockUI({ 
+                onUnblock: function(){ 
+                alert(data.message);
+                location.reload(); 
+                 } 
+            	}); 
+                 // alert(data.message);
+              //    location.reload();            
                } else {
-                  alert(data.message);
+                 $.unblockUI({ 
+                onUnblock: function(){ alert(data.message); } 
+            	});
                } 
             },
             error: function (data) {
@@ -186,9 +210,14 @@
          });
       });
 
-      $('#yqlWeather').weatherfeed(['12703523'],{
+ /*     $('#yqlWeather').weatherfeed(['12703523'],{
         woeid: true
       });
+      */
+      $('#yqlWeather').weatherfeed(['UKXX0085'], {
+		forecast: true
+	});
+      
    });
 
 })(jQuery);
