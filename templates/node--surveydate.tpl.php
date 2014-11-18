@@ -85,7 +85,7 @@
   drupal_add_js('https://maps.google.com/maps/api/js?v=3.exp&sensor=false&libraries=places');
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zweatherfeed/jquery.zweatherfeed.min.js');
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/node-surveydate-view.js');
-
+  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.min.js');	
   drupal_add_css(drupal_get_path('theme', 'survey') . '/css/zweatherfeed.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
 
