@@ -248,6 +248,13 @@
 
 	   $('#edit-date').hide();
 
+	   if($("input[name$='survey_path']").val() == ''){
+		   $('#survey-end').hide();
+	   }
+	   else{
+		   $('#survey-body').hide();
+	   }
+
 	   $('#1st-Next').on('click', function(){
 		   if(validation1()){
 			   $('#second-step').removeClass('hidden').addClass('show');

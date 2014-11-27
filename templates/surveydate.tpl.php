@@ -10,6 +10,7 @@
 
 ?>
 
+<div id="survey-body">
 <div id="first-step" class="show">
 <?php print render($form['title']); ?>
 <?php print render($form['description']); ?>
@@ -40,6 +41,14 @@
 <?php print render($form['email']); ?>
 <button id="4th-Prev" type="button" class="btn btn-primary">Prev</button>
 <?php print render($form['submit']); ?>
+</div>
+</div>
+<div id="survey-end">
+<p>恭喜你 你已完成一個問卷! </p>
+<p>網址是<a href="<?php print $form['survey_path']['#value']?>"><?php print $form['survey_path']['#value']?></a></p>
+<p>趕快發送出去吧!</p>
+<p>我們將會在有人填過問卷後 寄送E-mail到你的信箱</p>
+<p>你也可以到你的帳號下 找到曾經發過的問卷喔!!</p>
 </div>
 
 <?php print render($form['date']); ?>
