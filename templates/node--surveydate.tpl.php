@@ -133,7 +133,12 @@
 
 
   <div id="date" class="hide"><?php print $node->field_date[LANGUAGE_NONE][0]['value'];?></div>
-  <div id="yqlWeather"></div>
+  <?php
+  $nodeWoeid = $node->field_woeid[LANGUAGE_NONE][0]['value'];
+  if ($nodeWoeid != 0) {
+      print "<div id=\"yqlWeather\" value=\"" . $nodeWoeid . "\"></div>";
+  }
+  ?>
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value'];?></div>
   <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value'];?></div>
 
