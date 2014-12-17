@@ -14,13 +14,14 @@
 <div id="first-step" class="show">
 <?php print render($form['title']); ?>
 <?php print render($form['description']); ?>
-<h3>選擇聚會日期區間</h3>
+<h3>選擇聚會日期(可複選)</h3>
 <div class="row">
    <div id="selectdate" class="col-md-6"></div>
 </div>
 <span id="1st-Next" type="button" class="btn btn-primary">Next</span>
 </div>
 <div id="second-step" class="hidden">
+<h3>指定聚會時間(可直接跳過)</h3>
 <button id="add-timeslots" type="button" class="btn btn-primary">增加一欄時間</button>
 <button id="copy-from-first-row" type="button" class="btn btn-primary">從第一列複製時間</button>
 <div class="row">
