@@ -10,7 +10,7 @@
         geocoder.geocode({'address': address}, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
                 //console.log(results[0]);
-                showPosition(results[0].geometry.location.k, results[0].geometry.location.B, address);
+                showPosition(results[0].geometry.location.k, results[0].geometry.location.D, address);
             } else {
                 result = "Unable to find address: " + status;
             }
