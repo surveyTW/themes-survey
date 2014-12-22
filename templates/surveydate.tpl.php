@@ -15,9 +15,7 @@
 <?php print render($form['title']); ?>
 <?php print render($form['description']); ?>
 <h3>選擇聚會日期(可複選)</h3>
-<div class="row">
-   <div id="selectdate" class="col-md-6"></div>
-</div>
+   <div id="selectdate" class="form-group"></div>
 <span id="1st-Next" type="button" class="btn btn-primary">Next</span>
 </div>
 <div id="second-step" class="hidden">
