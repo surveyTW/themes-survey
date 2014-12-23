@@ -32,7 +32,7 @@
 </div>
 <div id="third-step" class="hidden">
 <?php print render($form['location']); ?>
-<div id="surveymap" class="col-md-12 form-group"></div>
+<div id="surveymap" class="form-group" style="width:100%; height:100%;"></div>
 <button id="3rd-Prev" type="button" class="btn btn-primary">Prev</button>
 <button id="3rd-Next" type="button" class="btn btn-primary">Next</button>
 </div>
