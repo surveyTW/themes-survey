@@ -7,7 +7,8 @@
 	var markers = [];
 	mapholder = document.getElementById('surveymap');
        	mapholder.style.height = '380px';
-       	mapholder.style.width = '540px';
+       	mapholder.style.width = '50%';
+       	//mapholder.style.width = '540px';
 		
 	var map = new google.maps.Map(mapholder, {
 		mapTypeId: google.maps.MapTypeId.ROADMAP

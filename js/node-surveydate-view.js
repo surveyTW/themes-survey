@@ -100,7 +100,8 @@
         latlng = new google.maps.LatLng(lat, lng);
         mapholder = document.getElementById('surveydate-map');
         mapholder.style.height = '180px';
-        mapholder.style.width = '540px';
+        mapholder.style.width = '50%';
+        //mapholder.style.width = '540px';
 
         var myOptions = {
             center: latlng,
