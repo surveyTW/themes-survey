@@ -20,9 +20,11 @@
 </div>
 <div id="second-step" class="hidden">
 <h3>指定聚會時間(可直接跳過)</h3>
+<div class="form-group">
 <button id="add-timeslots" type="button" class="btn btn-primary">增加一欄時間</button>
 <button id="copy-from-first-row" type="button" class="btn btn-primary">從第一列複製時間</button>
-<div class="row">
+</div>
+<div class="row form-group">
    <div id="selecttime" class="col-md-6"></div>
 </div>
 <button id="2nd-Prev" type="button" class="btn btn-primary">Prev</button>
@@ -30,7 +32,7 @@
 </div>
 <div id="third-step" class="hidden">
 <?php print render($form['location']); ?>
-<div id="surveymap" class="col-md-12"></div>
+<div id="surveymap" class="col-md-12 form-group"></div>
 <button id="3rd-Prev" type="button" class="btn btn-primary">Prev</button>
 <button id="3rd-Next" type="button" class="btn btn-primary">Next</button>
 </div>
