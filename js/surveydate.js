@@ -298,7 +298,18 @@
 	   $( '#edit-submit' ).click(function() {
 		   setTextDate();
 	   });
-
+	   $( '#copytext' ).click(function() {
+		   $('#survey-end').zclip({ 
+		   path:'sites/all/themes/survey/js/zclip/ZeroClipboard.swf', 
+		   copy: $('#text-to-copy').val(),
+		   afterCopy: function() {
+      	   console.log('copied');
+      		alert('已複製到剪貼薄');
+   			 } 
+		   }); 
+		  
+		  
+	   });	
    });
 
 })(jQuery);
