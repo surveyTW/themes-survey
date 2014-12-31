@@ -86,7 +86,8 @@
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zweatherfeed/jquery.zweatherfeed.min.js');
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/node-surveydate-view.js');
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.min.js');	
-  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/zweatherfeed.css', array('group' => CSS_THEME, 'type' => 'file'));
+ 
+//  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/zweatherfeed.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
@@ -130,8 +131,12 @@
         </table>
      </div>
   </div>
+<button class="btn btn-primary" id="update-survey" type="submit" data-thmr="thmr_178">送出</button>
 
+ <div id="wheather-description">
+	<h3>聚會地區的一周天氣預報</h3> 
 
+</div>
   <div id="date" class="hide"><?php print $node->field_date[LANGUAGE_NONE][0]['value'];?></div>
   <?php
   $nodeWoeid = $node->field_woeid[LANGUAGE_NONE][0]['value'];
@@ -142,7 +147,7 @@
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value'];?></div>
   <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value'];?></div>
 
-  <button class="btn btn-primary" id="update-survey" type="submit" data-thmr="thmr_178">Save</button>
+ 
 
   <?php print render($content['links']); ?>
 
