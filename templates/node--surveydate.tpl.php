@@ -146,6 +146,7 @@
   ?>
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value'];?></div>
   <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value'];?></div>
+  <div id="uid" class="hide"><?php print $user->uid;?></div>
 
  
 

@@ -20,6 +20,8 @@
 
     function setSurveyDate() {
         var ay_survey_date = $('#date').text().split(",");
+	this_user = $('#uid').text();
+	first_time = 1;
 
         $('.year').text(ay_survey_date[0].substr(0, 4));
 
@@ -51,32 +53,51 @@
             }
         });
 
-        if ($('#survey').text() != '') {
-            var ay_survey_data = JSON.parse($('#survey').text());
-            var count = Object.keys(ay_survey_data[0]).length;
+	if ($('#survey').text() != '') {
+		var ay_survey_data = JSON.parse($('#survey').text());
+		var count = Object.keys(ay_survey_data[0]).length;
 
-            $.each(ay_survey_data, function (key, obj) {
-                $('.survey-date tbody').append('<tr>');
-                $('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username">' + obj.name + '</td>');
+		$.each(ay_survey_data, function (key, obj) {
+			if(this_user != 0 && this_user == obj.uid){
+				first_time = 0;
+				$('.survey-date tbody').append('<tr>');
+				$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control" value="' + obj.name + '"></td>');
+				$.each(obj, function (key, value) {
+					if (key != 'name' && key !='uid') {
+						if (value == 0) {
+							$('.survey-date tbody tr:last').append('<td><input id="' + key + '" type="checkbox"></td>');
+						}
+						else{
+							$('.survey-date tbody tr:last').append('<td><input id="' + key + '" type="checkbox" checked></td>');
+						}
+					}
+				});
+			}
+			else{
+				$('.survey-date tbody').append('<tr>');
+				$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username">' + obj.name + '</td>');
 
-                $.each(obj, function (key, value) {
-                    if (key != 'name') {
-                        if (value == 0) {
-                            $('.survey-date tbody tr:last').append('<td></td>');
-                        } else {
-                            $('.survey-date tbody tr:last').append('<td>V</td>');
-                        }
-                    }
-                });
-            });
-        }
+				$.each(obj, function (key, value) {
+					if (key != 'name' && key !='uid') {
+						if (value == 0) {
+							$('.survey-date tbody tr:last').append('<td></td>');
+						} else {
+							$('.survey-date tbody tr:last').append('<td>V</td>');
+						}
+					}
+				});
+			}
+		});
+	}
 
-        $('.survey-date tbody').append('<tr>');
-        $('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control"></td>');
+	if(first_time){
+		$('.survey-date tbody').append('<tr>');
+		$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control"></td>');
 
-        $.each(ay_survey_date, function (key, value) {
-            $('.survey-date tbody tr:last').append('<td><input id="' + key + '" type="checkbox"></td>');
-        });
+		$.each(ay_survey_date, function (key, value) {
+			$('.survey-date tbody tr:last').append('<td><input id="' + key + '" type="checkbox"></td>');
+		});
+	}
 
         if ($('#result').text() != '') {
             var ay_survey_result = JSON.parse($('#result').text());
@@ -153,7 +174,7 @@
             var pathary = curpath.split('/');
             curpath = pathary[pathary.length - 1];
 
-            var inputs = $('.survey-date tbody tr:last').find('input');
+            var inputs = $('.survey-date tbody').find('input');
 
             var oSurvey = new Object();
             ;
@@ -170,6 +191,7 @@
                     }
                 }
             });
+	    oSurvey['uid'] = $('#uid').text();
 
             var oSend = new Object();
 
