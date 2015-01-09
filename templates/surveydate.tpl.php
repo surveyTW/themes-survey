@@ -50,11 +50,8 @@
 <p>恭喜你 你已完成一個問卷!</p>
 <p>我們將會在有人填過問卷後 寄送E-mail到你的信箱</p>
 <p>你也可以到你的帳號下 找到曾經發過的問卷喔!!</p>
-<textarea class="form-control" id="text-to-copy" rows="6">
-
-<?php print $form['survey_path']['#value']?>
-</textarea>
-<button id="copytext" type="button" class="btn btn-primary">Copy</button>
+<a id="text-to-copy" href="<?php print $form['survey_path']['#value']?>"><?php print $form['survey_path']['#value']?></a>
+<button id="copytext" type="button" class="btn btn-primary">一鍵複製網址</button>
 
 
 </div>
