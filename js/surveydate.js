@@ -226,7 +226,11 @@
    }
 
    function validation1(){
-	if($('#selectdate').multiDatesPicker('getDates').toString() == ""){
+	if($('#edit-title').val() == ""){
+		alert('請填聚會名稱');
+		return 0;
+	}
+	else if($('#selectdate').multiDatesPicker('getDates').toString() == ""){
 		alert('請至少選擇一天');
 		return 0;
 	}
