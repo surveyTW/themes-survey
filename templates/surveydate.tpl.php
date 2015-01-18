@@ -13,6 +13,7 @@
 
 <div id="survey-body">
 <div id="first-step" class="show">
+<?php print render($form['email']); ?>
 <?php print render($form['title']); ?>
 <?php print render($form['description']); ?>
 <h3>選擇聚會日期(可複選)</h3>
@@ -33,18 +34,12 @@
 </div>
 <div id="third-step" class="hidden">
 <?php print render($form['location']); ?>
-<button id="3rd-Prev" type="button" class="btn btn-primary">Prev</button>
-<button id="3rd-Next" type="button" class="btn btn-primary">Next</button>
 <div id="surveymap" class="col-md-12 form-group"></div>
-
-</div>
-
-<div id="forth-step" class="hidden">
-<?php print render($form['name']); ?>
-<?php print render($form['email']); ?>
-<button id="4th-Prev" type="button" class="btn btn-primary">Prev</button>
+<button id="3rd-Prev" type="button" class="btn btn-primary">Prev</button>
 <?php print render($form['submit']); ?>
+
 </div>
+
 </div>
 <div id="survey-end">
 <p>恭喜你 你已完成一個問卷!</p>
@@ -58,4 +53,6 @@
 
 <?php print render($form['date']); ?>
 
-<?php print drupal_render_children($form); ?>
+<div class="hidden">
+	<?php print drupal_render_children($form); ?>
+</div>

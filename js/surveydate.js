@@ -7,7 +7,7 @@
 	var markers = [];
 	mapholder = document.getElementById('surveymap');
        	mapholder.style.height = '380px';
-       	mapholder.style.width = '50%';
+       	mapholder.style.width = '100%';
        	//mapholder.style.width = '540px';
 		
 	var map = new google.maps.Map(mapholder, {
@@ -282,14 +282,6 @@
 	   $('#3rd-Prev').on('click', function(){
 		   $('#third-step').removeClass('show').addClass('hidden');
 		   $('#second-step').removeClass('hidden').addClass('show');
-	   });
-	   $('#3rd-Next').on('click', function(){
-		   $('#third-step').removeClass('show').addClass('hidden');
-		   $('#forth-step').removeClass('hidden').addClass('show');
-	   });
-	   $('#4th-Prev').on('click', function(){
-		   $('#forth-step').removeClass('show').addClass('hidden');
-		   $('#third-step').removeClass('hidden').addClass('show');
 	   });
 
 	   $('#add-timeslots').on('click', addOneTimeSlot);
