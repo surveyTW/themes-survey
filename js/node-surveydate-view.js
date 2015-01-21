@@ -20,14 +20,19 @@
 
     function setSurveyDate() {
         var ay_survey_date = $('#date').text().split(",");
+        
+        
+        
+   
+
 	this_user = $('#uid').text();
 	first_time = 1;
 
         $('.year').text(ay_survey_date[0].substr(0, 4));
 
         $('.survey-date thead').append('<tr>');
-        $('.survey-date thead tr:last').append('<th class="col-md-3"></th>');
-        console.log(ay_survey_date);
+        $('.survey-date thead tr:last').append('<th class="col-md-3 info">與會者名字</th>');
+     //   console.log(ay_survey_date);
         $.each(ay_survey_date, function (key, value) {
             if (value != '') {
                 var tmp = value.split(' ');
@@ -47,7 +52,7 @@
                 if (!survey_flag) {
                     survey_flag = '';
                 }
-                $('.survey-date thead tr:last').append('<th class="success">' + survey_date + '/' + survey_year + '<br />' + weekday[d.getDay()] + ' ' + survey_time + survey_flag + '</th>');
+                $('.survey-date thead tr:last').append('<th class="info">' + survey_date + '/' + survey_year + '<br />' + weekday[d.getDay()] + ' ' + survey_time + survey_flag + '</th>');
                 //var d = value.substr(0,5);
                 //$('.survey-date thead tr:last').append('<th class="success">' + d + '</th>');
             }
@@ -55,47 +60,57 @@
 
 	if ($('#survey').text() != '') {
 		var ay_survey_data = JSON.parse($('#survey').text());
+		
+		var data2=ay_survey_data;
+		
 		var count = Object.keys(ay_survey_data[0]).length;
-
+		
+		var colums_count=0;
+	//	console.log(ay_survey_date[0]);
 		$.each(ay_survey_data, function (key, obj) {
 			if(this_user != 0 && this_user == obj.uid){
 				first_time = 0;
 				$('.survey-date tbody').append('<tr>');
-				$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control" value="' + obj.name + '"></td>');
+				$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username success"><input type="text" class="form-control info" value="' + obj.name + '"></td>');
 				$.each(obj, function (key, value) {
 					if (key != 'name' && key !='uid') {
 						if (value == 0) {
-							$('.survey-date tbody tr:last').append('<td><input id="' + key + '" type="checkbox"></td>');
+							data2[colums_count][key]=" ";
+							$('.survey-date tbody tr:last').append('<td class="success"><input id="' + key + '" type="checkbox"></td>');
 						}
 						else{
-							$('.survey-date tbody tr:last').append('<td><input id="' + key + '" type="checkbox" checked></td>');
+							data2[colums_count][key]="Ok";
+							$('.survey-date tbody tr:last').append('<td class="success"><input id="' + key + '" type="checkbox" checked></td>');
 						}
 					}
 				});
 			}
 			else{
-				$('.survey-date tbody').append('<tr>');
-				$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username">' + obj.name + '</td>');
+//				$('.survey-date tbody').append('<tr>');
+//				$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username">' + obj.name + '</td>');
 
 				$.each(obj, function (key, value) {
 					if (key != 'name' && key !='uid') {
 						if (value == 0) {
-							$('.survey-date tbody tr:last').append('<td></td>');
+						    data2[colums_count][key]=" ";
+				//			$('.survey-date tbody tr:last').append('<td></td>');
 						} else {
-							$('.survey-date tbody tr:last').append('<td>V</td>');
+							data2[colums_count][key]="Ok";
+				//			$('.survey-date tbody tr:last').append('<td>V</td>');
 						}
 					}
 				});
 			}
+			colums_count++;	
 		});
 	}
 
 	if(first_time){
 		$('.survey-date tbody').append('<tr>');
-		$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control"></td>');
+		$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username warning"><input type="text" class="form-control"></td>');
 
 		$.each(ay_survey_date, function (key, value) {
-			$('.survey-date tbody tr:last').append('<td><input id="' + key + '" type="checkbox"></td>');
+			$('.survey-date tbody tr:last').append('<td class="warning"><input id="' + key + '" type="checkbox"></td>');
 		});
 	}
 
@@ -109,7 +124,26 @@
                 }
             });
         }
+ 
+        	
+    $('#table').bootstrapTable({
+       
+                cache: false,
+                height: 400,
+                striped: true,
+                pagination: true,
+                pageSize: 50,
+                pageList: [10, 25, 50, 100, 200],
+                search: true,
+                showColumns: true,
+                showRefresh: true,
+                minimumCountColumns: 2,
+                clickToSelect: true,            
+      			data:data2
+    			
+		});
 
+    
     }
 
 
@@ -207,7 +241,7 @@
                     //$('#loading-indicator').show();
                 },
                 success: function (data) {
-                    console.log(data);
+                   // console.log(data);
                     if (data.code == '1') {
 
                         $.unblockUI({
@@ -232,7 +266,7 @@
                             alert(data.message);
                         }
                     });
-                    console.log(data);
+                    //console.log(data);
                     //showMessage(false, data);
                 },
                 complete: function () {

@@ -86,8 +86,9 @@
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zweatherfeed/jquery.zweatherfeed.min.js');
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/node-surveydate-view.js');
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.min.js');	
- 
-//  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/zweatherfeed.css', array('group' => CSS_THEME, 'type' => 'file'));
+  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table.min.js');
+  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.min.js');
+  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-table.min.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
@@ -114,7 +115,8 @@
       //print render($content);
     ?>
   </div>
-  <div class="col-md-4">發起人: <?php print $node->field_name[LANGUAGE_NONE][0]['value'];?></div><div class="col-md-8">細節: <?php print $node->field_description[LANGUAGE_NONE][0]['value'];?></div>
+  <div class="col-md-4">發起人: <?php print $node->field_name[LANGUAGE_NONE][0]['value'];?></div>
+  <div class="col-md-8">細節: <?php print $node->field_description[LANGUAGE_NONE][0]['value'];?></div>
   <div class="col-md-8">地點: <?php print $node->field_location[LANGUAGE_NONE][0]['value'];?><br></div>
   <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value'];?></div>
   <div id="surveydate-map" class="col-md-12"></div>
@@ -132,6 +134,28 @@
      </div>
   </div>
 <button class="btn btn-primary" id="update-survey" type="submit" data-thmr="thmr_178">送出</button>
+
+
+
+
+<table id="table">
+    <thead>
+    <tr>
+  <!--  	<th data-field="uid">人數</th> --!>
+        <th class="col-sm-3" data-field="name">與會者名字</th>
+        <?php
+        	$key=explode(",",$node->field_date[LANGUAGE_NONE][0]['value']);
+        	$count=sizeof($key)-1;
+        	for ($x = 0; $x <= $count; $x++) {
+        	
+        	print "<th data-field="."'$x'".">".$key[$x]."</th>"; 
+  			}	
+  		?>
+       
+      
+    </tr>
+    </thead>
+</table>
 
  <div id="wheather-description">
 	<h3>聚會地區的一周天氣預報</h3> 
