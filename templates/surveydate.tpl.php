@@ -13,6 +13,7 @@
 
 <div id="survey-body">
 <div id="first-step" class="show">
+<?php print render($form['name']); ?>
 <?php print render($form['email']); ?>
 <?php print render($form['title']); ?>
 <?php print render($form['description']); ?>
