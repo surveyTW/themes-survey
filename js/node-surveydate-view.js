@@ -189,6 +189,10 @@
         setSurveyDate();
 
         $('#update-survey').click(function () {
+	    if($('.tmp-username input').val() == ''){
+		    alert('請記得填名字!');
+		    return;
+	    }
 
             //Block UI...by Dun
 
