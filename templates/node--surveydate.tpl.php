@@ -88,7 +88,7 @@
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.min.js');	
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table.min.js');
   drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.min.js');
-  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-table.min.css', array('group' => CSS_THEME, 'type' => 'file'));
+//  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-table.min.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
