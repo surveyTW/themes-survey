@@ -147,7 +147,7 @@
            <h3>直覺化的使用介面</h3>
            <p>你現在可直接從calendar直接勾選約會的日期</p>
            <p>也可以直接在google map上看到你所選的地點</p>
-         </div>         
+         </div>
       </div>
     </div>
     <div class="container">
@@ -155,22 +155,22 @@
          <div class="col-md-6">
            <h3>簡單的回復流程</h3>
            <p>使用Meet Up可以讓你的朋友輕鬆的回復你的邀請，</p>
-           <p>也可以讓你輕鬆的得出結論並通知你的朋友!</p>         
+           <p>也可以讓你輕鬆的得出結論並通知你的朋友!</p>
          </div>
          <div class="col-md-6">
-         </div>         
+         </div>
       </div>
     </div>
-    
+
     <div class="container">
       <div class="row slo4">
-         <div class="col-md-6">      
+         <div class="col-md-6">
          </div>
          <div class="col-md-6">
            <h3>支援所有的裝置</h3>
            <p>你和你的朋友現在可以在所有裝置上</p>
-           <p>決定約會時間地點了!</p>            
-         </div>         
+           <p>決定約會時間地點了!</p>
+         </div>
       </div>
     </div>
 
