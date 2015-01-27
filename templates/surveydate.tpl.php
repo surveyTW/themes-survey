@@ -12,25 +12,68 @@
 
 <div id="survey-body">
   <div id="first-step" class="show">
-    <?php print render($form['name']); ?>
-    <?php print render($form['email']); ?>
-    <?php print render($form['title']); ?>
-    <?php print render($form['description']); ?>
-    <h3>選擇聚會日期(可複選)</h3>
-       <div id="selectdate" class=""></div>
-    <span id="1st-Next" type="button" class="btn btn-primary">Next</span>
+	<div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="btn-group pull-right">
+                    <a href="#" type="button" class="btn btn-success" id="1st-Next">Next</a>
+                </div>
+                <h4>1.建立聚會基本資料</h4>
+            </div>
+            <div class="panel-body">
+                <form>
+                    <div class="col-md-12 form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-bookmark"></span></div>
+                            <input type="text" class="form-control" id="edit-title" name="title" placeholder="聚會主題">
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                            <input type="text" class="form-control" id="edit-name" name="name" placeholder="<?php print $form['name']['#value']?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                            <input type="email" class="form-control" id="edit-email" name="email" placeholder="<?php print $form['email']['#value']?>">
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>聚會細節</label>
+                        <textarea class="form-control form-textarea" id="edit-description" name="description" cols="60" rows="5"></textarea>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="exampleInputName2">聚會日期</label>
+			<div id="selectdate" class=""></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
   </div>
   <div id="second-step" class="hidden">
-    <h3>指定聚會時間(可直接跳過)</h3>
-    <div class="form-group">
-      <button id="add-timeslots" type="button" class="btn btn-primary">增加一欄時間</button>
-      <button id="copy-from-first-row" type="button" class="btn btn-primary">從第一列複製時間</button>
+	<div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="btn-group pull-right">
+                    <a href="#" type="button" id="2nd-Prev" class="btn btn-success">Prev</a>
+                    <a href="#" type="button" id="2nd-Next" class="btn btn-success">Next</a>
+                </div>
+                <h4>2.聚會時間</h4>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-warning" id="add-timeslots">
+                    <span class="glyphicon glyphicon-plus"></span>新增時間</button>
+                <button type="button" class="btn btn-warning" id="copy-from-first-row">
+                    <span class="glyphicon glyphicon-file"></span>複製時間</button>
+    		<div class="row form-group">
+       			<div id="selecttime" class="col-md-6"></div>
+    		</div>
+            </div>
+        </div>
     </div>
-    <div class="row form-group">
-       <div id="selecttime" class="col-md-6"></div>
-    </div>
-    <button id="2nd-Prev" type="button" class="btn btn-primary">Prev</button>
-    <button id="2nd-Next" type="button" class="btn btn-primary">Next</button>
   </div>
   <div id="third-step" class="hidden">
     <?php print render($form['location']); ?>
