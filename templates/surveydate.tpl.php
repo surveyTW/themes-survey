@@ -76,10 +76,27 @@
     </div>
   </div>
   <div id="third-step" class="hidden">
-    <?php print render($form['location']); ?>
-    <div id="surveymap" class="col-md-12 form-group"></div>
-    <button id="3rd-Prev" type="button" class="btn btn-primary">Prev</button>
+<div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="btn-group pull-right">
+                    <a href="#" id="3rd-Prev" type="button" class="btn btn-success">Prev</a>
     <?php print render($form['submit']); ?>
+                </div>
+                <h4>3.聚會地點</h4>
+            </div>
+            <div class="panel-body">
+                    <div class="col-md-12 form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></div>
+    <?php print render($form['location']); ?>
+                        </div>
+    <div id="surveymap" class="col-md-12 form-group"></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
   </div>
 </div>
 <div id="survey-end">
