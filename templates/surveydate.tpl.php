@@ -25,24 +25,24 @@
                     <div class="col-md-12 form-group">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-bookmark"></span></div>
-                            <input type="text" class="form-control" id="edit-title" name="title" placeholder="聚會主題">
+<?php print render($form['title']); ?>
                         </div>
                     </div>
                     <div class="col-md-6 form-group">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
-                            <input type="text" class="form-control" id="edit-name" name="name" placeholder="<?php print $form['name']['#value']?>">
+<?php print render($form['name']); ?>
                         </div>
                     </div>
                     <div class="col-md-6 form-group">
                         <div class="input-group">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                            <input type="email" class="form-control" id="edit-email" name="email" placeholder="<?php print $form['email']['#value']?>">
+<?php print render($form['email']); ?>
                         </div>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>聚會細節</label>
-                        <textarea class="form-control form-textarea" id="edit-description" name="description" cols="60" rows="5"></textarea>
+<?php print render($form['description']); ?>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="exampleInputName2">聚會日期</label>
