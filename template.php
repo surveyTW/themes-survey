@@ -16,18 +16,19 @@ function survey_theme(&$existing, $type, $theme, $path) {
       'template' => 'surveydate',
       'path' => drupal_get_path('theme', 'survey') . '/templates',
     ),
-    'user_login_block' => array(
-      'render element' => 'form',
+    'user_login' => array(
+    'render element' => 'form',
+    'path' => drupal_get_path('theme', 'survey') . '/templates',
+    'template' => 'user-login',
     ),
   );
 
   return $hook_theme;
 }
-
+/*
 function survey_user_login_block($variables) {
   $form = $variables['form'];
 
-  /* Copy from user.module */
   $items = array();
   if (variable_get('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL)) {
     $items[] = l(t('Create new account'), 'user/register', array('attributes' => array('title' => t('Create a new user account.'))));
@@ -38,3 +39,4 @@ function survey_user_login_block($variables) {
 
   return drupal_render_children($form);
 }
+ */
