@@ -1,13 +1,17 @@
 @charset "UTF-8";
+
+@itemwidth: 450px;
+@itemheight: 180px;
+
 .weatherItem {
-  width: 450px;
-  height: 1080px;
+  width: @itemwidth;
+  height: @itemheight * 5;
   background-position: right top;
 }
 .weatherRange {
   height: 160px;
 }
 .weatherForecastItem {
-  height: 180px;
+  height: @itemheight;
   background-position: right center;
 }

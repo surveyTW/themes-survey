@@ -1,5 +1,13 @@
 @charset "UTF-8";
-
-.weatherItem { width: 450px; height: 1080px; background-position: right top; }
-.weatherRange { height: 160px; }
-.weatherForecastItem { height: 180px; background-position: right center; }
+.weatherItem {
+  width: 450px;
+  height: 900px;
+  background-position: right top;
+}
+.weatherRange {
+  height: 160px;
+}
+.weatherForecastItem {
+  height: 180px;
+  background-position: right center;
+}

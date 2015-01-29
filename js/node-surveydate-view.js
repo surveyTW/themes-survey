@@ -277,13 +277,19 @@
 
   function weatherCB(w) {
     $w = $(w);
-    $(".weatherCity").hide();
+    $(".weatherCity").html("Today");
     $(".weatherDesc").hide();
     $(".weatherForecastDay").hide();
     $(".weatherForecastText").hide();
 
     $(".weatherForecastItem").each(function(index) {
       $obj = $(this);
+
+      if (index === 0) {
+        $obj.hide();
+        return;
+      }
+
       $obj.css("background-image", function(index, value) {
         return value.replace("s.png", "d.png");
       });

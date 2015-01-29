@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation to display a node.
@@ -82,12 +81,12 @@
 ?>
 
 <?php
-  drupal_add_js('https://maps.google.com/maps/api/js?v=3.exp&sensor=false&libraries=places');
-  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zweatherfeed/jquery.zweatherfeed.min.js');
-  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/node-surveydate-view.js');
-  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.min.js');
-  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table.min.js');
-  drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.min.js');
+drupal_add_js('https://maps.google.com/maps/api/js?v=3.exp&sensor=false&libraries=places');
+drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zweatherfeed/jquery.zweatherfeed.min.js');
+drupal_add_js(drupal_get_path('theme', 'survey') . '/js/node-surveydate-view.js');
+drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.min.js');
+drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table.min.js');
+drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.min.js');
 //  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-table.min.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
 
@@ -109,16 +108,16 @@
 
   <div class="content"<?php print $content_attributes; ?>>
     <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      //print render($content);
+    // We hide the comments and links now so that we can render them later.
+    hide($content['comments']);
+    hide($content['links']);
+    //print render($content);
     ?>
   </div>
-  <div class="col-md-4">發起人: <?php print $node->field_name[LANGUAGE_NONE][0]['value'];?></div>
-  <div class="col-md-8">細節: <?php print $node->field_description[LANGUAGE_NONE][0]['value'];?></div>
-  <div class="col-md-8">地點: <?php print $node->field_location[LANGUAGE_NONE][0]['value'];?><br></div>
-  <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value'];?></div>
+  <div class="col-md-4">發起人: <?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></div>
+  <div class="col-md-8">細節: <?php print $node->field_description[LANGUAGE_NONE][0]['value']; ?></div>
+  <div class="col-md-8">地點: <?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?><br></div>
+  <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
   <div id="surveydate-map" class="col-md-12"></div>
   <div class="row">
     <div class="year"></div>
@@ -137,17 +136,17 @@
 
   <table id="table">
     <thead>
-    <tr>
-    <!-- <th data-field="uid">人數</th> -->
-      <th class="col-sm-3" data-field="name">與會者名字</th>
-      <?php
-        $key=explode(",",$node->field_date[LANGUAGE_NONE][0]['value']);
-        $count=sizeof($key)-1;
+      <tr>
+      <!-- <th data-field="uid">人數</th> -->
+        <th class="col-sm-3" data-field="name">與會者名字</th>
+        <?php
+        $key = explode(",", $node->field_date[LANGUAGE_NONE][0]['value']);
+        $count = sizeof($key) - 1;
         for ($x = 0; $x <= $count; $x++) {
-          print "<th data-field="."'$x'".">".$key[$x]."</th>";
+          print "<th data-field=" . "'$x'" . ">" . $key[$x] . "</th>";
         }
-      ?>
-    </tr>
+        ?>
+      </tr>
     </thead>
   </table>
 
@@ -155,15 +154,15 @@
   $nodeWoeid = $node->field_woeid[LANGUAGE_NONE][0]['value'];
   if ($nodeWoeid != 0) {
     print "<div id=\"wheather-description\">";
-    print "<h3>聚會地區的一周天氣預報</h3>";
+    print "<h3>聚會地區的天氣預報</h3>";
     print "<div id=\"weather-content\" value=\"" . $nodeWoeid . "\"></div>";
     print "</div>";
   }
   ?>
-  <div id="date" class="hide"><?php print $node->field_date[LANGUAGE_NONE][0]['value'];?></div>
-  <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value'];?></div>
-  <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value'];?></div>
-  <div id="uid" class="hide"><?php print $user->uid;?></div>
+  <div id="date" class="hide"><?php print $node->field_date[LANGUAGE_NONE][0]['value']; ?></div>
+  <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value']; ?></div>
+  <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value']; ?></div>
+  <div id="uid" class="hide"><?php print $user->uid; ?></div>
 
   <?php print render($content['links']); ?>
 
