@@ -257,6 +257,7 @@
 		   $('#survey-end').hide();
 	   }
 	   else{
+		   //$('#survey_url').tooltip('show');
 		   $('#survey-body').hide();
 	   }
 
@@ -294,18 +295,7 @@
 	   $( '#edit-submit' ).click(function() {
 		   setTextDate();
 	   });
-	//   $( '#copytext' ).click(function() {
-		   $('#copytext').zclip({ 
-		   path:'sites/all/themes/survey/js/zclip/ZeroClipboard.swf', 
-		   copy: $('#text-to-copy').text(),
-		   afterCopy: function() {
-      	   console.log('copied');
-      		alert('已複製到剪貼薄');
-   			 } 
-		   }); 
 		  
-		  
-	//   });	
    });
 
 })(jQuery);

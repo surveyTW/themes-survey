@@ -11,7 +11,6 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
 
 <div id="survey-body">
   <div id="first-step" class="show">
-    <div class="container">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <div class="btn-group pull-right">
@@ -49,11 +48,9 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
             </div>
           </form>
         </div>
-      </div>
     </div>
   </div>
   <div id="second-step" class="hidden">
-    <div class="container">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <div class="btn-group pull-right">
@@ -72,10 +69,8 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
           </div>
         </div>
       </div>
-    </div>
   </div>
   <div id="third-step" class="hidden">
-    <div class="container">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <div class="btn-group pull-right">
@@ -93,17 +88,22 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
             <div id="surveymap" class="col-md-12 form-group"></div>
           </div>
         </div>
-      </div>
     </div>
 
   </div>
 </div>
 <div id="survey-end">
-  <p>恭喜你 你已完成一個問卷!</p>
-  <p>我們將會在有人填過問卷後 寄送E-mail到你的信箱</p>
-  <p>你也可以到你的帳號下 找到曾經發過的問卷喔!!</p>
-  <a id="text-to-copy" href="<?php print $form['survey_path']['#value'] ?>"><?php print $form['survey_path']['#value'] ?></a>
-  <button id="copytext" type="button" class="btn btn-primary">一鍵複製網址</button>
+<div class="jumbotron">
+            <div class="alert alert-danger" role="alert">恭喜你 你已完成問卷!</div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-xs-2 control-label">問卷網址</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" id="survey_url" value="<?php print $form['survey_path']['#value'] ?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址">
+                    </div>
+                </div>
+            </form>
+        </div>
 </div>
 
 <?php print render($form['date']); ?>
