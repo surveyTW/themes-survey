@@ -122,7 +122,7 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
 <div class="panel-heading">
 	<div class="survey-view-date">
 	<div class="btn-group pull-right">
-  		<button class="btn btn-danger btn-lg" id="update-survey" type="submit" data-thmr="thmr_178">確定</button>
+  		<button class="btn btn-danger" id="update-survey" type="submit" data-thmr="thmr_178">確定</button>
 	</div>
 	<h2><span class="glyphicon glyphicon-calendar"></span> 選擇參加時間</h2>
 	</div>
