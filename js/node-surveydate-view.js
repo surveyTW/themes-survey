@@ -141,8 +141,8 @@
     //lng = position.coords.longitude;
     latlng = new google.maps.LatLng(lat, lng);
     mapholder = document.getElementById('surveydate-map');
-    mapholder.style.height = '180px';
-    mapholder.style.width = '50%';
+    mapholder.style.height = '380px';
+    mapholder.style.width = '100%';
     //mapholder.style.width = '540px';
 
     var myOptions = {

@@ -6866,6 +6866,72 @@ p {
 label {
   color: #800;
 }
+/* survey view page*/
+.survey-view-header {
+  /*background: #252824;*/
+  background-color: #337ab7;
+  padding: 0 30px;
+}
+.survey-view-title {
+  padding: 20px 0;
+  /*color: #eee;*/
+}
+.survey-view-title h1 {
+  margin: 0;
+  line-height: 1.2em;
+  text-align: left;
+}
+.survey-view-info {
+  padding: 10px 0 0 30px;
+  /*color: #aaa;
+    background: #323530;*/
+  background-color: #f0ad4e;
+  line-height: 1.4em;
+  font-size: 12pt;
+}
+.survey-view-info p {
+  color: #ffffff;
+}
+.survey-view-map {
+  border-top: 1px solid #ccc;
+  /*background: #60a333;*/
+}
+.survey-view-map .address {
+  padding: 10px 0 0 30px;
+  /*color: #fff;*/
+  line-height: 1.4em;
+  font-size: 14pt;
+}
+.survey-view-date h2 {
+  border-top-style: none;
+  border-top-width: 0px;
+  padding-top: 0px;
+  margin-top: 20px;
+}
+table.survey-date tr th {
+  /*background: #0066FF;
+    color:#fff;*/
+}
+.survey-view-list {
+  /*background: #323530;
+    color: #60a333;*/
+  padding: 20px 0 30px 0;
+}
+.survey-view-list h2 {
+  padding: 0 20px;
+  font-family: inherit;
+  font-weight: 700;
+  line-height: 48px;
+  font-size: 1.5em;
+  /*color: #eee;*/
+  -webkit-margin-before: 0.83em;
+  -webkit-margin-after: 0.83em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+table.survey-list tr th {
+  /*color:#fff;*/
+}
 /* home page */
 .slo1 {
   padding: 40px;

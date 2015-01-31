@@ -92,20 +92,6 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-  <?php print $user_picture; ?>
-
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
-    <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
-
-  <?php if ($display_submitted): ?>
-    <div class="submitted">
-      <?php print $submitted; ?>
-    </div>
-  <?php endif; ?>
-
   <div class="content"<?php print $content_attributes; ?>>
     <?php
     // We hide the comments and links now so that we can render them later.
@@ -114,15 +100,34 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
     //print render($content);
     ?>
   </div>
-  <div class="col-md-4">發起人: <?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></div>
-  <div class="col-md-8">細節: <?php print $node->field_description[LANGUAGE_NONE][0]['value']; ?></div>
-  <div class="col-md-8">地點: <?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?><br></div>
-  <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
-  <div id="surveydate-map" class="col-md-12"></div>
-  <div class="row">
-    <div class="year"></div>
-    <div class="col-md-12">
-      <table class="table survey-date">
+<div class="panel panel-primary">
+	<div class="panel-heading">
+            <div class="survey-view-title">
+	    	<h1><?php print $title; ?></h1>
+            </div>
+	</div>
+	<div class="panel-body">
+	    <p class="text-info"><span class="glyphicon glyphicon-user"></span><?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></p>
+	    <?php if($node->field_location[LANGUAGE_NONE][0]['value']): ?>
+	    <p class="text-info"><span class="glyphicon glyphicon-map-marker"></span><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></p>
+	    <?php endif; ?>
+	    <?php if($node->field_description[LANGUAGE_NONE][0]['value']): ?>
+	    <p class="text-info"><span class="glyphicon glyphicon-file"></span><?php print $node->field_description[LANGUAGE_NONE][0]['value']; ?></p>
+	    <?php endif; ?>
+  	    <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
+	    <div class="col-xs-12 survey-view-map" id="surveydate-map"></div>
+	</div>
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading">
+	<div class="survey-view-date">
+	<div class="btn-group pull-right">
+  		<button class="btn btn-danger btn-lg" id="update-survey" type="submit" data-thmr="thmr_178">確定</button>
+	</div>
+	<h2><span class="glyphicon glyphicon-calendar"></span> 選擇參加時間</h2>
+	</div>
+</div>
+      <table class="table table-bordered survey-date">
         <thead>
         </thead>
         <tbody>
@@ -130,10 +135,7 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
         <tfoot>
         </tfoot>
       </table>
-    </div>
-  </div>
-  <button class="btn btn-primary" id="update-survey" type="submit" data-thmr="thmr_178">送出</button>
-
+</div>
   <table id="table">
     <thead>
       <tr>
