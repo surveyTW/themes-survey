@@ -107,12 +107,12 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
             </div>
 	</div>
 	<div class="panel-body">
-	    <p class="text-info"><span class="glyphicon glyphicon-user"></span><?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></p>
+	    <p class="text-info"><span class="glyphicon glyphicon-user"></span> <?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></p>
 	    <?php if($node->field_location[LANGUAGE_NONE][0]['value']): ?>
-	    <p class="text-info"><span class="glyphicon glyphicon-map-marker"></span><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></p>
+	    <p class="text-info"><span class="glyphicon glyphicon-map-marker"></span> <?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></p>
 	    <?php endif; ?>
 	    <?php if($node->field_description[LANGUAGE_NONE][0]['value']): ?>
-	    <p class="text-info"><span class="glyphicon glyphicon-file"></span><?php print $node->field_description[LANGUAGE_NONE][0]['value']; ?></p>
+	    <p class="text-info"><span class="glyphicon glyphicon-file"></span> <?php print $node->field_description[LANGUAGE_NONE][0]['value']; ?></p>
 	    <?php endif; ?>
   	    <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
 	    <div class="col-xs-12 survey-view-map" id="surveydate-map"></div>
