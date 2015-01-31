@@ -117,14 +117,12 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
   	    <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
 	    <div class="col-xs-12 survey-view-map" id="surveydate-map"></div>
 	</div>
-</div>
-<div class="panel panel-primary">
 <div class="panel-heading">
 	<div class="survey-view-date">
 	<div class="btn-group pull-right">
   		<button class="btn btn-danger" id="update-survey" type="submit" data-thmr="thmr_178">確定</button>
 	</div>
-	<h2><span class="glyphicon glyphicon-calendar"></span> 選擇參加時間</h2>
+	<h3><span class="glyphicon glyphicon-calendar"></span> 選擇參加時間</h3>
 	</div>
 </div>
       <table class="table table-bordered survey-date">
