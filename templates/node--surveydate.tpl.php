@@ -170,7 +170,7 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value']; ?></div>
   <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value']; ?></div>
   <div id="uid" class="hide"><?php print $user->uid; ?></div>
-
+  <?php drupal_set_message('感謝您的回復,已經完成更新');?>
   <?php print render($content['links']); ?>
 
   <?php if(0): print render($content['comments']); endif;?>
