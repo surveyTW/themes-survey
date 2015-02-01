@@ -26,8 +26,8 @@
 
     $('.year').text(ay_survey_date[0].substr(0, 4));
 
-    $('.survey-date thead').append('<tr>');
-    $('.survey-date thead tr:last').append('<th class="col-md-3 info">與會者名字</th>');
+    $('.survey-date thead').append('<tr class="info">');
+    $('.survey-date thead tr:last').append('<th class="col-md-3"></th>');
     //   console.log(ay_survey_date);
     $.each(ay_survey_date, function (key, value) {
       if (value != '') {
@@ -48,7 +48,7 @@
         if (!survey_flag) {
           survey_flag = '';
         }
-        $('.survey-date thead tr:last').append('<th class="info">' + survey_date + '/' + survey_year + '<br />' + weekday[d.getDay()] + ' ' + survey_time + survey_flag + '</th>');
+        $('.survey-date thead tr:last').append('<th class="text-center"><span class="glyphicon glyphicon-calendar"></span>' + survey_date + '/' + survey_year + '<br /><span class="glyphicon glyphicon-time"></span>' + weekday[d.getDay()] + ' ' + survey_time + survey_flag + '</th>');
         //var d = value.substr(0,5);
         //$('.survey-date thead tr:last').append('<th class="success">' + d + '</th>');
       }
@@ -63,17 +63,17 @@
       $.each(ay_survey_data, function (key, obj) {
         if (this_user != 0 && this_user == obj.uid) {
           first_time = 0;
-          $('.survey-date tbody').append('<tr>');
-          $('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username success"><input type="text" class="form-control info" value="' + obj.name + '"></td>');
+          $('.survey-date tbody').append('<tr class="success">');
+          $('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control" placeholder="輸入您的名字" value="' + obj.name + '"></td>');
           $.each(obj, function (key, value) {
             if (key != 'name' && key != 'uid') {
               if (value == 0) {
                 data2[colums_count][key] = " ";
-                $('.survey-date tbody tr:last').append('<td class="success"><input id="' + key + '" type="checkbox"></td>');
+                $('.survey-date tbody tr:last').append('<td class=""><input id="' + key + '" type="checkbox" class="form-control input-sm"></td>');
               }
               else {
                 data2[colums_count][key] = "Ok";
-                $('.survey-date tbody tr:last').append('<td class="success"><input id="' + key + '" type="checkbox" checked></td>');
+                $('.survey-date tbody tr:last').append('<td class=""><input id="' + key + '" type="checkbox" checked class="form-control input-sm"></td>');
               }
             }
           });
@@ -99,18 +99,18 @@
     }
 
     if (first_time) {
-      $('.survey-date tbody').append('<tr>');
-      $('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username warning"><input type="text" class="form-control"></td>');
+      $('.survey-date tbody').append('<tr class="success">');
+      $('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control" placeholder="輸入您的名字"></td>');
 
       $.each(ay_survey_date, function (key, value) {
-        $('.survey-date tbody tr:last').append('<td class="warning"><input id="' + key + '" type="checkbox"></td>');
+        $('.survey-date tbody tr:last').append('<td class=""><input id="' + key + '" type="checkbox" class="form-control input-sm"></td>');
       });
     }
 
     if ($('#result').text() != '') {
       var ay_survey_result = JSON.parse($('#result').text());
-      $('.survey-date tfoot').append('<tr>');
-      $('.survey-date tfoot tr:last').append('<td class="col-md-3 tmp-username">result</td>');
+      $('.survey-date tfoot').append('<tr class="text-center warning">');
+      $('.survey-date tfoot tr:last').append('<td class="col-md-3 tmp-username">目前統計</td>');
       $.each(ay_survey_result, function (key, value) {
         if (key != 'name') {
           $('.survey-date tfoot tr:last').append('<td>' + value + '</td>');
