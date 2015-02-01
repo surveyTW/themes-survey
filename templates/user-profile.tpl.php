@@ -1,15 +1,10 @@
 <?php
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/user-profile.js');
 ?>
-<div>
-<h2>發過的聚會</h2>
-<table>
-	<tbody>
-		<tr class="tableSpace"></tr>
-		<tr class="header">
-			<td class="col-md-4"><p>Title</p></td>
-			<td class="col-md-4"><p>Create time</p></td>
-			<td class="col-md-4"><p>Change time</p></td>
+<div class="row">
+            <div class="col-xs-6">
+                 <h3>發過的聚會</h3>
+                <div class="list-group">
 <?php
 global $user;
 global $base_url;
@@ -28,32 +23,19 @@ foreach ($result as $i => $row) {
 	$conditions['source'] = 'node/' . $row->nid;
 	$path = path_load($conditions);
 	$node = node_load($row->nid);
-	//dvm($node);
-	print '<tr class="open">';
-	print '<td class="tdTitle col-md-4">';
-	print '<a href="'.$base_url.'/'.$path['alias'].'">'.$node->title.'</a>';
-	print '</td>';
-	print '<td class="tdCreateT col-md-4">';
-	print '<p>'.format_date($node->created, 'short').'</p>';
-	print '</td>';
-	print '<td class="tdChangeT col-md-4">';
-	print '<p>'.format_date($node->changed, 'short').'</p>';
-	print '</td>';
-	print '</tr>';
+	//
+	print '<a href="'.$base_url.'/'.$path['alias'].'" class="list-group-item">';
+	print '<h4 class="list-group-item-heading">'.$node->title.'</h4>';
+	print '<p class="list-group-item-text"><span class="label label-primary">建立時間:'.format_date($node->created, 'short').'</span> <span class="label label-danger">修改時間:'.format_date($node->changed, 'short').'</span></p>';
+	print '</a>';
+	//
 }
 ?>
-		</tr>
-	</tbody>
-</table>
-</div>
-<div>
-<h2>填過的聚會</h2>
-<table>
-	<tbody>
-		<tr class="tableSpace"></tr>
-		<tr class="header">
-			<td class="col-md-4"><p>Title</p></td>
-			<td class="col-md-4"><p>Create time</p></td>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                 <h3>填過的聚會</h3>
+                <div class="list-group">
 <?php
 global $user;
 global $base_url;
@@ -75,17 +57,16 @@ foreach ($result as $i => $row) {
 	$conditions['source'] = 'node/' . $nid;
 	$path = path_load($conditions);
 	$node = node_load($nid);
-	print '<tr class="open">';
-	print '<td class="tdTitle col-md-4">';
-	print '<a href="'.$base_url.'/'.$path['alias'].'">'.$node->title.'</a>';
-	print '</td>';
-	print '<td class="tdCreateT col-md-4">';
-	print '<p>'.format_date($private_node->created, 'short').'</p>';
-	print '</td>';
-	print '</tr>';
+	//
+	print '<a href="'.$base_url.'/'.$path['alias'].'" class="list-group-item">';
+	print '<h4 class="list-group-item-heading">'.$node->title.'</h4>';
+	print '<p class="list-group-item-text"><span class="label label-danger">修改時間:'.format_date($node->created, 'short').'</span></p>';
+	print '</a>';
+	//
 }
 ?>
-		</tr>
-	</tbody>
-</table>
-</div>
+                </div>
+            </div>
+	</div>
+
+
