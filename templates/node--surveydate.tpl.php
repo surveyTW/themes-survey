@@ -125,6 +125,7 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
 	<h3><span class="glyphicon glyphicon-calendar"></span> 選擇參加時間</h3>
 	</div>
 </div>
+<div class="table-responsive">
       <table class="table table-bordered survey-date">
         <thead>
         </thead>
@@ -133,6 +134,11 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
         <tfoot>
         </tfoot>
       </table>
+</div>
+</div>
+<div class="panel survey-view-list">
+<div class="panel-heading">
+<h3><span class="glyphicon glyphicon-list"></span> 統計清單</h3>
 </div>
   <table id="table">
     <thead>
@@ -149,15 +155,16 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
       </tr>
     </thead>
   </table>
+</div>
 
   <?php
   $nodeWoeid = $node->field_woeid[LANGUAGE_NONE][0]['value'];
-  if ($nodeWoeid != 0) {
-    print "<div id=\"wheather-description\">";
-    print "<h3>聚會地區的天氣預報</h3>";
-    print "<div id=\"weather-content\" value=\"" . $nodeWoeid . "\"></div>";
-    print "</div>";
-  }
+  //if ($nodeWoeid != 0) {
+  //  print "<div id=\"wheather-description\">";
+  //  print "<h3>聚會地區的天氣預報</h3>";
+  //  print "<div id=\"weather-content\" value=\"" . $nodeWoeid . "\"></div>";
+  //  print "</div>";
+  //}
   ?>
   <div id="date" class="hide"><?php print $node->field_date[LANGUAGE_NONE][0]['value']; ?></div>
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value']; ?></div>
@@ -166,6 +173,6 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
 
   <?php print render($content['links']); ?>
 
-  <?php print render($content['comments']); ?>
+  <?php if(0): print render($content['comments']); endif;?>
 
 </div>

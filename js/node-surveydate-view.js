@@ -48,7 +48,7 @@
         if (!survey_flag) {
           survey_flag = '';
         }
-        $('.survey-date thead tr:last').append('<th class="text-center"><span class="glyphicon glyphicon-calendar"></span>' + survey_date + '/' + survey_year + '<br /><span class="glyphicon glyphicon-time"></span>' + weekday[d.getDay()] + ' ' + survey_time + survey_flag + '</th>');
+        $('.survey-date thead tr:last').append('<th class="text-center"><span class="glyphicon glyphicon-calendar"></span>' + survey_year + '/' + survey_date + '<br /><span class="glyphicon glyphicon-time"></span>' + weekday[d.getDay()] + ' ' + survey_time + survey_flag + '</th>');
         //var d = value.substr(0,5);
         //$('.survey-date thead tr:last').append('<th class="success">' + d + '</th>');
       }

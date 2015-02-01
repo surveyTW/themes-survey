@@ -6914,8 +6914,14 @@ table.survey-date tr th {
 }
 .survey-view-list {
   /*background: #323530;
-    color: #60a333;*/
-  padding: 20px 0 30px 0;
+    color: #60a333;
+    padding: 20px 0 30px 0;*/
+  border-color: #555;
+}
+.survey-view-list > .panel-heading {
+  color: #fff;
+  background-color: #555;
+  border-color: #555;
 }
 .survey-view-list h2 {
   padding: 0 20px;
