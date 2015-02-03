@@ -180,5 +180,5 @@ drupal_add_css(drupal_get_path('theme', 'survey') . '/css/font-awesome.min.css',
   </div>
 </div>
 <footer class="footer container">
-  <?php //print render($page['footer']); ?>
+  <?php print render($page['footer']); ?>
 </footer>
