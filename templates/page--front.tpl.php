@@ -72,6 +72,7 @@
  *
  * @ingroup themeable
  */
+drupal_add_css(drupal_get_path('theme', 'survey') . '/css/font-awesome.min.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="container">
@@ -112,7 +113,17 @@
     <?php endif; ?>
   </div>
 </header>
-
+<div class="homepage-jumbotron">
+<div class="jumbotron">
+	<div class="container">
+  <h1>Hello, world!</h1>
+  <p><a class="btn btn-primary btn-lg pull-right" href="#" role="button">馬上註冊</a></p>
+</div>
+</div>
+</div>
+<div class="jumbotron gray-block">
+	<h1>Some Slogon Here</h1>
+</div>
 <div class="main-container container">
 
   <header role="banner" id="page-header">
@@ -125,54 +136,40 @@
 
   <div class="row">
 
+
     <?php if (!empty($page['sidebar_first'])): ?>
       <aside class="col-sm-3" role="complementary">
         <?php print render($page['sidebar_first']); ?>
       </aside>  <!-- /#sidebar-first -->
     <?php endif; ?>
 
-    <div class="container">
-         <h1>幻燈片</h1>
-    </div>
-    <div class="container">
-      <div class="slo1">
-         <p>還在用電話、LINE、FACEBOOK一個一個約嗎?</p>
-         <p>快來試試Meet Up，將大幅省下你60%的時間!</p>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row slo2">
-         <div class="col-md-6"></div>
-         <div class="col-md-6">
-           <h3>直覺化的使用介面</h3>
-           <p>你現在可直接從calendar直接勾選約會的日期</p>
-           <p>也可以直接在google map上看到你所選的地點</p>
-         </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row slo3">
-         <div class="col-md-6">
-           <h3>簡單的回復流程</h3>
-           <p>使用Meet Up可以讓你的朋友輕鬆的回復你的邀請，</p>
-           <p>也可以讓你輕鬆的得出結論並通知你的朋友!</p>
-         </div>
-         <div class="col-md-6">
-         </div>
-      </div>
+<div class="container text-center" style="padding: 100px 0 100px 0;">
+        <div class="row" style="padding: 40px 0 0 0;">
+            <div class="col-sm-6">
+		<span><i class="fa fa-calendar fa-5x"></i></span>
+                <h3>Jake Connor</h3>
+                <p style="margin-top: 40px;color: #999999;">eu sollicitudin quis, ultrices vitae justo.</p>
+            </div>
+            <div class="col-sm-6">
+		<span><i class="fa fa-map-marker fa-5x"></i></span>
+                <h3>Jake Connor</h3>
+                <p style="margin-top: 40px;color: #999999;"> sollicitudin quis, ultrices vitae justo.</p>
+            </div>
+        </div>
+        <div class="row" style="padding: 40px 0 0 0;">
+            <div class="col-sm-6">
+		<span><i class="fa fa-bar-chart fa-5x"></i></span>
+                <h3>Jake Connor</h3>
+                <p style="margin-top: 40px;color: #999999;">eu sollicitudin quis, ultrices vitae justo.</p>
+            </div>
+            <div class="col-sm-6">
+		<span><i class="fa fa-envelope-o fa-5x"></i></span>
+                <h3>Jake Connor</h3>
+                <p style="margin-top: 40px;color: #999999;">eu sollicitudin quis, ultrices vitae justo.</p>
+            </div>
+        </div>
     </div>
 
-    <div class="container">
-      <div class="row slo4">
-         <div class="col-md-6">
-         </div>
-         <div class="col-md-6">
-           <h3>支援所有的裝置</h3>
-           <p>你和你的朋友現在可以在所有裝置上</p>
-           <p>決定約會時間地點了!</p>
-         </div>
-      </div>
-    </div>
 
     <?php if (!empty($page['sidebar_second'])): ?>
       <aside class="col-sm-3" role="complementary">
@@ -183,5 +180,5 @@
   </div>
 </div>
 <footer class="footer container">
-  <?php print render($page['footer']); ?>
+  <?php //print render($page['footer']); ?>
 </footer>

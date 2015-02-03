@@ -6866,6 +6866,9 @@ p {
 label {
   color: #800;
 }
+.gray-block {
+  background-color: #ebeeed;
+}
 /* survey view page*/
 .survey-view-header {
   /*background: #252824;*/
@@ -6939,81 +6942,13 @@ table.survey-list tr th {
   /*color:#fff;*/
 }
 /* home page */
-.slo1 {
-  padding: 40px;
-  text-align: center;
-  color: #A8A8A8;
-  font-family: arial, helvetica, sans-serif;
-  font: normal normal bold 15px/1.4em fantasy;
-}
-.slo1 p {
-  font-size: 24px;
-}
-.slo2 {
-  padding: 40px;
-  text-align: center;
-  color: #606060;
-  background-color: rgba(169, 138, 0, 0.34902);
-}
-.slo2 p {
-  font-size: 18px;
-}
-.slo3 {
-  padding: 40px;
-  text-align: center;
-  color: #606060;
-  background-color: rgba(84, 69, 0, 0.219608);
-}
-.slo3 p {
-  font-size: 18px;
-}
-.slo4 {
-  padding: 40px;
-  text-align: center;
-  color: #606060;
-  background-color: rgba(255, 203, 5, 0.368627);
-}
-.slo4 p {
-  font-size: 18px;
-}
-[class^="icon-"],
-[class*=" icon-"] {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-top: 1px;
-  *margin-right: .3em;
-  line-height: 14px;
-  vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
-  background-position: 14px 14px;
+.homepage-jumbotron .jumbotron {
+  margin-bottom: 0px;
+  background-image: url(../img/afternoon-tea.jpg);
+  background-position: 0% 25%;
+  background-size: cover;
   background-repeat: no-repeat;
-}
-/* White icons with optional class, or on hover/focus/active states of certain elements */
-.icon-white,
-.nav-pills > .active > a > [class^="icon-"],
-.nav-pills > .active > a > [class*=" icon-"],
-.nav-list > .active > a > [class^="icon-"],
-.nav-list > .active > a > [class*=" icon-"],
-.navbar-inverse .nav > .active > a > [class^="icon-"],
-.navbar-inverse .nav > .active > a > [class*=" icon-"],
-.dropdown-menu > li > a:hover > [class^="icon-"],
-.dropdown-menu > li > a:focus > [class^="icon-"],
-.dropdown-menu > li > a:hover > [class*=" icon-"],
-.dropdown-menu > li > a:focus > [class*=" icon-"],
-.dropdown-menu > .active > a > [class^="icon-"],
-.dropdown-menu > .active > a > [class*=" icon-"],
-.dropdown-submenu:hover > a > [class^="icon-"],
-.dropdown-submenu:focus > a > [class^="icon-"],
-.dropdown-submenu:hover > a > [class*=" icon-"],
-.dropdown-submenu:focus > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
-}
-.icon-chevron-up {
-  background-position: -288px -120px;
-}
-.icon-chevron-down {
-  background-position: -313px -119px;
+  color: white;
 }
 /*!
  * Timepicker Component for Twitter Bootstrap
@@ -8939,7 +8874,7 @@ button.ui-button::-moz-focus-inner {
 /* just some styling */
 body {
   font: 1.5em/1.5em "Trebuchet MS", Verdana, sans-serif;
-  background: white url('images/ui-bg_fine-grain_10_eceadf_60x60.png') repeat;
+  /*background: white url('images/ui-bg_fine-grain_10_eceadf_60x60.png') repeat;*/
 }
 h1 {
   text-align: center;
@@ -9181,13 +9116,4 @@ li.L9 {
 .weatherForecastItem {
   height: 180px;
   background-position: right center;
-}
-.header {
-  color: #36A0FF;
-  font-size: 27px;
-  padding: 10px;
-}
-.bigicon {
-  font-size: 35px;
-  color: #36A0FF;
 }

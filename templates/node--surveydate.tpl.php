@@ -108,12 +108,20 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
 	</div>
 	<div class="panel-body">
 	    <p class="text-info"><span class="glyphicon glyphicon-user"></span> <?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></p>
-	    <?php if($node->field_location[LANGUAGE_NONE][0]['value']): ?>
-	    <p class="text-info"><span class="glyphicon glyphicon-map-marker"></span> <?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></p>
-	    <?php endif; ?>
-	    <?php if($node->field_description[LANGUAGE_NONE][0]['value']): ?>
-	    <p class="text-info"><span class="glyphicon glyphicon-file"></span> <?php print $node->field_description[LANGUAGE_NONE][0]['value']; ?></p>
-	    <?php endif; ?>
+	    <p class="text-info"><span class="glyphicon glyphicon-map-marker"></span> <?php 
+   		if($node->field_location[LANGUAGE_NONE][0]['value']):
+			print $node->field_location[LANGUAGE_NONE][0]['value']; 
+		else:
+			print "無";
+    		endif;
+		?></p>
+	    <p class="text-info"><span class="glyphicon glyphicon-file"></span> <?php 
+    		if($node->field_description[LANGUAGE_NONE][0]['value']):
+			print $node->field_description[LANGUAGE_NONE][0]['value']; 
+		else:
+			print "無";
+		endif;
+		?></p>
   	    <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
 	    <div class="col-xs-12 survey-view-map" id="surveydate-map"></div>
 	</div>
@@ -136,10 +144,8 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
       </table>
 </div>
 </div>
-<div class="panel survey-view-list">
-<div class="panel-heading">
-<h3><span class="glyphicon glyphicon-list"></span> 統計清單</h3>
-</div>
+<div class="gray-block">
+<h2><p class=""><span class="glyphicon glyphicon-list"></span> 統計清單</p></h2>
   <table id="table">
     <thead>
       <tr>

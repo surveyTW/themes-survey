@@ -3,7 +3,10 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/user-profile.js');
 ?>
 <div class="row">
             <div class="col-xs-6">
-                 <h3>發過的聚會</h3>
+<div class="panel panel-primary">
+<div class="panel-heading">
+		 <h3>發過的聚會</h3>
+</div>
                 <div class="list-group">
 <?php
 global $user;
@@ -32,9 +35,13 @@ foreach ($result as $i => $row) {
 }
 ?>
                 </div>
-            </div>
+	    </div>
+</div>
             <div class="col-xs-6">
-                 <h3>填過的聚會</h3>
+<div class="panel panel-primary">
+<div class="panel-heading">
+		 <h3>填過的聚會</h3>
+</div>
                 <div class="list-group">
 <?php
 global $user;
@@ -68,5 +75,5 @@ foreach ($result as $i => $row) {
                 </div>
             </div>
 	</div>
-
+</div>
 
