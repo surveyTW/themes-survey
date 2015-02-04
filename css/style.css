@@ -6872,6 +6872,9 @@ label {
 .gray-block {
   background-color: #ebeeed;
 }
+body.front.navbar-is-fixed-top {
+  padding-top: 50px !important;
+}
 /* survey view page*/
 .survey-view-header {
   /*background: #252824;*/
@@ -6952,6 +6955,8 @@ table.survey-list tr th {
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 /*!
  * Timepicker Component for Twitter Bootstrap
