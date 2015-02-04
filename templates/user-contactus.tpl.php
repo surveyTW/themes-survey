@@ -20,7 +20,6 @@ $form['description']['#title'] = t('Your feedback');
 
 --!>
 
-<div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="well well-sm">
@@ -81,7 +80,6 @@ $form['description']['#title'] = t('Your feedback');
             </div>
         </div>
     </div>
-</div>
 
 
 <?php // Be sure to render the remaining form items. ?> <?php print drupal_render_children($form); ?>
