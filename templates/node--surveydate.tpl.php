@@ -81,7 +81,7 @@
 ?>
 
 <?php
-drupal_add_js('https://maps.google.com/maps/api/js?v=3.exp&sensor=false&libraries=places');
+drupal_add_js('http://maps.googleapis.com/maps/api/js?key=AIzaSyDeEOpZjMXl2yzxcYS-UbHaSO6PdnBblVE&sensor=false&libraries=places', 'external');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zweatherfeed/jquery.zweatherfeed.min.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/node-surveydate-view.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.min.js');
@@ -100,40 +100,40 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
     //print render($content);
     ?>
   </div>
-<div class="panel panel-primary">
-	<div class="panel-heading">
-            <div class="survey-view-title">
-	    	<h1><?php print $title; ?></h1>
-            </div>
-	</div>
-	<div class="panel-body">
-	    <p class="text-info"><span class="glyphicon glyphicon-user"></span> <?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></p>
-	    <p class="text-info"><span class="glyphicon glyphicon-map-marker"></span> <?php 
-   		if($node->field_location[LANGUAGE_NONE][0]['value']):
-			print $node->field_location[LANGUAGE_NONE][0]['value']; 
-		else:
-			print "無";
-    		endif;
-		?></p>
-	    <p class="text-info"><span class="glyphicon glyphicon-file"></span> <?php 
-    		if($node->field_description[LANGUAGE_NONE][0]['value']):
-			print $node->field_description[LANGUAGE_NONE][0]['value']; 
-		else:
-			print "無";
-		endif;
-		?></p>
-  	    <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
-	    <div class="col-xs-12 survey-view-map" id="surveydate-map"></div>
-	</div>
-<div class="panel-heading">
-	<div class="survey-view-date">
-	<div class="btn-group pull-right">
-  		<button class="btn btn-danger" id="update-survey" type="submit" data-thmr="thmr_178">確定</button>
-	</div>
-	<h3><span class="glyphicon glyphicon-calendar"></span> 選擇參加時間</h3>
-	</div>
-</div>
-<div class="table-responsive">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="survey-view-title">
+        <h1><?php print $title; ?></h1>
+      </div>
+    </div>
+    <div class="panel-body">
+      <p class="text-info"><span class="glyphicon glyphicon-user"></span> <?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></p>
+      <p class="text-info"><span class="glyphicon glyphicon-map-marker"></span> <?php
+    if ($node->field_location[LANGUAGE_NONE][0]['value']):
+      print $node->field_location[LANGUAGE_NONE][0]['value'];
+    else:
+      print "無";
+    endif;
+    ?></p>
+      <p class="text-info"><span class="glyphicon glyphicon-file"></span> <?php
+        if ($node->field_description[LANGUAGE_NONE][0]['value']):
+          print $node->field_description[LANGUAGE_NONE][0]['value'];
+        else:
+          print "無";
+        endif;
+    ?></p>
+      <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
+      <div class="col-xs-12 survey-view-map" id="surveydate-map"></div>
+    </div>
+    <div class="panel-heading">
+      <div class="survey-view-date">
+        <div class="btn-group pull-right">
+          <button class="btn btn-danger" id="update-survey" type="submit" data-thmr="thmr_178">確定</button>
+        </div>
+        <h3><span class="glyphicon glyphicon-calendar"></span> 選擇參加時間</h3>
+      </div>
+    </div>
+    <div class="table-responsive">
       <table class="table table-bordered survey-date">
         <thead>
         </thead>
@@ -142,26 +142,26 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
         <tfoot>
         </tfoot>
       </table>
-</div>
-</div>
-<div class="gray-block">
-<h2><p class=""><span class="glyphicon glyphicon-list"></span> 統計清單</p></h2>
-  <table id="table">
-    <thead>
-      <tr>
-      <!-- <th data-field="uid">人數</th> -->
-        <th class="col-sm-3" data-field="name">與會者名字</th>
-        <?php
-        $key = explode(",", $node->field_date[LANGUAGE_NONE][0]['value']);
-        $count = sizeof($key) - 1;
-        for ($x = 0; $x <= $count; $x++) {
-          print "<th data-field=" . "'$x'" . ">" . $key[$x] . "</th>";
-        }
-        ?>
-      </tr>
-    </thead>
-  </table>
-</div>
+    </div>
+  </div>
+  <div class="gray-block">
+    <h2><p class=""><span class="glyphicon glyphicon-list"></span> 統計清單</p></h2>
+    <table id="table">
+      <thead>
+        <tr>
+        <!-- <th data-field="uid">人數</th> -->
+          <th class="col-sm-3" data-field="name">與會者名字</th>
+          <?php
+          $key = explode(",", $node->field_date[LANGUAGE_NONE][0]['value']);
+          $count = sizeof($key) - 1;
+          for ($x = 0; $x <= $count; $x++) {
+            print "<th data-field=" . "'$x'" . ">" . $key[$x] . "</th>";
+          }
+          ?>
+        </tr>
+      </thead>
+    </table>
+  </div>
 
   <?php
   $nodeWoeid = $node->field_woeid[LANGUAGE_NONE][0]['value'];
@@ -176,11 +176,13 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
   <div id="survey" class="hide"><?php print $node->field_survey[LANGUAGE_NONE][0]['value']; ?></div>
   <div id="result" class="hide"><?php print $node->field_result[LANGUAGE_NONE][0]['value']; ?></div>
   <div id="uid" class="hide"><?php print $user->uid; ?></div>
-  <?php drupal_set_message('Thanks for your time!');
-	drupal_get_messages('status');	
+  <?php
+  drupal_set_message('Thanks for your time!');
+  drupal_get_messages('status');
   ?>
   <?php print render($content['links']); ?>
 
-  <?php if(0): print render($content['comments']); endif;?>
+  <?php if (0): print render($content['comments']);
+  endif; ?>
 
 </div>
