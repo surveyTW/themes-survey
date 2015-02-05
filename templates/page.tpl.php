@@ -77,13 +77,13 @@
   <div class="container">
     <div class="navbar-header">
       <?php if ($logo): ?>
-      <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-      </a>
+        <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+        </a>
       <?php endif; ?>
 
       <?php if (!empty($site_name)): ?>
-      <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
+        <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
       <?php endif; ?>
 
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -127,7 +127,8 @@
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlighted jumbotron"><?php print render($page['highlighted']); ?></div>
       <?php endif; ?>
-      <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
+      <?php if (!empty($breadcrumb)): print $breadcrumb;
+      endif; ?>
       <a id="main-content"></a>
       <?php print render($title_prefix); ?>
       <?php if (0): ?> 
@@ -144,17 +145,17 @@
       <?php if (!empty($action_links)): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
-      <?php print render($page['content']); ?>
+<?php print render($page['content']); ?>
     </section>
 
-    <?php if (!empty($page['sidebar_second'])): ?>
+      <?php if (!empty($page['sidebar_second'])): ?>
       <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_second']); ?>
+      <?php print render($page['sidebar_second']); ?>
       </aside>  <!-- /#sidebar-second -->
-    <?php endif; ?>
+<?php endif; ?>
 
   </div>
 </div>
 <footer class="footer container">
-  <?php print render($page['footer']); ?>
+<?php print render($page['footer']); ?>
 </footer>

@@ -1,12 +1,9 @@
 (function ($) {
 
-   $(document).ready( function () {
-
-
-	   $( '#edit-submit' ).click(function() {
-		   alert('Ok');
-	   });
-
-   });
+  $(document).ready(function () {
+    $('#edit-submit').click(function () {
+      alert('Ok');
+    });
+  });
 
 })(jQuery);

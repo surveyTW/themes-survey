@@ -282,7 +282,7 @@
     $(".weatherForecastDay").hide();
     $(".weatherForecastText").hide();
 
-    $(".weatherForecastItem").each(function(index) {
+    $(".weatherForecastItem").each(function (index) {
       $obj = $(this);
 
       if (index === 0) {
@@ -290,7 +290,7 @@
         return;
       }
 
-      $obj.css("background-image", function(index, value) {
+      $obj.css("background-image", function (index, value) {
         return value.replace("s.png", "d.png");
       });
 
