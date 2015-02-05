@@ -73,6 +73,9 @@
  * @ingroup themeable
  */
 drupal_add_css(drupal_get_path('theme', 'survey') . '/css/font-awesome.min.css', array('group' => CSS_THEME, 'type' => 'file'));
+
+global $base_url;
+global $domain;
 ?>
 <header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
   <div class="container">
@@ -117,7 +120,7 @@ drupal_add_css(drupal_get_path('theme', 'survey') . '/css/font-awesome.min.css',
 <div class="jumbotron">
 	<div class="container">
   <h1>Hello, world!</h1>
-  <p><a class="btn btn-primary btn-lg pull-right" href="#" role="button">馬上註冊</a></p>
+  <p><a class="btn btn-primary btn-lg pull-right" href="<?php print $base_url;?>/<?php print $domain;?>/user/register" role="button">馬上註冊</a></p>
 </div>
 </div>
 </div>
