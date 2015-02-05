@@ -2,15 +2,57 @@
 
   var gmap_inited = 0;
   var timeSlotNumber = 1;
+  var geocoder;
+  var map;
+  var markers = [];
+
+  // Add a marker to the map and push to the array.
+  function addMarker(title, location) {
+    var marker = new google.maps.Marker({
+      map: map,
+      title: title,
+      position: location
+    });
+    markers.push(marker);
+  }
+
+  // Sets the map on all markers in the array.
+  function setAllMap(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+
+  // Removes the markers from the map, but keeps them in the array.
+  function clearMarkers() {
+    setAllMap(null);
+  }
+
+  // Shows any markers currently in the array.
+//  function showMarkers() {
+//    setAllMap(map);
+//  }
+
+  // Deletes all markers in the array by removing references to them.
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+  }
+
+  // Get Google map location
+  function getMapLatLng(latLng) {
+    var latlng = latLng.lat() + ", " + latLng.lng();
+    console.log(latlng);
+  }
 
   function gmapInitialize() {
-    var markers = [];
     mapholder = document.getElementById('surveymap');
     mapholder.style.height = '380px';
     mapholder.style.width = '100%';
     //mapholder.style.width = '540px';
 
-    var map = new google.maps.Map(mapholder, {
+    geocoder = new google.maps.Geocoder();
+    map = new google.maps.Map(mapholder, {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
@@ -36,24 +78,14 @@
       if (places.length == 0) {
         return;
       }
-      for (var i = 0, marker; marker = markers[i]; i++) {
-        marker.setMap(null);
-      }
+
+      deleteMarkers();
 
       // For each place, get the icon, place name, and location.
-      markers = [];
       var bounds = new google.maps.LatLngBounds();
       for (var i = 0, place; place = places[i]; i++) {
-
-        // Create a marker for each place.
-        var marker = new google.maps.Marker({
-          map: map,
-          //icon: image,
-          title: place.name,
-          position: place.geometry.location
-        });
-
-        markers.push(marker);
+        getMapLatLng(place.geometry.location);
+        addMarker(place.name, place.geometry.location);
         bounds.extend(place.geometry.location);
       }
 
@@ -68,11 +100,29 @@
       var bounds = map.getBounds();
       searchBox.setBounds(bounds);
     });
+
+    // Activate the click
+    google.maps.event.addListener(map, 'click', function (event) {
+      getMapLatLng(event.latLng);
+      clearMarkers();
+      addMarker("", event.latLng);
+
+      geocoder.geocode({'latLng': event.latLng}, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            input.value = results[0].formatted_address;
+          } else {
+            console.log('No results found');
+          }
+        } else {
+          console.log('Geocoder failed due to: ' + status);
+        }
+      });
+    });
   }
 
 
-  function setTextDate()
-  {
+  function setTextDate() {
     var ayDate = [];
     $('#selecttime .row').each(function (index, date) {
       var localAyDate = [];
@@ -166,8 +216,7 @@
     }
   }
 
-  function buildSelectTime()
-  {
+  function buildSelectTime() {
     var selectedDate = $('#selectdate').multiDatesPicker('getDates');
     var partsOfStr = selectedDate.toString().split(',');
     var row = document.getElementsByClassName('selectdateRow');
@@ -240,16 +289,12 @@
   }
 
   $(document).ready(function () {
-
-    //google.maps.event.addDomListener(window, 'load', gmapInitialize);
-
     document.onkeydown = function (e) {
-      if (event.keyCode == 13) {
-        event.returnValue = false;
-        event.cancel = true;
+      if (e.keyCode == 13) {
+        e.returnValue = false;
+        e.cancel = true;
       }
-    }
-
+    };
 
     $('#edit-date').hide();
 
@@ -268,10 +313,12 @@
         buildSelectTime();
       }
     });
+
     $('#2nd-Prev').on('click', function () {
       $('#second-step').removeClass('show').addClass('hidden');
       $('#first-step').removeClass('hidden').addClass('show');
     });
+
     $('#2nd-Next').on('click', function () {
       $('#second-step').removeClass('show').addClass('hidden');
       if (!gmap_inited) {
@@ -280,6 +327,7 @@
       }
       $('#third-step').removeClass('hidden').addClass('show');
     });
+
     $('#3rd-Prev').on('click', function () {
       $('#third-step').removeClass('show').addClass('hidden');
       $('#second-step').removeClass('hidden').addClass('show');
@@ -295,7 +343,6 @@
     $('#edit-submit').click(function () {
       setTextDate();
     });
-
   });
 
 })(jQuery);
