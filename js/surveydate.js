@@ -43,6 +43,7 @@
   function getMapLatLng(latLng) {
     var latlng = latLng.lat() + ", " + latLng.lng();
     console.log(latlng);
+    document.getElementsByName('latlng')[0].value = latlng;
   }
 
   function gmapInitialize() {
@@ -57,8 +58,8 @@
     });
 
     var defaultBounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(22.037001, 119.760972),
-            new google.maps.LatLng(25.316727, 122.367231));
+            new google.maps.LatLng(21.718679, 119.399414),
+            new google.maps.LatLng(25.423431, 122.222900));
     map.fitBounds(defaultBounds);
 
     // Create the search box and link it to the UI element.
@@ -121,6 +122,32 @@
     });
   }
 
+//  function get_location_woeid() {
+//    var location = document.getElementById('edit-location');
+//    var query = 'select * from geo.places where text="' + location.value + '"';
+//    var api = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&callback=?';
+//    var woeid = 0;
+//    // Send request
+//    $.ajax({
+//      type: 'GET',
+//      url: api,
+//      dataType: 'json',
+//      success: function (data) {
+//        if (data.query.count > 0) {
+//          // List multiple returns
+//          if (data.query.count > 1) {
+//            woeid = data.query.results.place[0].woeid;
+//          }
+//          else {
+//            woeid = data.query.results.place.woeid;
+//          }
+//        }
+//        console.log(woeid);
+//        var input = document.getElementsByName('woeid');
+//        input[0].value = woeid;
+//      }
+//    });
+//  }
 
   function setTextDate() {
     var ayDate = [];
@@ -341,6 +368,7 @@
     });
 
     $('#edit-submit').click(function () {
+//      get_location_woeid();
       setTextDate();
     });
   });

@@ -5,7 +5,6 @@
  * template.php
  */
 
-
 /**
  * Implements hook_theme().
  */
@@ -17,13 +16,13 @@ function survey_theme(&$existing, $type, $theme, $path) {
       'path' => drupal_get_path('theme', 'survey') . '/templates',
     ),
     'user_login' => array(
-    'render element' => 'form',
-    'path' => drupal_get_path('theme', 'survey') . '/templates',
-    'template' => 'user-login',
+      'render element' => 'form',
+      'path' => drupal_get_path('theme', 'survey') . '/templates',
+      'template' => 'user-login',
     ),
-      // Defines the form ID as a theme hook.
+    // Defines the form ID as a theme hook.
     'contactus_form' => array(
-    // Specifies 'form' as a render element.
+      // Specifies 'form' as a render element.
       'render element' => 'form',
       'template' => 'user-contactus',
       'path' => drupal_get_path('theme', 'survey') . '/templates',
@@ -32,6 +31,7 @@ function survey_theme(&$existing, $type, $theme, $path) {
 
   return $hook_theme;
 }
+
 /*
 function survey_user_login_block($variables) {
   $form = $variables['form'];
