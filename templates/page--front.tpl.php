@@ -120,7 +120,7 @@ global $domain;
 <div class="jumbotron">
 	<div class="container">
   <h1>Hello, world!</h1>
-  <p><a class="btn btn-primary btn-lg pull-right" href="<?php print $base_url;?>/<?php print $domain;?>/user/register" role="button">馬上註冊</a></p>
+  <p><a class="btn btn-primary btn-lg pull-right" href="<?php print $base_url;?>/<?php print $domain;?>/user/login" role="button">馬上註冊</a></p>
 </div>
 </div>
 </div>
