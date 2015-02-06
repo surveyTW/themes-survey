@@ -1,23 +1,4 @@
 (function ($) {
-
-  var infowindow;
-  var map;
-  var geocoder;
-
-  function setAddress(address)
-  {
-    var result = "";
-    geocoder.geocode({'address': address}, function (results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        //console.log(results[0]);
-        showPosition(results[0].geometry.location.k, results[0].geometry.location.D, address);
-      } else {
-        result = "Unable to find address: " + status;
-      }
-    });
-    return result;
-  }
-
   function setSurveyDate() {
     var ay_survey_date = $('#date').text().split(",");
 
@@ -134,18 +115,18 @@
     });
   }
 
-  function showPosition(lat, lng, name)
+  function showPosition(lat, lng, location)
   {
-    radius = 1000;
-    //lat = position.coords.latitude;
-    //lng = position.coords.longitude;
-    latlng = new google.maps.LatLng(lat, lng);
-    mapholder = document.getElementById('surveydate-map');
+    //var radius = 1000;
+    //var lat = position.coords.latitude;
+    //var lng = position.coords.longitude;
+    var latlng = new google.maps.LatLng(lat, lng);
+    var mapholder = document.getElementById('surveydate-map');
     mapholder.style.height = '380px';
     mapholder.style.width = '100%';
     //mapholder.style.width = '540px';
 
-    var myOptions = {
+    var mapOptions = {
       center: latlng,
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -153,25 +134,27 @@
       navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}
     };
 
-    map = new google.maps.Map(mapholder, myOptions);
-    var marker = new google.maps.Marker({position: latlng, map: map, title: name});
-    infowindow = new google.maps.InfoWindow();
+    var map = new google.maps.Map(mapholder, mapOptions);
+    var marker = new google.maps.Marker({position: latlng, map: map, title: location});
 
-    var populationOptions = {
-      strokeColor: '#FF0000',
-      strokeOpacity: 0.4,
-      strokeWeight: 2,
-      fillColor: '#0099FF',
-      fillOpacity: 0.15,
-      map: map,
-      center: latlng,
-      radius: 1000
-    };
+//    var populationOptions = {
+//      strokeColor: '#FF0000',
+//      strokeOpacity: 0.4,
+//      strokeWeight: 2,
+//      fillColor: '#0099FF',
+//      fillOpacity: 0.15,
+//      map: map,
+//      center: latlng,
+//      radius: 1000
+//    };
   }
 
   $(document).ready(function () {
-    geocoder = new google.maps.Geocoder();
-    setAddress($('#location').text());
+    var latlng = $('#latlng').text();
+    if (latlng.length) {
+      var n = latlng.indexOf(", ");
+      showPosition(latlng.substr(0, n), latlng.substr(n + 2, latlng.length), $('#location').text());
+    }
     setSurveyDate();
 
     $('#update-survey').click(function () {
