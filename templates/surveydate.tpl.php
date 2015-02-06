@@ -61,12 +61,14 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
         <h4>2.聚會時間</h4>
       </div>
       <div class="panel-body">
+	<div class="form-group">
         <button type="button" class="btn btn-warning" id="add-timeslots">
           <span class="glyphicon glyphicon-plus"></span>新增時間</button>
         <button type="button" class="btn btn-warning" id="copy-from-first-row">
-          <span class="glyphicon glyphicon-file"></span>複製時間</button>
+	  <span class="glyphicon glyphicon-file"></span>複製時間</button>
+	</div>
         <div class="row form-group">
-          <div id="selecttime" class="col-md-6"></div>
+          <div id="selecttime" class="col-md-12"></div>
         </div>
       </div>
     </div>

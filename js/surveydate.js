@@ -189,7 +189,7 @@
 
   function addDivTime(row) {
     var div_time = document.createElement('div');
-    div_time.className = 'col-md-4';
+    div_time.className = 'col-md-2';
 
     var div_input_group = document.createElement('div');
     div_input_group.className = 'input-group';
@@ -222,8 +222,8 @@
     var row = document.createElement('div');
     var div_date = document.createElement('div');
 
-    row.className = 'row selectdateRow';
-    div_date.className = 'col-md-4';
+    row.className = 'row selectdateRow form-group';
+    div_date.className = 'col-md-2';
 
     var input = document.createElement('input');
     input.className = 'form-control date';
