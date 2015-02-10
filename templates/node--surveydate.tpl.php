@@ -172,8 +172,8 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
   //  print "</div>";
   //}
 
-  drupal_set_message('Thanks for your time!');
-  drupal_get_messages('status');
+  //drupal_set_message('Thanks for your time!');
+  //drupal_get_messages('status');
 
   print render($content['links']);
 
