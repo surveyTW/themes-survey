@@ -2,7 +2,9 @@
 drupal_add_library('system', 'ui.datepicker');
 
 drupal_add_js('https://maps.googleapis.com/maps/api/js?key=AIzaSyDeEOpZjMXl2yzxcYS-UbHaSO6PdnBblVE&sensor=false&libraries=places', 'external');
+drupal_add_js('http://media.line.me/js/line-button.js?v=20140411');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/MultiDatesPicker/jquery-ui.multidatespicker.js');
+//drupal_add_js(drupal_get_path('theme', 'survey') . '/js/MultiDatesPicker/js/jquery.ui.datepicker.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/BootstrapTimepicker/bootstrap-timepicker.min.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/surveydate.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
@@ -10,6 +12,19 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
 //  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-timepicker.min.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
 
+
+<?php
+        if ($form['name']['#value']==null)
+        {
+        		global $base_url;
+        	    $message = '請先登入或註冊會員!!!';
+        	    $url_user=$base_url . '/user';
+//        	    dvm($url_user);
+        	    echo "<script type='text/javascript'>alert('$message');</script>";
+        	    header("Refresh: 0; url=$url_user");
+        };             
+?>
+        
 <div id="survey-body">
   <div id="first-step" class="show">
     <div class="panel panel-primary">
@@ -102,13 +117,17 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
       <div class="form-group">
         <label class="col-xs-2 control-label">問卷網址</label>
         <div class="col-xs-8">
-          <input type="text" class="form-control" id="survey_url" value="<?php print $form['survey_path']['#value'] ?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址">
+		  <label><a id="text-to-copy" href="<?php print $form['survey_path']['#value']?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['survey_path']['#value']?></a></label>	
         </div>
       </div>
     </form>
   </div>
 </div>
-
+<div class="line_button" style="margin:20px 5px;">
+        <div class="line_button"><a href="http://line.naver.jp/R/msg/text/?台南議長賄選案 南檢聲押李全教%0D%0Ahttp://www.cna.com.tw/topic/popular/4909-1/201502095002-1.aspx">
+            <img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="32" height="32" alt="LINE分享給好友" title="LINE分享給好友"></a>
+            </div>
+</div>
 <?php print render($form['date']); ?>
 
 <div class="hidden">
