@@ -369,7 +369,9 @@
 
     $('#edit-submit').click(function () {
 //      get_location_woeid();
-      setTextDate();
+      	setTextDate();
+     
+     
     });
 /*    
     $('#surveydate-map').click(function(){
@@ -377,11 +379,7 @@
 		
 		})
 	})
-    
-     $('#line_id').show(function () {
-		new media_line_me.LineButton({"pc":false,"lang":"zh-hant","type":"e","text":"請到下面連結位置填寫問卷","withUrl":true});
-
-    });
+  
     
     */
   });

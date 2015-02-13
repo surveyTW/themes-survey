@@ -117,20 +117,20 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
       <div class="form-group">
         <label class="col-xs-2 control-label">問卷網址</label>
         <div class="col-xs-8">
-		  <label><a id="text-to-copy" href="<?php print $form['survey_path']['#value']?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['survey_path']['#value']?></a></label>	
+		  <label><a id="text-to-copy" href="<?php print $form['survey_path']['#value']?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['survey_path']['#value']?></a></label>
+		 
+		 
         </div>
+         
       </div>
     </form>
   </div>
-</div>
-<!--
-<div class="line_button" style="margin:20px 5px;">
-        <div class="line_button"><a href="http://line.naver.jp/R/msg/text/?台南議長賄選案 南檢聲押李全教%0D%0Ahttp://www.cna.com.tw/topic/popular/4909-1/201502095002-1.aspx">
+  <div class="line_button"><a href="http://line.naver.jp/R/msg/text/?<?php print $form['survey_path']['#value']?>">
             <img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="32" height="32" alt="LINE分享給好友" title="LINE分享給好友"></a>
-            </div>
+            </div>	
 </div>
 
---!>
+
 <?php print render($form['date']); ?>
 
 <div class="hidden">
