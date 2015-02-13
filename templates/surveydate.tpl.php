@@ -123,11 +123,14 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
     </form>
   </div>
 </div>
+<!--
 <div class="line_button" style="margin:20px 5px;">
         <div class="line_button"><a href="http://line.naver.jp/R/msg/text/?台南議長賄選案 南檢聲押李全教%0D%0Ahttp://www.cna.com.tw/topic/popular/4909-1/201502095002-1.aspx">
             <img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="32" height="32" alt="LINE分享給好友" title="LINE分享給好友"></a>
             </div>
 </div>
+
+--!>
 <?php print render($form['date']); ?>
 
 <div class="hidden">
