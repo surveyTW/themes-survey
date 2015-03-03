@@ -27,6 +27,12 @@ function survey_theme(&$existing, $type, $theme, $path) {
       'template' => 'user-contactus',
       'path' => drupal_get_path('theme', 'survey') . '/templates',
     ),
+    'history_form' => array(
+      // Specifies 'form' as a render element.
+      'render element' => 'form',
+      'template' => 'history',
+      'path' => drupal_get_path('theme', 'survey') . '/templates',
+    ),
   );
 
   return $hook_theme;
