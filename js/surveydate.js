@@ -247,12 +247,12 @@
     var selectedDate = $('#selectdate').multiDatesPicker('getDates');
     var partsOfStr = selectedDate.toString().split(',');
     var row = document.getElementsByClassName('selectdateRow');
+
     for (oI = 0, nI = 0; oI < row.length && nI < partsOfStr.length; oI++, nI++) {
-      //var child = value.getElementsByClassName('date')[0].value;
-      //alert(row[oI].getElementsByClassName('date')[0].value);
-      oldDateText = row[oI].getElementsByClassName('date')[0].value;
-      tmp = partsOfStr[nI].split('/');
-      newDateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
+      //console.log(row[oI].getElementsByClassName('date')[0].value);
+      var oldDateText = row[oI].getElementsByClassName('date')[0].value;
+      var tmp = partsOfStr[nI].split('/');
+      var newDateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
       var date1 = new Date(newDateText);
       var date2 = new Date(oldDateText);
       if (date1 > date2) {
@@ -276,7 +276,7 @@
     }
     if (nI < partsOfStr.length) {
       for (; nI < partsOfStr.length; nI++) {
-        tmp = partsOfStr[nI].split('/');
+        var tmp = partsOfStr[nI].split('/');
         newDateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
         addNewDate(newDateText, -1);
       }
@@ -284,6 +284,11 @@
   }
 
   function addOneTimeSlot() {
+    if (timeSlotNumber == 2) {
+      alert('上限為二個時段');
+      return;
+    }
+
     timeSlotNumber++;
     $('.selectdateRow').each(function (i, val) {
       addDivTime(val);
@@ -294,25 +299,31 @@
     for (i = 0; i < timeSlotNumber; i++) {
       $('.selectdateRow').each(function (index, val) {
         if (index != 0) {
-          cloneOne = $('.selectdateRow')[0].childNodes[i + 1].cloneNode(true);
+          var cloneOne = $('.selectdateRow')[0].childNodes[i + 1].cloneNode(true);
           $(val.childNodes[i + 1]).replaceWith(cloneOne);
         }
       });
     }
   }
 
-  function validation1() {
+  function validation1st() {
+    var selectedDate = $('#selectdate').multiDatesPicker('getDates');
+
     if ($('#edit-title').val() == "") {
       alert('請填聚會名稱');
       return 0;
     }
-    else if ($('#selectdate').multiDatesPicker('getDates').toString() == "") {
+
+    if (selectedDate.toString() == "") {
       alert('請至少選擇一天');
       return 0;
     }
-    else {
-      return 1;
+    else if (selectedDate.length > 10) {
+      alert('已達天數上限, 請減少至10天以下');
+      return 0;
     }
+
+    return 1;
   }
 
   $(document).ready(function () {
@@ -334,7 +345,7 @@
     }
 
     $('#1st-Next').on('click', function () {
-      if (validation1()) {
+      if (validation1st()) {
         $('#second-step').removeClass('hidden').addClass('show');
         $('#first-step').removeClass('show').addClass('hidden');
         buildSelectTime();
@@ -364,23 +375,18 @@
     $('#copy-from-first-row').on('click', copyFromFirstRow);
 
     $('#selectdate').multiDatesPicker({
-      minDate: 0,
+      minDate: 0
     });
 
     $('#edit-submit').click(function () {
-//      get_location_woeid();
-      	setTextDate();
-     
-     
+//    get_location_woeid();
+      setTextDate();
     });
-/*    
+
+    /*
     $('#surveydate-map').click(function(){
-		$('.hidde').toggle();
-		
-		})
-	})
-  
-    
+      $('.hidde').toggle();
+    });
     */
   });
 

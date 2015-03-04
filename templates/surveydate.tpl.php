@@ -14,15 +14,14 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
 
 
 <?php
-        if ($form['name']['#value']==null)
-        {
-        		global $base_url;
-        	    $message = '請先登入或註冊會員!!!';
-        	    $url_user=$base_url . '/user';
+if ($form['name']['#value'] == null) {
+  global $base_url;
+  $message = '請先登入或註冊會員!!!';
+  $url_user = $base_url . '/user';
 //        	    dvm($url_user);
-        	    echo "<script type='text/javascript'>alert('$message');</script>";
-        	    header("Refresh: 0; url=$url_user");
-        };             
+  echo "<script type='text/javascript'>alert('$message');</script>";
+  header("Refresh: 0; url=$url_user");
+};
 ?>
         
 <div id="survey-body">
