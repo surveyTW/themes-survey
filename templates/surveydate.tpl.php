@@ -1,4 +1,6 @@
 <?php
+global $base_url;
+
 drupal_add_library('system', 'ui.datepicker');
 
 drupal_add_js('https://maps.googleapis.com/maps/api/js?key=AIzaSyDeEOpZjMXl2yzxcYS-UbHaSO6PdnBblVE&sensor=false&libraries=places', 'external');
@@ -15,7 +17,6 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zclip/jquery.zclip.js');
 
 <?php
 if ($form['name']['#value'] == null) {
-  global $base_url;
   $message = '請先登入或註冊會員!!!';
   $url_user = $base_url . '/user';
 //        	    dvm($url_user);
@@ -23,7 +24,7 @@ if ($form['name']['#value'] == null) {
   header("Refresh: 0; url=$url_user");
 };
 ?>
-        
+
 <div id="survey-body">
   <div id="first-step" class="show">
     <div class="panel panel-primary">
@@ -75,12 +76,12 @@ if ($form['name']['#value'] == null) {
         <h4>2.聚會時間</h4>
       </div>
       <div class="panel-body">
-	<div class="form-group">
-        <button type="button" class="btn btn-warning" id="add-timeslots">
-          <span class="glyphicon glyphicon-plus"></span>新增時間</button>
-        <button type="button" class="btn btn-warning" id="copy-from-first-row">
-	  <span class="glyphicon glyphicon-file"></span>複製時間</button>
-	</div>
+        <div class="form-group">
+          <button type="button" class="btn btn-warning" id="add-timeslots">
+            <span class="glyphicon glyphicon-plus"></span>新增時間</button>
+          <button type="button" class="btn btn-warning" id="copy-from-first-row">
+            <span class="glyphicon glyphicon-file"></span>複製時間</button>
+        </div>
         <div class="row form-group">
           <div id="selecttime" class="col-md-12"></div>
         </div>
@@ -116,19 +117,28 @@ if ($form['name']['#value'] == null) {
       <div class="form-group">
         <label class="col-xs-2 control-label">問卷網址</label>
         <div class="col-xs-8">
-		  <label><a id="text-to-copy" href="<?php print $form['survey_path']['#value']?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['survey_path']['#value']?></a></label>
-		 
-		 
+          <label><a id="text-to-copy" href="<?php print $form['survey_path']['#value'] ?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['survey_path']['#value'] ?></a></label>
         </div>
-         
       </div>
     </form>
   </div>
-  <div class="line_button"><a href="http://line.naver.jp/R/msg/text/?<?php print $form['survey_path']['#value']?>">
-            <img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="32" height="32" alt="LINE分享給好友" title="LINE分享給好友"></a>
-            </div>	
+  <div class="line_button"><a href="http://line.naver.jp/R/msg/text/?<?php print $form['survey_path']['#value']; ?>">
+      <img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="32" height="32" alt="LINE分享給好友" title="LINE分享給好友"></a>
+  </div>
 </div>
 
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id))
+      return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&appId=<?php print variable_get('simple_fb_connect_appid', 0); ?>&version=v2.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="fb-share-button" data-href="<?php print $form['survey_path']['#value']; ?>" data-layout="button"></div>
 
 <?php print render($form['date']); ?>
 
