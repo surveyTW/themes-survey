@@ -2,9 +2,9 @@
 /* Written by Ressol (ressol@gmail.com). */
 (function($) {
         $.ui.datepicker.regional['zh-TW'] = {
-                renderer: $.extend({}, $.ui.datepicker.defaultRenderer,
+                /*renderer: $.extend({}, $.ui.datepicker.defaultRenderer,
                         {month: $.ui.datepicker.defaultRenderer.month.
-                                replace(/monthHeader:M yyyy/, 'monthHeader:yyyy年 M')}),
+                                replace(/monthHeader:M yyyy/, 'monthHeader:yyyy年 M')}),*/
                 monthNames: ['一月','二月','三月','四月','五月','六月',
                 '七月','八月','九月','十月','十一月','十二月'],
                 monthNamesShort: ['一','二','三','四','五','六',
