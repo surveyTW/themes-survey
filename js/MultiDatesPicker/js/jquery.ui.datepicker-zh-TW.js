@@ -1,7 +1,7 @@
 /* Chinese initialisation for the jQuery UI date picker plugin. */
 /* Written by Ressol (ressol@gmail.com). */
 (function($) {
-        $.ui.datepicker.regional['zh-TW'] = {
+        $.datepicker.regional['zh-TW'] = {
                 /*renderer: $.extend({}, $.ui.datepicker.defaultRenderer,
                         {month: $.ui.datepicker.defaultRenderer.month.
                                 replace(/monthHeader:M yyyy/, 'monthHeader:yyyy¦~ M')}),*/
@@ -28,5 +28,5 @@
                 defaultStatus: '',
                 isRTL: false
         };
-        $.extend($.ui.datepicker.defaults, $.ui.datepicker.regional['zh-TW']);
+        $.extend($.datepicker.defaults, $.datepicker.regional['zh-TW']);
 })(jQuery);
