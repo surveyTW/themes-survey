@@ -374,9 +374,13 @@
     $('#add-timeslots').on('click', addOneTimeSlot);
     $('#copy-from-first-row').on('click', copyFromFirstRow);
 
+    
     $('#selectdate').multiDatesPicker({
       minDate: 0
     });
+    
+    $.datepicker.setDefaults($.datepicker.regional['zh-TW']);
+    $('#selectdate').datepicker('refresh'); 
 
     $('#edit-submit').click(function () {
 //    get_location_woeid();
