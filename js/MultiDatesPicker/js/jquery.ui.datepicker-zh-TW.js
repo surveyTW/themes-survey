@@ -1,29 +1,29 @@
-/* Chinese initialisation for the jQuery UI date picker plugin. */
+ï»¿/* Chinese initialisation for the jQuery UI date picker plugin. */
 /* Written by Ressol (ressol@gmail.com). */
 (function($) {
         $.datepicker.regional['zh-TW'] = {
                 /*renderer: $.extend({}, $.ui.datepicker.defaultRenderer,
                         {month: $.ui.datepicker.defaultRenderer.month.
-                                replace(/monthHeader:M yyyy/, 'monthHeader:yyyy¦~ M')}),*/
-                monthNames: ['¤@¤ë','¤G¤ë','¤T¤ë','¥|¤ë','¤­¤ë','¤»¤ë',
-                '¤C¤ë','¤K¤ë','¤E¤ë','¤Q¤ë','¤Q¤@¤ë','¤Q¤G¤ë'],
-                monthNamesShort: ['¤@','¤G','¤T','¥|','¤­','¤»',
-                '¤C','¤K','¤E','¤Q','¤Q¤@','¤Q¤G'],
-                dayNames: ['¬P´Á¤é','¬P´Á¤@','¬P´Á¤G','¬P´Á¤T','¬P´Á¥|','¬P´Á¤­','¬P´Á¤»'],
-                dayNamesShort: ['©P¤é','©P¤@','©P¤G','©P¤T','©P¥|','©P¤­','©P¤»'],
-                dayNamesMin: ['¤é','¤@','¤G','¤T','¥|','¤­','¤»'],
+                                replace(/monthHeader:M yyyy/, 'monthHeader:yyyyå¹´ M')}),*/
+                monthNames: ['ä¸€æœˆ','äºŒæœˆ','ä¸‰æœˆ','å››æœˆ','äº”æœˆ','å…­æœˆ',
+                'ä¸ƒæœˆ','å…«æœˆ','ä¹æœˆ','åæœˆ','åä¸€æœˆ','åäºŒæœˆ'],
+                monthNamesShort: ['ä¸€','äºŒ','ä¸‰','å››','äº”','å…­',
+                'ä¸ƒ','å…«','ä¹','å','åä¸€','åäºŒ'],
+                dayNames: ['æ˜ŸæœŸæ—¥','æ˜ŸæœŸä¸€','æ˜ŸæœŸäºŒ','æ˜ŸæœŸä¸‰','æ˜ŸæœŸå››','æ˜ŸæœŸäº”','æ˜ŸæœŸå…­'],
+                dayNamesShort: ['å‘¨æ—¥','å‘¨ä¸€','å‘¨äºŒ','å‘¨ä¸‰','å‘¨å››','å‘¨äº”','å‘¨å…­'],
+                dayNamesMin: ['æ—¥','ä¸€','äºŒ','ä¸‰','å››','äº”','å…­'],
                 dateFormat: 'yyyy/mm/dd',
                 firstDay: 1,
-                prevText: '&#x3c;¤W¤ë', prevStatus: '',
+                prevText: '&#x3c;ä¸Šæœˆ', prevStatus: '',
                 prevJumpText: '&#x3c;&#x3c;', prevJumpStatus: '',
-                nextText: '¤U¤ë&#x3e;', nextStatus: '',
+                nextText: 'ä¸‹æœˆ&#x3e;', nextStatus: '',
                 nextJumpText: '&#x3e;&#x3e;', nextJumpStatus: '',
-                currentText: '¤µ¤Ñ', currentStatus: '',
-                todayText: '¤µ¤Ñ', todayStatus: '',
+                currentText: 'ä»Šå¤©', currentStatus: '',
+                todayText: 'ä»Šå¤©', todayStatus: '',
                 clearText: '-', clearStatus: '',
-                closeText: 'Ãö³¬', closeStatus: '',
+                closeText: 'é—œé–‰', closeStatus: '',
                 yearStatus: '', monthStatus: '',
-                weekText: '©P', weekStatus: '',
+                weekText: 'å‘¨', weekStatus: '',
                 dayStatus: 'DD d MM',
                 defaultStatus: '',
                 isRTL: false
