@@ -77,17 +77,13 @@ drupal_add_css(drupal_get_path('theme', 'survey') . '/css/font-awesome.min.css',
 global $base_url;
 global $domain;
 ?>
-<header id="navbar" role="banner" class="<?php print $navbar_classes; ?>">
+<header id="navbar" role="banner" class="navbar navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <?php if ($logo): ?>
       <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
         <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
       </a>
-      <?php endif; ?>
-
-      <?php if (!empty($site_name)): ?>
-      <a class="name navbar-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
       <?php endif; ?>
 
       <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -118,15 +114,12 @@ global $domain;
 </header>
 <div class="homepage-jumbotron">
 <div class="jumbotron">
-	<div class="container">
-  <h1>Hello, world!</h1>
-  <p><a class="btn btn-primary btn-lg pull-right" href="<?php print $base_url;?>/<?php print $domain;?>/user/login" role="button">é¦¬ä¸Šè¨»å†Š</a></p>
+   <div class="container">
+        <a id="gomeet" href="surveydate" title="°¨¤W¬ù" class="btn btn-lg center-block"></a>
 </div>
 </div>
 </div>
-<div class="jumbotron gray-block">
-	<h1>Some Slogon Here</h1>
-</div>
+
 <div class="main-container container">
 
   <header role="banner" id="page-header">
@@ -146,30 +139,17 @@ global $domain;
       </aside>  <!-- /#sidebar-first -->
     <?php endif; ?>
 
-<div class="container text-center" style="padding: 100px 0 100px 0;">
-        <div class="row" style="padding: 40px 0 0 0;">
-            <div class="col-sm-6">
-		<span><i class="fa fa-calendar fa-5x"></i></span>
-                <h3>Jake Connor</h3>
-                <p style="margin-top: 40px;color: #999999;">eu sollicitudin quis, ultrices vitae justo.</p>
-            </div>
-            <div class="col-sm-6">
-		<span><i class="fa fa-map-marker fa-5x"></i></span>
-                <h3>Jake Connor</h3>
-                <p style="margin-top: 40px;color: #999999;"> sollicitudin quis, ultrices vitae justo.</p>
-            </div>
-        </div>
-        <div class="row" style="padding: 40px 0 0 0;">
-            <div class="col-sm-6">
-		<span><i class="fa fa-bar-chart fa-5x"></i></span>
-                <h3>Jake Connor</h3>
-                <p style="margin-top: 40px;color: #999999;">eu sollicitudin quis, ultrices vitae justo.</p>
-            </div>
-            <div class="col-sm-6">
-		<span><i class="fa fa-envelope-o fa-5x"></i></span>
-                <h3>Jake Connor</h3>
-                <p style="margin-top: 40px;color: #999999;">eu sollicitudin quis, ultrices vitae justo.</p>
-            </div>
+    <div class="container slogon">
+        <div class="row no-gutter">
+            <div class="col-sm-6"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
+            <div class="col-sm-6 text-center demo1"><h3>¬yµ{³]­pÂ²³æ ¹B¥Î¤è«K¦n¤W¤â</h3></div>
+            <div class="col-sm-7 demo2"><h3>·N¨£¦¬¶°¬Ù®É ¶}¤ßµ¥µ²ªG</h3></div>
+            <div class="col-sm-5"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
+            <div class="col-sm-5"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
+            <div class="col-sm-7 demo3"><h3>¦h¤H¤@°_¬ù »´ÃP¤£³Â·Ð</h3></div>
+            <div class="col-sm-4"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
+            <div class="col-sm-4 demo4"><h3>»E·|©öºÞ²z Easy Meet</h3></div>
+            <div class="col-sm-4"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
         </div>
     </div>
 
@@ -182,6 +162,10 @@ global $domain;
 
   </div>
 </div>
+
 <footer class="footer container">
-  <?php print render($page['footer']); ?>
+
+  <p class="text-center"><a href="#">EZMEET¯»µ·¹Î</a> | ÁcÅé¤¤¤å</p>
+  <p class="text-center copyright">Copyrights c EZMEET. All right reserved.</p>
+  <?php //print render($page['footer']); ?>
 </footer>

@@ -3983,6 +3983,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-nav {
   margin: 7.5px -15px;
+  padding-top: 14px;
 }
 .navbar-nav > li > a {
   padding-top: 10px;
@@ -6391,9 +6392,17 @@ body #admin-menu .dropdown li {
 .footer {
   margin-top: 45px;
   padding-top: 35px;
-  padding-bottom: 36px;
-  border-top: 1px solid #E5E5E5;
+  padding-bottom: 36p;
 }
+
+.footer p {
+  color: gray;
+}
+
+.footer a{
+  color: blue;
+}
+
 .element-invisible {
   margin: 0;
   padding: 0;
@@ -6948,15 +6957,29 @@ table.survey-list tr th {
   /*color:#fff;*/
 }
 /* home page */
+.homepage-jumbotron {
+  height: 780px;
+  padding-top: 40px;
+}
 .homepage-jumbotron .jumbotron {
+  height: 700px;
   margin-bottom: 0px;
-  background-image: url(../img/afternoon-tea.jpg);
+  background-image: url(../img/home.jpg);
   background-position: 0% 25%;
   background-size: cover;
   background-repeat: no-repeat;
   color: white;
-  padding-top: 100px;
-  padding-bottom: 100px;
+}
+#gomeet {
+    margin-top: 300px;
+    width: 480px;
+    height:136px;
+    display:block;
+    background:transparent url('../img/home_link1.jpg') center top no-repeat;
+}
+
+#gomeet:hover {
+    background-image: url('../img/home_link2.jpg');
 }
 [class^="icon-"],
 [class*=" icon-"] {
@@ -6977,6 +7000,58 @@ table.survey-list tr th {
 .icon-chevron-down {
   background-position: -313px -119px;
 }
+
+.no-gutter [class*="col-"] {
+    padding-left:0;
+    padding-right:0;
+}
+
+.slogon div {
+    height: 300px;
+}
+
+.slogon img{
+    width : 100%;
+    height: 300px
+}
+
+.demo1 {
+    background-color: #958693;
+}
+
+.demo1 h3 {
+    color: #ffffff;
+    padding-top: 60px;
+}
+
+.demo2 {
+    background-color: #E3A65F;
+}
+
+.demo2 h3 {
+    color: #ffffff;
+    padding-top: 60px;
+}
+
+.demo3 {
+    background-color: #70CACB;
+}
+
+.demo3 h3 {
+    color: #ffffff;
+    padding-top: 60px;
+}
+
+.demo4 {
+    background-color: #716658;
+}
+
+.demo4 h3 {
+    color: #ffffff;
+    padding-top: 60px;
+}
+
+
 /*!
  * Timepicker Component for Twitter Bootstrap
  *
