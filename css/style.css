@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
@@ -9219,3 +9219,29 @@ li.L9 {
   height: 180px;
   background-position: right center;
 }
+/* history page */
+.history .vcenter {
+    padding-top: 120px;
+}
+.history table tr {
+    border: 2px solid #fff;
+}
+.history table tr>th {
+    border: none;
+    text-align: center;
+    color: #D0D0D2;
+    font-size: 12pt;
+}
+.history table.join td {
+    background-color:#FCE9EB;
+    height:40px;
+    color: #604677;
+    font-size: 12pt;
+}
+.history table.launch td {
+    background-color:#E1F3F5;
+    height:40px;
+    color: #A2ADC3;
+    font-size: 12pt;
+}
+

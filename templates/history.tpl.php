@@ -1,77 +1,137 @@
 <?php
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/user-profile.js');
 ?>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3>發過的聚會</h3>
-      </div>
-      <div class="list-group">
-        <?php
-        global $user;
-        global $base_url;
-        $sql = 'SELECT nid FROM {node} n WHERE n.type = :type AND n.status = :status AND n.uid = :uid ORDER BY n.created DESC';
-        $result = db_query($sql, array(
-            ':type' => 'surveydate',
-            ':status' => 1,
-            ':uid' => $user->uid,
-                )
-        );
-        foreach ($result as $i => $row) {
-          //$node = node_load($row->nid);
-          //dvm($node);
-          $conditions = array();
-          $conditions['source'] = 'node/' . $row->nid;
-          $path = path_load($conditions);
-          $node = node_load($row->nid);
-          //
-          print '<a href="' . $base_url . '/' . $path['alias'] . '" class="list-group-item">';
-          print '<h4 class="list-group-item-heading">' . $node->title . '</h4>';
-          print '<p class="list-group-item-text"><span class="label label-primary">建立時間:' . format_date($node->created, 'short') . '</span> <span class="label label-danger">修改時間:' . format_date($node->changed, 'short') . '</span></p>';
-          print '</a>';
-          //
-        }
-        ?>
+
+<div class="container history">
+  <h1 class="text-center">
+    <img src="sites/all/themes/survey/img/meet_list_title.png" alt="聚會記錄">
+  </h1>
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <div class="row">
+        <div class="col-xs-2 col-md-2">
+          <img src="sites/all/themes/survey/img/join.png" class="img-responsive vcenter" alt="參與的聚會">
+                    </div>
+        <div class="col-xs-4 col-md-10">
+          <table class="table text-center join">
+            <thead>
+              <tr>
+                <th>聚會名稱</th>
+                <th>發起人</th>
+                <th>地點</th>
+                <th>投票結果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                               global $user;
+                               global $base_url;
+                               $sql = 'SELECT nid FROM {node} n WHERE n.type = :type AND n.status = :status AND n.uid = :uid ORDER BY n.created DESC LIMIT 5';
+                               $result = db_query($sql, array(
+                                                        ':type' => 'edited_survey',
+                                                        ':status' => 0,
+                                                        ':uid' => $user->uid,
+                                                        )
+                                                 );
+                               foreach ($result as $i => $row) {
+                                  //dvm($row);
+                                  $private_nid = $row->nid;
+                                  $private_node = node_load($private_nid);
+                                  //dvm($private_node->field_nid[LANGUAGE_NONE][0]['value']);
+                                  $nid = $private_node->field_nid[LANGUAGE_NONE][0]['value'];
+                                  $conditions = array();
+                                  $conditions['source'] = 'node/' . $nid;
+                                  $path = path_load($conditions);
+                                  $node = node_load($nid);
+                                  //
+                                  //print '<a href="' . $base_url . '/' . $path['alias'] . '" class="list-group-item">';
+                                  //print '<h4 class="list-group-item-heading">' . $node->title . '</h4>';
+                                  //print '<p class="list-group-item-text"><span class="label label-danger">修改時間:' . format_date($node->created, 'short') . '</span></p>';
+                                  //print '</a>';
+                                  //
+                                  print '<tr><td>' . $node->title . '</td><td></td><td></td><td></td></tr>';
+         
+                               }
+                               
+                            ?>
+
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
+    <div class="col-xs-6 col-md-6">
+      <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- 336x280_1 -->
+      <ins class="adsbygoogle"
+          style="display: inline-block; width: 336px; height: 280px"
+          data-ad-client="ca-pub-4355428491296720"
+          data-ad-slot="8880817537"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
   </div>
-  <div class="col-sm-6">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3>填過的聚會</h3>
+  <div class="row">
+    <div class="col-xs-6 col-md-6">
+      <div class="row">
+        <div class="col-xs-2 col-md-2">
+          <img src="sites/all/themes/survey/img/launch.png" class="img-responsive vcenter" alt="發起的聚會">
+                    </div>
+        <div class="col-xs-4 col-md-10">
+          <table class="table text-center launch">
+            <thead>
+              <tr>
+                <th>聚會名稱</th>
+                <th>發起人</th>
+                <th>地點</th>
+                <th>投票結果</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+                               global $user;
+                               global $base_url;
+                               $sql = 'SELECT nid FROM {node} n WHERE n.type = :type AND n.status = :status AND n.uid = :uid ORDER BY n.created DESC LIMIT 5';
+                               $result = db_query($sql, array(
+                                                        ':type' => 'surveydate',
+                                                        ':status' => 1,
+                                                        ':uid' => $user->uid,
+                                                        )
+                                                 );
+                               
+                               foreach ($result as $i => $row) {
+                                  //$node = node_load($row->nid);
+                                  //dvm($node);
+                                  $conditions = array();
+                                  $conditions['source'] = 'node/' . $row->nid;
+                                  $path = path_load($conditions);
+                                  $node = node_load($row->nid);
+                                  //
+                                  //print '<a href="' . $base_url . '/' . $path['alias'] . '" class="list-group-item">';
+                                  //print '<h4 class="list-group-item-heading">' . $node->title . '</h4>';
+                                  //print '<p class="list-group-item-text"><span class="label label-danger">修改時間:' . format_date($node->created, 'short') . '</span></p>';
+                                  //print '</a>';
+                                  //
+                                  print '<tr><td>' . $node->title . '</td><td></td><td></td><td></td></tr>';
+         
+                               }
+                            ?>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="list-group">
-        <?php
-        global $user;
-        global $base_url;
-        $sql = 'SELECT nid FROM {node} n WHERE n.type = :type AND n.status = :status AND n.uid = :uid ORDER BY n.created DESC';
-        $result = db_query($sql, array(
-            ':type' => 'edited_survey',
-            ':status' => 0,
-            ':uid' => $user->uid,
-                )
-        );
-        foreach ($result as $i => $row) {
-          //dvm($row);
-          $private_nid = $row->nid;
-          $private_node = node_load($private_nid);
-          //dvm($private_node->field_nid[LANGUAGE_NONE][0]['value']);
-          $nid = $private_node->field_nid[LANGUAGE_NONE][0]['value'];
-          $conditions = array();
-          $conditions['source'] = 'node/' . $nid;
-          $path = path_load($conditions);
-          $node = node_load($nid);
-          //
-          print '<a href="' . $base_url . '/' . $path['alias'] . '" class="list-group-item">';
-          print '<h4 class="list-group-item-heading">' . $node->title . '</h4>';
-          print '<p class="list-group-item-text"><span class="label label-danger">修改時間:' . format_date($node->created, 'short') . '</span></p>';
-          print '</a>';
-          //
-        }
-        ?>
-      </div>
+    </div>
+    <div class="col-xs-6 col-md-6">
+      <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- 336x280_1 -->
+      <ins class="adsbygoogle"
+          style="display: inline-block; width: 336px; height: 280px"
+          data-ad-client="ca-pub-4355428491296720"
+          data-ad-slot="8880817537"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
   </div>
 </div>
-
