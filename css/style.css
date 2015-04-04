@@ -9244,4 +9244,25 @@ li.L9 {
     color: #A2ADC3;
     font-size: 12pt;
 }
-
+/* survey page */
+#first-Next {
+    /*margin-top: 300px;*/
+    width: 241px;
+    height:98px;
+    display:block;
+    background:transparent url('../img/next.png') center top no-repeat;
+}
+#second-Prev {
+    /*margin-top: 300px;*/
+    width: 241px;
+    height:98px;
+    display:block;
+    background:transparent url('../img/prev.png') center top no-repeat;
+}
+#second-step #edit-submit {
+    /*margin-top: 300px;*/
+    width: 241px;
+    height:98px;
+    display:block;
+    background:transparent url('../img/next.png') center top no-repeat;
+}
