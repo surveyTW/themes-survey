@@ -81,8 +81,9 @@ global $domain;
   <div class="container">
     <div class="navbar-header">
       <?php if ($logo): ?>
-      <a class="logo navbar-btn pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+      <a class="logo navbar-btn pull-left" href=""
+        <?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+        <img src=""<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
       </a>
       <?php endif; ?>
 
@@ -96,68 +97,91 @@ global $domain;
     </div>
 
     <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
-      <div class="navbar-collapse collapse">
-        <nav role="navigation">
-          <?php if (!empty($primary_nav)): ?>
-            <?php print render($primary_nav); ?>
-          <?php endif; ?>
-          <?php if (!empty($secondary_nav)): ?>
-            <?php print render($secondary_nav); ?>
-          <?php endif; ?>
-          <?php if (!empty($page['navigation'])): ?>
-            <?php print render($page['navigation']); ?>
-          <?php endif; ?>
-        </nav>
-      </div>
+    <div class="navbar-collapse collapse">
+      <nav role="navigation">
+        <?php if (!empty($primary_nav)): ?>
+        <?php print render($primary_nav); ?>
+        <?php endif; ?>
+        <?php if (!empty($secondary_nav)): ?>
+        <?php print render($secondary_nav); ?>
+        <?php endif; ?>
+        <?php if (!empty($page['navigation'])): ?>
+        <?php print render($page['navigation']); ?>
+        <?php endif; ?>
+      </nav>
+    </div>
     <?php endif; ?>
   </div>
 </header>
 <div class="homepage-jumbotron">
-<div class="jumbotron">
-   <div class="container">
-        <a id="gomeet" href="surveydate" title="°¨¤W¬ù" class="btn btn-lg center-block"></a>
-</div>
-</div>
+  <div class="jumbotron">
+    <div class="container">
+      <a id="gomeet" href="surveydate" title="é¦¬ä¸Šç´„" class="btn btn-lg center-block"></a>
+    </div>
+  </div>
 </div>
 
 <div class="main-container container">
 
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>
-      <p class="lead"><?php print $site_slogan; ?></p>
+    <p class="lead">
+      <?php print $site_slogan; ?>
+    </p>
     <?php endif; ?>
 
     <?php print render($page['header']); ?>
-  </header> <!-- /#page-header -->
+  </header>
+  <!-- /#page-header -->
 
   <div class="row">
 
 
     <?php if (!empty($page['sidebar_first'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_first']); ?>
-      </aside>  <!-- /#sidebar-first -->
+    <aside class="col-sm-3" role="complementary">
+      <?php print render($page['sidebar_first']); ?>
+    </aside>
+    <!-- /#sidebar-first -->
     <?php endif; ?>
 
     <div class="container slogon">
-        <div class="row no-gutter">
-            <div class="col-sm-6"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
-            <div class="col-sm-6 text-center demo1"><h3>¬yµ{³]­pÂ²³æ ¹B¥Î¤è«K¦n¤W¤â</h3></div>
-            <div class="col-sm-7 demo2"><h3>·N¨£¦¬¶°¬Ù®É ¶}¤ßµ¥µ²ªG</h3></div>
-            <div class="col-sm-5"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
-            <div class="col-sm-5"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
-            <div class="col-sm-7 demo3"><h3>¦h¤H¤@°_¬ù »´ÃP¤£³Â·Ğ</h3></div>
-            <div class="col-sm-4"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
-            <div class="col-sm-4 demo4"><h3>»E·|©öºŞ²z Easy Meet</h3></div>
-            <div class="col-sm-4"><img src="sites/all/themes/survey/img/homesm1.jpg"></div>
+      <div class="row no-gutter">
+        <div class="col-sm-6">
+          <img src="sites/all/themes/survey/img/homesm1.jpg">
         </div>
+        <div class="col-sm-6 text-center demo1">
+          <h3>æµç¨‹è¨­è¨ˆç°¡å–® é‹ç”¨æ–¹ä¾¿å¥½ä¸Šæ‰‹</h3>
+        </div>
+        <div class="col-sm-7 demo2">
+          <h3>æ„è¦‹æ”¶é›†çœæ™‚ é–‹å¿ƒç­‰çµæœ</h3>
+        </div>
+        <div class="col-sm-5">
+          <img src="sites/all/themes/survey/img/homesm1.jpg">
+        </div>
+        <div class="col-sm-5">
+          <img src="sites/all/themes/survey/img/homesm1.jpg">
+        </div>
+        <div class="col-sm-7 demo3">
+          <h3>å¤šäººä¸€èµ·ç´„ è¼•é¬†ä¸éº»ç…©</h3>
+        </div>
+        <div class="col-sm-4">
+          <img src="sites/all/themes/survey/img/homesm1.jpg">
+        </div>
+        <div class="col-sm-4 demo4">
+          <h3>èšæœƒæ˜“ç®¡ç† Easy Meet</h3>
+        </div>
+        <div class="col-sm-4">
+          <img src="sites/all/themes/survey/img/homesm1.jpg">
+        </div>
+      </div>
     </div>
 
 
     <?php if (!empty($page['sidebar_second'])): ?>
-      <aside class="col-sm-3" role="complementary">
-        <?php print render($page['sidebar_second']); ?>
-      </aside>  <!-- /#sidebar-second -->
+    <aside class="col-sm-3" role="complementary">
+      <?php print render($page['sidebar_second']); ?>
+    </aside>
+    <!-- /#sidebar-second -->
     <?php endif; ?>
 
   </div>
@@ -165,7 +189,9 @@ global $domain;
 
 <footer class="footer container">
 
-  <p class="text-center"><a href="#">EZMEET¯»µ·¹Î</a> | ÁcÅé¤¤¤å</p>
-  <p class="text-center copyright">Copyrights c EZMEET. All right reserved.</p>
+  <p class="text-center">
+    <a href="#">EZMEETç²‰çµ²åœ˜</a> | ç¹é«”ä¸­æ–‡
+  </p>
+  <p class="text-center copyright">Copyrights Â© EZMEET. All right reserved.</p>
   <?php //print render($page['footer']); ?>
 </footer>
