@@ -77,7 +77,7 @@ drupal_add_css(drupal_get_path('theme', 'survey') . '/css/font-awesome.min.css',
 global $base_url;
 global $domain;
 ?>
-<header id="navbar" role="banner" class="navbar navbar-fixed-top">
+<header id="navbar" role="banner" class="navbar">
   <div class="container">
     <div class="navbar-header">
       <?php if ($logo): ?>
