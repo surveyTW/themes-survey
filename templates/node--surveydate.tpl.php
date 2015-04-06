@@ -88,6 +88,19 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.mi
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table.min.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.min.js');
 //  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-table.min.css', array('group' => CSS_THEME, 'type' => 'file'));
+
+$field_description = "無";
+if ($node->field_description[LANGUAGE_NONE][0]['value']) {
+   $field_description = $node->field_description[LANGUAGE_NONE][0]['value'];
+}
+
+$field_location = "無";
+$field_location_map = "";
+if ($node->field_location[LANGUAGE_NONE][0]['value']) {
+   $field_location = $node->field_location[LANGUAGE_NONE][0]['value'];
+   $field_location_map = '&nbsp;<a href="#" id="showmap" data-toggle="modal" data-target="#Modal-Map">地圖</a>';
+}
+
 ?>
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
@@ -100,68 +113,123 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
     //print render($content);
     ?>
   </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <div class="survey-view-title">
-        <h1><?php print $title; ?></h1>
+  <div class="container text-left" id="checkmeet">
+      <div class="row checkmeet-meet">
+          <div class="col-xs-6">
+              <div class="row">
+                  <div class="col-xs-1 text-center">
+                      <h2><span class="glyphicon glyphicon-bookmark"></span></h2>
+                  </div>
+                  <div class="col-xs-11">
+                      <h2><?php print $title; ?></h2>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-xs-1 text-center">
+                      <h4><span class="glyphicon glyphicon-user"></span></h4>
+                  </div>
+                  <div class="col-xs-11">
+                      <h4><?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></h4>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-xs-1 text-center">
+                      <h4><span class="glyphicon glyphicon-map-marker"></span></h4>
+                  </div>
+                  <div class="col-xs-11">
+                      <h4>
+                         <?php print $field_location . $field_location_map; ?>
+                      </h4>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-xs-1 text-center">
+                      <h4><span class="glyphicon glyphicon-file"></span></h4>
+                  </div>
+                  <div class="col-xs-11">
+                      <h4>
+                         <?php print $field_description; ?>
+                      </h4>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-xs-1 text-center">
+                      <h4><span class="glyphicon glyphicon-stats"></span></h4>
+                  </div>
+                  <div class="col-xs-11">
+                      <h4><span>已投票&nbsp;</span><span class="voted"></span><span>&nbsp;人</span></h4>
+                  </div>
+              </div>
+          </div>
+      </div>      
+      <div class="row checkmeet-list">
+          <div class="col-xs-6">
+              <div class="row">
+                  <div class="col-xs-1 text-center">
+                      <h2><span class="glyphicon glyphicon-th-list"></span></h2>
+                  </div>
+                  <div class="col-xs-11">
+                      <h2>投票 & 統計清單</h2>
+                  </div>
+              </div>
+              <div class="col-xs-12">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th class="col-xs-1"></th>
+                              <th class="col-xs-3">日期</th>
+                              <th class="col-xs-3">時間</th>
+                              <th class="col-xs-2">與會人數</th>
+                              <th class="col-xs-3"></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+ 
+                      </tbody>
+                  </table>
+                  <div id="alert-message" class="alert alert-danger" role="alert">...</div>
+              </div>
+          </div>
       </div>
-    </div>
-    <div class="panel-body">
-      <p class="text-info"><span class="glyphicon glyphicon-user"></span> <?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></p>
-      <p class="text-info"><span class="glyphicon glyphicon-map-marker"></span> <?php
-        if ($node->field_location[LANGUAGE_NONE][0]['value']):
-          print $node->field_location[LANGUAGE_NONE][0]['value'];
-        else:
-          print "無";
-        endif;
-        ?></p>
-      <p class="text-info"><span class="glyphicon glyphicon-file"></span> <?php
-        if ($node->field_description[LANGUAGE_NONE][0]['value']):
-          print $node->field_description[LANGUAGE_NONE][0]['value'];
-        else:
-          print "無";
-        endif;
-        ?></p>
-      <div id="location" class="hide"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
-      <div class="col-xs-12 survey-view-map" id="surveydate-map"></div>
-    </div>
-    <div class="panel-heading">
-      <div class="survey-view-date">
-        <div class="btn-group pull-right">
-          <button class="btn btn-danger" id="update-survey" type="submit" data-thmr="thmr_178">確定</button>
+      <div class="row">
+          <div class="col-xs-6">
+          </div>
+      </div>
+  </div>  
+    
+    
+  <!-- MAP Modal -->
+  <div class="modal fade" id="Modal-Map" tabindex="-1" role="dialog" aria-labelledby="MapModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="MapModalLabel"><?php print $field_location; ?></h4>
+           </div>
+           <div class="modal-body">
+              <div id="surveydate-map"></div>
+           </div>
         </div>
-        <h3><span class="glyphicon glyphicon-calendar"></span> 選擇參加時間</h3>
-      </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-bordered survey-date">
-        <thead>
-        </thead>
-        <tbody>
-        </tbody>
-        <tfoot>
-        </tfoot>
-      </table>
-    </div>
+     </div>
   </div>
-  <div class="gray-block">
-    <h2><p class=""><span class="glyphicon glyphicon-list"></span> 統計清單</p></h2>
-    <table id="table">
-      <thead>
-        <tr>
-        <!-- <th data-field="uid">人數</th> -->
-          <th class="col-sm-3" data-field="name">與會者名字</th>
-          <?php
-          $key = explode(",", $node->field_date[LANGUAGE_NONE][0]['value']);
-          $count = sizeof($key) - 1;
-          for ($x = 0; $x <= $count; $x++) {
-            print "<th data-field=" . "'$x'" . ">" . $key[$x] . "</th>";
-          }
-          ?>
-        </tr>
-      </thead>
-    </table>
+ 
+
+  <!-- Voter Modal -->
+  <div class="modal fade" id="Modal-Voter" tabindex="-1" role="dialog" aria-labelledby="VoterModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header text-center">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="VoterModalLabel">Voter</h4>
+           </div>
+           <div class="modal-body text-center">
+             
+           </div>
+        </div>
+     </div>
   </div>
+ 
+
 
   <?php
   $nodeWoeid = $node->field_woeid[LANGUAGE_NONE][0]['value'];
@@ -181,12 +249,14 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-table-zh-TW.mi
   endif;
   ?>
 
-  <div class="hidden">
+  <div class="hidden">  
+    <div id="location"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
     <div id="date"><?php print $node->field_date[LANGUAGE_NONE][0]['value']; ?></div>
     <div id="survey"><?php print $node->field_survey[LANGUAGE_NONE][0]['value']; ?></div>
     <div id="result"><?php print $node->field_result[LANGUAGE_NONE][0]['value']; ?></div>
     <div id="latlng"><?php print $node->field_latlng[LANGUAGE_NONE][0]['value']; ?></div>
-    <div id="uid"><?php print $user->uid; ?></div>
+    <div id="user-uid"><?php print $user->uid; ?></div>
+    <div id="user-name"><?php print $user->name; ?></div>
   </div>
 
 </div>
