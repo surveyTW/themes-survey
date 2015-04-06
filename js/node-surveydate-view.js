@@ -1,23 +1,14 @@
 (function ($) {
-  function setSurveyDate() {
-    var ay_survey_date = $('#date').text().split(",");
+    var aySurvey;
+    var ayVote_result;
+    var user_uid;
+    var user_name;
+    var voted_count;
+    var weekday = new Array(7);
 
-    this_user = $('#uid').text();
-    first_time = 1;
+    function initParam() {
+        voted_count = 0;
 
-    $('.year').text(ay_survey_date[0].substr(0, 4));
-
-    $('.survey-date thead').append('<tr class="info">');
-    $('.survey-date thead tr:last').append('<th class="col-md-3"></th>');
-    //   console.log(ay_survey_date);
-    $.each(ay_survey_date, function (key, value) {
-      if (value != '') {
-        var tmp = value.split(' ');
-        var survey_year = tmp[0].substr(0, 4);
-        var survey_date = tmp[0].substr(5, 5);
-        var survey_time = tmp[1];
-        var survey_flag = tmp[2];
-        var weekday = new Array(7);
         weekday[0] = "Sun";
         weekday[1] = "Mon";
         weekday[2] = "Tue";
@@ -25,263 +16,289 @@
         weekday[4] = "Thu";
         weekday[5] = "Fri";
         weekday[6] = "Sat";
-        var d = new Date(tmp[0]);
-        if (!survey_flag) {
-          survey_flag = '';
-        }
-        $('.survey-date thead tr:last').append('<th class="text-center"><span class="glyphicon glyphicon-calendar"></span>' + survey_year + '/' + survey_date + '<br /><span class="glyphicon glyphicon-time"></span>' + weekday[d.getDay()] + ' ' + survey_time + survey_flag + '</th>');
-        //var d = value.substr(0,5);
-        //$('.survey-date thead tr:last').append('<th class="success">' + d + '</th>');
-      }
-    });
 
-    if ($('#survey').text() != '') {
-      var ay_survey_data = JSON.parse($('#survey').text());
-      var data2 = ay_survey_data;
-      var count = Object.keys(ay_survey_data[0]).length;
-      var colums_count = 0;
-      //	console.log(ay_survey_date[0]);
-      $.each(ay_survey_data, function (key, obj) {
-        if (this_user != 0 && this_user == obj.uid) {
-          first_time = 0;
-          $('.survey-date tbody').append('<tr class="success">');
-          $('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control" placeholder="輸入您的名字" value="' + obj.name + '"></td>');
-          $.each(obj, function (key, value) {
-            if (key != 'name' && key != 'uid') {
-              if (value == 0) {
-                data2[colums_count][key] = " ";
-                $('.survey-date tbody tr:last').append('<td class=""><input id="' + key + '" type="checkbox" class="form-control input-sm"></td>');
-              }
-              else {
-                data2[colums_count][key] = "Ok";
-                $('.survey-date tbody tr:last').append('<td class=""><input id="' + key + '" type="checkbox" checked class="form-control input-sm"></td>');
-              }
+        aySurvey = JSON.parse($('#survey').text());
+        ayVote_result = JSON.parse($('#result').text());
+        user_uid = $('#user-uid').text();
+        user_name = $('#user-name').text();
+    }
+
+    function getWeekday(source) {
+        var date = new Date(source);
+        return weekday[date.getDay()];
+    }
+
+    function getVotersByDate(vote_date_key) {
+        arr = $.grep(aySurvey, function (obj, i) { // just use arr
+            return obj[vote_date_key] > 0;
+        });
+        return arr;
+    }
+
+    function getVoterByUid(uid) {
+        arr = $.grep(aySurvey, function (obj, i) { // just use arr
+            return obj.uid == uid;
+        });
+        return arr;
+    }
+
+    function setMeet() {
+        voted_count = aySurvey.length;
+        $('.voted').text(voted_count);
+    }
+
+    function setMeetList() {
+        var ayDate = $('#date').text().split(",");
+
+        $.each(ayDate, function (key, value) {
+            if (value != '') {
+                var tmp = value.split(' ');
+                vote_date = tmp[0] + ' ' + getWeekday(tmp[0]);
+                vote_time = '';
+
+                if (tmp.length >= 3) {
+                    vote_time = tmp[1] + ' ' + tmp[2];
+                }
+
+                voted_percent = 0;
+
+                if (voted_count != 0) {
+                    voted_percent = ayVote_result[key] / voted_count * 100;
+                }
+
+                html = '<tr><td><input id="' + key + '" type="checkbox" class="form-control input-sm checkbox"></td>';
+                html += '<td data-date="' + value + '">' + vote_date + '</td>';
+                html += '<td>' + vote_time + '</td>';
+                html += '<td><a href="#" class="showvoter" data-title="' + vote_date + ' ' + vote_time + ' ' + ayVote_result[key] + '人" data-votedatekey="' + key + '" data-toggle="modal" data-target="#Modal-Voter">' + ayVote_result[key] + '</a></td>';
+                html += '<td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + voted_percent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + voted_percent + '%"></div></div></td>';
+                html += '</tr>';
+                $('.checkmeet-list table tbody').append(html);
             }
-          });
-        }
-        else {
-//				$('.survey-date tbody').append('<tr>');
-//				$('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username">' + obj.name + '</td>');
+        });
 
-          $.each(obj, function (key, value) {
-            if (key != 'name' && key != 'uid') {
-              if (value == 0) {
-                data2[colums_count][key] = " ";
-//                $('.survey-date tbody tr:last').append('<td></td>');
-              } else {
-                data2[colums_count][key] = "Ok";
-//                $('.survey-date tbody tr:last').append('<td>V</td>');
-              }
+        //set vote tr
+        html = '<tr><td></td><td class="col-xs-3 tmp-username"><input type="text" class="form-control" placeholder="姓名"></td><td class="col-xs-3"><button class="btn btn-danger" id="update-survey" type="submit" data-thmr="thmr_178">送出投票</button></td><td></td><td></td></tr>';
+        $('.checkmeet-list table tbody').append(html);
+
+    }
+
+    function setUser() {
+        if (user_uid != 0) {
+            $('.tmp-username input').val(user_name);
+
+            ayVoter = getVoterByUid(user_uid);
+
+            if (ayVoter.length != 0) {
+                $.each(ayVoter[0], function (key, value) {
+                    if (key == 'name') {
+                        return false;
+                    }
+
+                    if (value) {
+                        $('#' + key).prop("checked", true);
+                    }
+                });
             }
-          });
         }
-        colums_count++;
-      });
     }
 
-    if (first_time) {
-      $('.survey-date tbody').append('<tr class="success">');
-      $('.survey-date tbody tr:last').append('<td class="col-md-3 tmp-username"><input type="text" class="form-control" placeholder="輸入您的名字"></td>');
-
-      $.each(ay_survey_date, function (key, value) {
-        $('.survey-date tbody tr:last').append('<td class=""><input id="' + key + '" type="checkbox" class="form-control input-sm"></td>');
-      });
-    }
-
-    if ($('#result').text() != '') {
-      var ay_survey_result = JSON.parse($('#result').text());
-      $('.survey-date tfoot').append('<tr class="text-center warning">');
-      $('.survey-date tfoot tr:last').append('<td class="col-md-3 tmp-username">目前統計</td>');
-      $.each(ay_survey_result, function (key, value) {
-        if (key != 'name') {
-          $('.survey-date tfoot tr:last').append('<td>' + value + '</td>');
+    function updateMeet() {
+        if ($('.tmp-username input').val() == '') {
+            $('#alert-message').text('請填寫姓名!');
+            $('#alert-message').show();
+            $('.tmp-username input').focus();
+            return;
         }
-      });
+
+        //Block UI...by Dun
+        $.blockUI({
+            css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            }
+        });
+        //Block UI end
+
+        var curpath = $(location).attr('pathname');
+        var pathary = curpath.split('/');
+        curpath = pathary[pathary.length - 1];
+
+        var inputs = $('.checkmeet-list table tbody').find('input');
+        var oSurvey = new Object();
+
+        inputs.each(function (index) {
+            if ($(this).attr('type') == 'text') {
+                oSurvey['name'] = $(this).val();
+            } else {
+                var id = $(this).attr('id');
+                if ($(this)[0].checked) {
+                    oSurvey[id] = 1;
+                } else {
+                    oSurvey[id] = 0;
+                }
+            }
+        });
+        oSurvey['uid'] = $('#user-uid').text();
+
+        var oSend = new Object();
+
+        oSend.path = curpath;
+        oSend.data = oSurvey;
+
+        $.ajax({
+            url: 'update_surveydate',
+            type: 'post',
+            dataType: 'json',
+            data: JSON.stringify(oSend),
+            beforeSend: function () {
+                //$('#loading-indicator').show();
+            },
+            success: function (data) {
+                // console.log(data);
+                if (data.code == '1') {
+
+                    $.unblockUI({
+                        onUnblock: function () {
+                            alert(data.message);
+                            location.reload();
+                        }
+                    });
+                    // alert(data.message);
+                    //    location.reload();
+                } else {
+                    $.unblockUI({
+                        onUnblock: function () {
+                            alert(data.message);
+                        }
+                    });
+                }
+            },
+            error: function (data) {
+                $.unblockUI({
+                    onUnblock: function () {
+                        alert(data.message);
+                    }
+                });
+                //console.log(data);
+                //showMessage(false, data);
+            },
+            complete: function () {
+                //$('#loading-indicator').hide();
+            }
+        });
     }
 
-    $('#table').bootstrapTable({
-      cache: false,
-      height: 400,
-      striped: true,
-      pagination: true,
-      pageSize: 50,
-      pageList: [10, 25, 50, 100, 200],
-      search: true,
-      showColumns: true,
-      showRefresh: true,
-      minimumCountColumns: 2,
-      clickToSelect: true,
-      data: data2
-    });
-  }
+    function showPosition(lat, lng, location) {
+        //var radius = 1000;
+        //var lat = position.coords.latitude;
+        //var lng = position.coords.longitude;
+        var latlng = new google.maps.LatLng(lat, lng);
+        var mapholder = document.getElementById('surveydate-map');
+        mapholder.style.height = '380px';
+        mapholder.style.width = '100%';
+        //mapholder.style.width = '540px';
 
-  function showPosition(lat, lng, location)
-  {
-    //var radius = 1000;
-    //var lat = position.coords.latitude;
-    //var lng = position.coords.longitude;
-    var latlng = new google.maps.LatLng(lat, lng);
-    var mapholder = document.getElementById('surveydate-map');
-    mapholder.style.height = '380px';
-    mapholder.style.width = '100%';
-    //mapholder.style.width = '540px';
+        var mapOptions = {
+            center: latlng,
+            zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+        };
 
-    var mapOptions = {
-      center: latlng,
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL}
-    };
+        var map = new google.maps.Map(mapholder, mapOptions);
+        var marker = new google.maps.Marker({ position: latlng, map: map, title: location });
 
-    var map = new google.maps.Map(mapholder, mapOptions);
-    var marker = new google.maps.Marker({position: latlng, map: map, title: location});
-
-//    var populationOptions = {
-//      strokeColor: '#FF0000',
-//      strokeOpacity: 0.4,
-//      strokeWeight: 2,
-//      fillColor: '#0099FF',
-//      fillOpacity: 0.15,
-//      map: map,
-//      center: latlng,
-//      radius: 1000
-//    };
-  }
-
-  $(document).ready(function () {
-    var latlng = $('#latlng').text();
-    if (latlng.length) {
-      var n = latlng.indexOf(", ");
-      showPosition(latlng.substr(0, n), latlng.substr(n + 2, latlng.length), $('#location').text());
+        //    var populationOptions = {
+        //      strokeColor: '#FF0000',
+        //      strokeOpacity: 0.4,
+        //      strokeWeight: 2,
+        //      fillColor: '#0099FF',
+        //      fillOpacity: 0.15,
+        //      map: map,
+        //      center: latlng,
+        //      radius: 1000
+        //    };
     }
-    setSurveyDate();
 
-    $('#update-survey').click(function () {
-      if ($('.tmp-username input').val() == '') {
-        alert('請記得填名字!');
-        return;
-      }
+    $(document).ready(function () {
+        $('#alert-message').hide();
+        initParam();
 
-      //Block UI...by Dun
-      $.blockUI({css: {
-          border: 'none',
-          padding: '15px',
-          backgroundColor: '#000',
-          '-webkit-border-radius': '10px',
-          '-moz-border-radius': '10px',
-          opacity: .5,
-          color: '#fff'
-        }});
-      //Block UI end
+        setMeet();
+        setMeetList();
+        setUser();
 
-      var curpath = $(location).attr('pathname');
-      var pathary = curpath.split('/');
-      curpath = pathary[pathary.length - 1];
-
-      var inputs = $('.survey-date tbody').find('input');
-      var oSurvey = new Object();
-
-      inputs.each(function (index) {
-        if ($(this).attr('type') == 'text') {
-          oSurvey['name'] = $(this).val();
-        } else {
-          var id = $(this).attr('id');
-          if ($(this)[0].checked) {
-            oSurvey[id] = 1;
-          } else {
-            oSurvey[id] = 0;
-          }
+        var latlng = $('#latlng').text();
+        if (latlng.length) {
+            var n = latlng.indexOf(", ");
+            showPosition(latlng.substr(0, n), latlng.substr(n + 2, latlng.length), $('#location').text());
         }
-      });
-      oSurvey['uid'] = $('#uid').text();
 
-      var oSend = new Object();
+        $('#Modal-Voter').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var title = button.data('title'); // Extract info from data-* attributes
+            var vote_date_key = button.data('votedatekey');
 
-      oSend.path = curpath;
-      oSend.data = oSurvey;
+            var modal = $(this);
+            modal.find('.modal-title').text(title);
 
-      $.ajax({
-        url: 'update_surveydate',
-        type: 'post',
-        dataType: 'json',
-        data: JSON.stringify(oSend),
-        beforeSend: function () {
-          //$('#loading-indicator').show();
-        },
-        success: function (data) {
-          // console.log(data);
-          if (data.code == '1') {
+            ayVoters = getVotersByDate(vote_date_key);
 
-            $.unblockUI({
-              onUnblock: function () {
-                alert(data.message);
-                location.reload();
-              }
+            var Voters = [];
+            $.each(ayVoters, function (key, obj) {
+                Voters.push(obj.name);
             });
-            // alert(data.message);
-            //    location.reload();
-          } else {
-            $.unblockUI({
-              onUnblock: function () {
-                alert(data.message);
-              }
-            });
-          }
-        },
-        error: function (data) {
-          $.unblockUI({
-            onUnblock: function () {
-              alert(data.message);
+            modal.find('.modal-body').text(Voters.join(", "));
+        })
+
+        $('#update-survey').click(function () {
+            updateMeet();
+        });
+
+        if ($('#weather-content').length) {
+            var nodeWoeid = $('#weather-content').attr("value");
+            if (nodeWoeid !== 0) {
+                $('#weather-content').weatherfeed([nodeWoeid], {
+                    image: true,
+                    wind: false,
+                    forecast: true,
+                    link: false,
+                    woeid: true
+                }, weatherCB);
             }
-          });
-          //console.log(data);
-          //showMessage(false, data);
-        },
-        complete: function () {
-          //$('#loading-indicator').hide();
         }
-      });
     });
 
-    if ($('#weather-content').length) {
-      var nodeWoeid = $('#weather-content').attr("value");
-      if (nodeWoeid !== 0) {
-        $('#weather-content').weatherfeed([nodeWoeid], {
-          image: true,
-          wind: false,
-          forecast: true,
-          link: false,
-          woeid: true
-        }, weatherCB);
-      }
+    function weatherCB(w) {
+        $w = $(w);
+        $(".weatherCity").html("Today");
+        $(".weatherDesc").hide();
+        $(".weatherForecastDay").hide();
+        $(".weatherForecastText").hide();
+
+        $(".weatherForecastItem").each(function (index) {
+            $obj = $(this);
+
+            if (index === 0) {
+                $obj.hide();
+                return;
+            }
+
+            $obj.css("background-image", function (index, value) {
+                return value.replace("s.png", "d.png");
+            });
+
+            //      $tempRange = $obj.find(".weatherForecastRange").text();
+            //      console.log("weatherForecastRange: " + $tempRange);
+        });
+
+        //    $tempRange = $(".weatherRange").text();
+        //    console.log("weatherRange: " + $tempRange);
     }
-  });
-
-  function weatherCB(w) {
-    $w = $(w);
-    $(".weatherCity").html("Today");
-    $(".weatherDesc").hide();
-    $(".weatherForecastDay").hide();
-    $(".weatherForecastText").hide();
-
-    $(".weatherForecastItem").each(function (index) {
-      $obj = $(this);
-
-      if (index === 0) {
-        $obj.hide();
-        return;
-      }
-
-      $obj.css("background-image", function (index, value) {
-        return value.replace("s.png", "d.png");
-      });
-
-//      $tempRange = $obj.find(".weatherForecastRange").text();
-//      console.log("weatherForecastRange: " + $tempRange);
-    });
-
-//    $tempRange = $(".weatherRange").text();
-//    console.log("weatherRange: " + $tempRange);
-  }
 })(jQuery);
