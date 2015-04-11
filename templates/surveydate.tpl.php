@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 global $base_url;
 
 drupal_add_library('system', 'ui.datepicker');
@@ -84,11 +84,11 @@ if ($form['name']['#value'] == null) {
               <?php print render($form['location']); ?>
               <div id="surveymap" class="col-md-12 form-group"></div>
             </div>
-            <div class="col-md-12 btn-group ">
-              <?php print render($form['submit']); ?>
-              <a href="#" type="button" id="second-Prev" class="btn pull-right"></a>
-            </div>
           </form>
+          <div class="col-md-12 btn-group ">
+            <?php print render($form['submit']); ?>
+            <a href="#" type="button" id="second-Prev" class="btn pull-right"></a>
+          </div>          
         </div>
         <div class="col-md-3">
           <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -103,14 +103,20 @@ if ($form['name']['#value'] == null) {
         </div>
       </div>
     </div>
-  </div>
+  </div> 
   <div id="survey-end">
     <div class="jumbotron text-center">
-      <h2>問卷製作完成!</h2>
+      <h3>問卷製作完成!</h3>
       <p>
         分享問卷網址 <a id="text-to-copy" href=""
           <?php print $form['survey_path']['#value'] ?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['survey_path']['#value'] ?>
         </a>
+      </p>
+      <p>
+         <a href="https://www.facebook.com/sharer/sharer.php?app_id=<?php print variable_get('simple_fb_connect_appid', 0); ?>&sdk=joey&u=<?php print $form['survey_path']['#value']; ?>&display=popup&ref=plugin&src=share_button" target="_blank">F</a>
+         <div class="line_button"><a href="http://line.naver.jp/R/msg/text/?<?php print $form['survey_path']['#value']; ?>">
+           <img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="32" height="32" alt="LINE分享給好友" title="LINE分享給好友"></a>
+         </div>
       </p>
     </div>
   </div>
