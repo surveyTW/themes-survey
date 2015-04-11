@@ -9229,3 +9229,13 @@ li.L9 {
     display:block;
     background:transparent url('../img/next.png') center top no-repeat;
 }
+#survey-end h3 {
+    color:#800;
+    padding-bottom: 20px;
+}
+#survey-end p {
+   color:gray;
+}
+#survey-end a {
+    color:#800;
+}
