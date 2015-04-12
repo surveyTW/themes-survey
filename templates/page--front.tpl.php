@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * @file
  * Default theme implementation to display a single Drupal page.
@@ -72,7 +72,6 @@
  *
  * @ingroup themeable
  */
-drupal_add_css(drupal_get_path('theme', 'survey') . '/css/font-awesome.min.css', array('group' => CSS_THEME, 'type' => 'file'));
 
 global $base_url;
 global $domain;
