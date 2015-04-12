@@ -32,6 +32,7 @@ if ($form['name']['#value'] == null) {
         <img src="sites/all/themes/survey/img/meet_step_title.png" alt="建立聚會">
       </h1>
       <form>
+        <div id="alert" class="alert alert-danger" role="alert"></div>
         <div class="col-md-4 form-group">
           <label for="meet-title">
             <span class="glyphicon glyphicon-bookmark"></span>聚會名稱
