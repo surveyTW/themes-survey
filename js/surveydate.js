@@ -1,4 +1,4 @@
-(function ($) {
+﻿(function ($) {
 
     var gmap_inited = 0;
     var timeSlotNumber = 2;
@@ -7,7 +7,8 @@
     var markers = [];
 
     // Add a marker to the map and push to the array.
-    function addMarker(title, location) {
+    function addMarker(title, location) 
+    {
         var marker = new google.maps.Marker({
             map: map,
             title: title,
@@ -17,14 +18,16 @@
     }
 
     // Sets the map on all markers in the array.
-    function setAllMap(map) {
+    function setAllMap(map) 
+    {
         for (var i = 0; i < markers.length; i++) {
             markers[i].setMap(map);
         }
     }
 
     // Removes the markers from the map, but keeps them in the array.
-    function clearMarkers() {
+    function clearMarkers() 
+    {
         setAllMap(null);
     }
 
@@ -34,19 +37,22 @@
     //  }
 
     // Deletes all markers in the array by removing references to them.
-    function deleteMarkers() {
+    function deleteMarkers() 
+    {
         clearMarkers();
         markers = [];
     }
 
     // Get Google map location
-    function getMapLatLng(latLng) {
+    function getMapLatLng(latLng)
+    {
         var latlng = latLng.lat() + ", " + latLng.lng();
         console.log(latlng);
         document.getElementsByName('latlng')[0].value = latlng;
     }
 
-    function gmapInitialize() {
+    function gmapInitialize() 
+    {
         var mapholder = document.getElementById('surveymap');
         mapholder.style.height = '380px';
         mapholder.style.width = '100%';
@@ -122,34 +128,8 @@
         });
     }
 
-    //  function get_location_woeid() {
-    //    var location = document.getElementById('edit-location');
-    //    var query = 'select * from geo.places where text="' + location.value + '"';
-    //    var api = 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json&callback=?';
-    //    var woeid = 0;
-    //    // Send request
-    //    $.ajax({
-    //      type: 'GET',
-    //      url: api,
-    //      dataType: 'json',
-    //      success: function (data) {
-    //        if (data.query.count > 0) {
-    //          // List multiple returns
-    //          if (data.query.count > 1) {
-    //            woeid = data.query.results.place[0].woeid;
-    //          }
-    //          else {
-    //            woeid = data.query.results.place.woeid;
-    //          }
-    //        }
-    //        console.log(woeid);
-    //        var input = document.getElementsByName('woeid');
-    //        input[0].value = woeid;
-    //      }
-    //    });
-    //  }
-
-    function setTextDate() {
+    function setTextDate() 
+    {
         var ayDate = [];
         $('#selecttime .row').each(function (index, date) {
             var localAyDate = [];
@@ -187,7 +167,8 @@
         $('#edit-date').val(ayDate.join());
     }
 
-    function addDivTime(row) {
+    function addDivTime(row) 
+    {
         var div_time = document.createElement('div');
         div_time.className = 'col-md-3';
 
@@ -218,7 +199,8 @@
         $(row).append(div_time);
     }
 
-    function addNewDate(dateText, currentRow) {
+    function addNewDate(dateText) 
+    {
         var row = document.createElement('div');
         var div_date = document.createElement('div');
 
@@ -227,104 +209,59 @@
 
         var input = document.createElement('input');
         input.className = 'form-control date';
-        $(input).val(dateText);
+        $(input).attr( 'value', dateText);
         $(div_date).append(input);
 
         $(row).append(div_date);
         for (i = 0; i < timeSlotNumber; i++) {
             addDivTime(row);
         }
-        if (currentRow == -1) {
-            $('#selecttime').append(row);
-        }
-        else {
-            var selectTimeElement = document.getElementById('selecttime');
-            selectTimeElement.insertBefore(row, selectTimeElement.childNodes[currentRow]);
-        }
-    }
-
-    function buildSelectTime() {
-        var selectedDate = $('#selectdate').multiDatesPicker('getDates');
-        var partsOfStr = selectedDate.toString().split(',');
-        var row = document.getElementsByClassName('selectdateRow');
-
-        for (oI = 0, nI = 0; oI < row.length && nI < partsOfStr.length; oI++, nI++) {
-            //console.log(row[oI].getElementsByClassName('date')[0].value);
-            var oldDateText = row[oI].getElementsByClassName('date')[0].value;
-            var tmp = partsOfStr[nI].split('/');
-            var newDateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
-            var date1 = new Date(newDateText);
-            var date2 = new Date(oldDateText);
-            if (date1 > date2) {
-                /*remove old date*/
-                row[oI].remove();
-                nI--;
-                oI--;
-            }
-            else if (date2 > date1) {
-                /*add new date*/
-                addNewDate(newDateText, oI);
-            }
-            else {
-                /*both move to next*/
-            }
-        }
-        if (oI < row.length) {
-            for (; oI < row.length; oI++) {
-                row[oI].remove();
-            }
-        }
-        if (nI < partsOfStr.length) {
-            for (; nI < partsOfStr.length; nI++) {
-                var tmp = partsOfStr[nI].split('/');
-                newDateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
-                addNewDate(newDateText, -1);
-            }
+        
+        var rowCount = $('#selecttime .row').length;
+        
+        if (rowCount == 0 ) {
+           $('#selecttime').append(row);
+        } else {           
+           $('#selecttime .row').each(function( index, value ) {
+              if ( $(this).find('.date').attr('value') > dateText )  {
+                 $(row).insertBefore($(this));
+                 return false;
+              }
+           });
+           
+           if ( rowCount == $('#selecttime .row').length ) {
+              $('#selecttime').append(row);
+           }
         }
     }
 
-    function addOneTimeSlot() {
-        if (timeSlotNumber == 2) {
-            alert('上限為二個時段');
-            return;
-        }
-
-        timeSlotNumber++;
-        $('.selectdateRow').each(function (i, val) {
-            addDivTime(val);
-        });
-    }
-
-    function copyFromFirstRow() {
-        for (i = 0; i < timeSlotNumber; i++) {
-            $('.selectdateRow').each(function (index, val) {
-                if (index != 0) {
-                    var cloneOne = $('.selectdateRow')[0].childNodes[i + 1].cloneNode(true);
-                    $(val.childNodes[i + 1]).replaceWith(cloneOne);
-                }
-            });
-        }
-    }
-
-    function validation1st() {
-        var selectedDate = $('#selectdate').multiDatesPicker('getDates');
-
+    function validationData() 
+    {   
         if ($('#edit-title').val() == "") {
-            alert('請填聚會名稱');
-            return 0;
+            showAlert('請填聚會名稱');
+            return false;
         }
 
+        var selectedDate = $('#selectdate').multiDatesPicker('getDates');
+        
         if (selectedDate.toString() == "") {
-            alert('請至少選擇一天');
-            return 0;
+            showAlert('請至少選擇一天');        
+            return false;
         }
-        else if (selectedDate.length > 10) {
-            alert('已達天數上限, 請減少至10天以下');
-            return 0;
+        
+        if (selectedDate.length > 10) {
+            showAlert('已達天數上限, 請減少至10天以下');          
+            return false;
         }
 
-        return 1;
+        return true;
     }
+
+    function showAlert(msg) 
+    {
+        $('#alert').text(msg);
+        $('#alert').show();
+    } 
 
     $(document).ready(function () {
         document.onkeydown = function (e) {
@@ -334,6 +271,7 @@
             }
         };
 
+        $('#alert').hide();
         $('#edit-date').hide();
         $('#edit-location').attr('class', 'col-md-9');
         $('#edit-location').attr('placeholder', '');
@@ -341,24 +279,20 @@
 
         if ($("input[name$='survey_path']").val() == '') {
             $('#survey-end').hide();
-        }
-        else {
-            //$('#survey_url').tooltip('show');
+        } else {
             $('#survey-body').hide();
         }
 
         $('#first-Next').on('click', function () {
-            if (validation1st()) {
-                $('#first-step').removeClass('show').addClass('hidden');
+            if (validationData()) {
+               $('#first-step').removeClass('show').addClass('hidden');
 
-                if (!gmap_inited) {
-                    gmapInitialize();
-                    gmap_inited = 1;
-                }
+               if (!gmap_inited) {
+                  gmapInitialize();
+                  gmap_inited = 1;
+               }
 
-                $('#second-step').removeClass('hidden').addClass('show');
-
-                //buildSelectTime();
+               $('#second-step').removeClass('hidden').addClass('show');
             }
         });
 
@@ -367,25 +301,18 @@
             $('#first-step').removeClass('hidden').addClass('show');
         });
 
-        $('#second-Next').on('click', function () {
-            $('#second-step').removeClass('show').addClass('hidden');
-            /*if (!gmap_inited) {
-              gmapInitialize();
-              gmap_inited = 1;
-            }*/
-            $('#third-step').removeClass('hidden').addClass('show');
-        });
-
-
-        $('#add-timeslots').on('click', addOneTimeSlot);
-        $('#copy-from-first-row').on('click', copyFromFirstRow);
-
         $('#selectdate').multiDatesPicker({
             minDate: 0,
             onSelect: function (dateText, inst) {
-                tmp = dateText.split('/');
-                dateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
-                addNewDate(dateText, 1);
+                var tmp = dateText.split('/');
+                var dateText = tmp[2] + '/' + tmp[0] + '/' + tmp[1];
+                var selectDate = $('#selecttime .date[value="' + dateText + '"]');
+                
+                if ( selectDate.length == 0  ) {
+                   addNewDate(dateText);
+                } else {
+                   selectDate.parents( ".selectdateRow" ).remove();
+                }
             }
         });
 
@@ -393,15 +320,9 @@
         $('#selectdate').datepicker('refresh');
 
         $('#edit-submit').click(function () {
-            //    get_location_woeid();
             setTextDate();
         });
 
-        /*
-        $('#surveydate-map').click(function(){
-          $('.hidde').toggle();
-        });
-        */
     });
 
 })(jQuery);
