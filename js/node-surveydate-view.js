@@ -1,6 +1,6 @@
-(function ($) {
-    var aySurvey;
-    var ayVote_result;
+﻿(function ($) {
+    var aySurvey = [];
+    var ayVote_result = [];
     var user_uid;
     var user_name;
     var voted_count;
@@ -17,8 +17,14 @@
         weekday[5] = "Fri";
         weekday[6] = "Sat";
 
-        aySurvey = JSON.parse($('#survey').text());
-        ayVote_result = JSON.parse($('#result').text());
+        if ( $.trim($('#survey').text()) != '' ) {
+           aySurvey = JSON.parse($('#survey').text());
+        }
+        
+        if ( $.trim($('#result').text()) != '' ) {
+           ayVote_result = JSON.parse($('#result').text());
+        }        
+
         user_uid = $('#user-uid').text();
         user_name = $('#user-name').text();
     }
@@ -61,15 +67,17 @@
                 }
 
                 voted_percent = 0;
-
+                voted_count_by_date = 0;
+                
                 if (voted_count != 0) {
-                    voted_percent = ayVote_result[key] / voted_count * 100;
-                }
+                   voted_count_by_date = ayVote_result[key];
+                   voted_percent = ayVote_result[key] / voted_count * 100;
+                } 
 
                 html = '<tr><td><input id="' + key + '" type="checkbox" class="form-control input-sm checkbox"></td>';
                 html += '<td data-date="' + value + '">' + vote_date + '</td>';
                 html += '<td>' + vote_time + '</td>';
-                html += '<td><a href="#" class="showvoter" data-title="' + vote_date + ' ' + vote_time + ' ' + ayVote_result[key] + '人" data-votedatekey="' + key + '" data-toggle="modal" data-target="#Modal-Voter">' + ayVote_result[key] + '</a></td>';
+                html += '<td><a href="#" class="showvoter" data-title="' + vote_date + ' ' + vote_time + ' ' + voted_count_by_date + '人" data-votedatekey="' + key + '" data-toggle="modal" data-target="#Modal-Voter">' + voted_count_by_date + '</a></td>';
                 html += '<td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="' + voted_percent + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + voted_percent + '%"></div></div></td>';
                 html += '</tr>';
                 $('.checkmeet-list table tbody').append(html);
