@@ -146,31 +146,33 @@ global $domain;
     <div class="container slogon">
       <div class="row no-gutter">
         <div class="col-sm-6">
-          <img src="sites/all/themes/survey/img/homesm1.jpg">
+          <img src="sites/all/themes/survey/img/homesm1.png" class="homesm">
         </div>
         <div class="col-sm-6 text-center demo1">
           <h3>流程設計簡單 運用方便好上手</h3>
+          <img src="sites/all/themes/survey/img/push.png" alt="讚" class="img-circle">
         </div>
-        <div class="col-sm-7 demo2">
-          <h3>意見收集省時 開心等結果</h3>
-        </div>
-        <div class="col-sm-5">
-          <img src="sites/all/themes/survey/img/homesm1.jpg">
+        <div class="col-sm-7 text-center demo2">
+          <h3><img src="sites/all/themes/survey/img/time.png" alt="時間" class="img-circle">&nbsp;&nbsp;&nbsp;&nbsp;意見收集省時 開心等結果</h3>
         </div>
         <div class="col-sm-5">
-          <img src="sites/all/themes/survey/img/homesm1.jpg">
+          <img src="sites/all/themes/survey/img/homesm2.png" class="homesm">
         </div>
-        <div class="col-sm-7 demo3">
-          <h3>多人一起約 輕鬆不麻煩</h3>
+        <div class="col-sm-5">
+          <img src="sites/all/themes/survey/img/homesm3.png" class="homesm">
         </div>
-        <div class="col-sm-4">
-          <img src="sites/all/themes/survey/img/homesm1.jpg">
-        </div>
-        <div class="col-sm-4 demo4">
-          <h3>聚會易管理 Easy Meet</h3>
+        <div class="col-sm-7 text-center demo3">
+          <h3><img src="sites/all/themes/survey/img/people.png" alt="人群" class="img-circle">&nbsp;&nbsp;&nbsp;&nbsp;多人一起約 輕鬆不麻煩</h3>
         </div>
         <div class="col-sm-4">
-          <img src="sites/all/themes/survey/img/homesm1.jpg">
+          <img src="sites/all/themes/survey/img/homesm4.png" class="homesm">
+        </div>
+        <div class="col-sm-4 text-center demo4">
+          <h3>聚會易管理</h3>
+          <h3>Easy Meet</h3>
+        </div>
+        <div class="col-sm-4">
+          <img src="sites/all/themes/survey/img/homesm5.png" class="homesm">
         </div>
       </div>
     </div>
