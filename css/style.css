@@ -9180,6 +9180,10 @@ li.L9 {
   height: 180px;
   background-position: right center;
 }
+/* about page */
+.aboutus p {
+  color: #28ADB9;
+}
 /* history page */
 .history .vcenter {
     padding-top: 120px;
