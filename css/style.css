@@ -8966,7 +8966,7 @@ pre.code {
 }
 a {
   text-decoration: none;
-  color: #800;
+  color: #A17339;
 }
 a:hover {
   text-decoration: underline;
@@ -9194,19 +9194,19 @@ li.L9 {
 .history table tr>th {
     border: none;
     text-align: center;
-    color: #D0D0D2;
+    color: #B5B5B5;
     font-size: 12pt;
 }
 .history table.join td {
-    background-color:#FCE9EB;
+    background-color:#FDEDEC;
     height:40px;
-    color: #604677;
+    color: #171C61;
     font-size: 12pt;
 }
 .history table.launch td {
-    background-color:#E1F3F5;
+    background-color:#EAF6F7;
     height:40px;
-    color: #A2ADC3;
+    color: #171C61;
     font-size: 12pt;
 }
 /* survey page */
