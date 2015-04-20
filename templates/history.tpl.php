@@ -3,11 +3,11 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/user-profile.js');
 ?>
 
 <div class="container history">
-  <h1 class="text-center">
-    <img src="sites/all/themes/survey/img/meet_list_title.png" alt="聚會記錄">
-  </h1>
   <div class="row">
     <div class="col-xs-6 col-md-6">
+      <h1 class="text-center">
+         <img src="sites/all/themes/survey/img/meet_list_title.png" alt="聚會記錄">
+      </h1>    
       <div class="row">
         <div class="col-xs-2 col-md-2">
           <img src="sites/all/themes/survey/img/join.png" class="img-responsive vcenter" alt="參與的聚會">
