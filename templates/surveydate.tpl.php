@@ -25,35 +25,35 @@ if ($form['name']['#value'] == null) {
 };
 ?>
 
-<div class="container">
+<div id="survey-date" class="container">
   <div id="survey-body">
     <div id="first-step" class="show">
       <h1 class="text-left">
-        <img src="sites/all/themes/survey/img/meet_step_title.png" alt="建立聚會">
+        <img src="sites/all/themes/survey/img/surveydate.png" alt="建立聚會">&nbsp;&nbsp;建立聚會基本資料
       </h1>
       <form>
         <div id="alert" class="alert alert-danger" role="alert"></div>
         <div class="col-md-4 form-group">
           <label for="meet-title">
-            <span class="glyphicon glyphicon-bookmark"></span>聚會名稱
+            <span class="glyphicon glyphicon-bookmark"></span>&nbsp;聚會名稱
           </label>
           <?php print render($form['title']); ?>
         </div>
         <div class="col-md-6 form-group">
           <label for="meet-detail">
-            <span class="glyphicon glyphicon-list"></span>備註
+            <span class="glyphicon glyphicon-list"></span>&nbsp;備註
           </label>
           <?php print render($form['description']); ?>
         </div>
         <div class="col-md-4 form-group">
           <label for="meet-chairman">
-            <span class="glyphicon glyphicon-user"></span>主辦者
+            <span class="glyphicon glyphicon-user"></span>&nbsp;主辦者
           </label>
           <?php print render($form['name']); ?>
         </div>
         <div class="col-md-6 form-group">
           <label for="meet-email">
-            <span class="glyphicon glyphicon-envelope"></span>聯絡信箱
+            <span class="glyphicon glyphicon-envelope"></span>&nbsp;聯絡信箱
           </label>
           <?php print render($form['email']); ?>
         </div>
@@ -65,7 +65,7 @@ if ($form['name']['#value'] == null) {
         </div>
         <div class="col-md-6 form-group">
           <label for="meet-time">
-            <span class="glyphicon glyphicon-time"></span>時間
+            <span class="glyphicon glyphicon-time"></span>&nbsp;時間
           </label>
           <div id="selecttime"></div>
         </div>
@@ -80,7 +80,7 @@ if ($form['name']['#value'] == null) {
           <form class="form-horizontal">
             <div class="col-md-12 form-group">
               <label for="meet-location" class="col-md-2">
-                <span class="glyphicon glyphicon-map-marker"></span>地點
+                <span class="glyphicon glyphicon-map-marker"></span>&nbsp;地點
               </label>
               <?php print render($form['location']); ?>
               <div id="surveymap" class="col-md-12 form-group"></div>
