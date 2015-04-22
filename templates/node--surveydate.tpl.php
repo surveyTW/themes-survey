@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * @file
  * Default theme implementation to display a node.
@@ -245,8 +245,8 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
 
   print render($content['links']);
 
-  if (0): print render($content['comments']);
-  endif;
+  print render($content['comments']);
+  
   ?>
 
   <div class="hidden">  

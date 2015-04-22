@@ -6886,38 +6886,46 @@ body.front.navbar-is-fixed-top {
 }
 /* survey view page*/
 #checkmeet {
-    color: gray;
+    color: #b5b5b5;
 }
 .checkmeet-meet h2 {
-    color: #F39800;
+    color: #e99415;
     border-top: none;
 }
 .checkmeet-meet h4 {
-    color: #7F4F21;
+    color: #673a1b;
 }
 .checkmeet-meet h4 span {
-    color: gray;
+    color: #b5b5b5;;
 }
 .checkmeet-meet h4 .voted {
-    color: #F39800;
+    color: #e99415;
     text-decoration:underline;
 }
 .checkmeet-list h2 {
+    color: #9fa0a0;
     border-top: none;
 }
+.checkmeet-list table tr th {
+    color: #9fa0a0;
+}
 .checkmeet-list table tr td {
-    color: #000000;
+    color: #40220f;
 }
 .checkmeet-list a {
     color: #000000;
     text-decoration:underline;
+}
+.tmp-username .form-control{
+    background-color: #f0efef;
+    color: #8a8a8a;
 }
 #showmap {
     color: gray;
     font-size: 10pt;
 }
 #Modal-Voter .modal-header {
-  background-color: gray;
+  background-color: #b5b5b6;
     color: #fff;
 }
 /* home page */
