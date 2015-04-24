@@ -76,7 +76,7 @@
 global $base_url;
 global $domain;
 ?>
-<header id="navbar" role="banner" class="navbar">
+<header id="navbar" role="banner" class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
       <?php if ($logo): ?>
@@ -188,7 +188,7 @@ global $domain;
   </div>
 </div>
 
-<footer class="footer container">
+<footer class="footer">
 
   <p class="text-center">
     <a href="#">EZMEET粉絲團</a> | 繁體中文

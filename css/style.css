@@ -4155,8 +4155,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-image: url(../img/backup.png);
+  background-repeat: repeat-x;
 }
 .navbar-default .navbar-brand {
   color: #777777;
@@ -6391,8 +6391,8 @@ body #admin-menu .dropdown li {
 }
 .footer {
   margin-top: 45px;
-  padding-top: 35px;
-  padding-bottom: 36p;
+  background-image: url('../img/backdown.png');
+  background-repeat: repeat-x;
 }
 
 .footer p {
@@ -6943,10 +6943,10 @@ body.front.navbar-is-fixed-top {
 }
 #gomeet {
     margin-top: 290px;
-    width: 588px;
     height:160px;
     display:block;
     background:transparent url('../img/home_link1.png') center top no-repeat;
+    background-size: 50%;
 }
 
 #gomeet:hover {
