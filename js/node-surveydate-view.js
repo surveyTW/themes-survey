@@ -222,6 +222,8 @@
         var map = new google.maps.Map(mapholder, mapOptions);
         var marker = new google.maps.Marker({ position: latlng, map: map, title: location });
 
+        return map;
+
         //    var populationOptions = {
         //      strokeColor: '#FF0000',
         //      strokeOpacity: 0.4,
@@ -235,6 +237,7 @@
     }
 
     $(document).ready(function () {
+        var map;
         $('#alert-message').hide();
         initParam();
 
@@ -245,8 +248,15 @@
         var latlng = $('#latlng').text();
         if (latlng.length) {
             var n = latlng.indexOf(", ");
-            showPosition(latlng.substr(0, n), latlng.substr(n + 2, latlng.length), $('#location').text());
+            map = showPosition(latlng.substr(0, n), latlng.substr(n + 2, latlng.length), $('#location').text());
         }
+
+        //need to resize when we change div size
+        $('#Modal-Map').on('shown.bs.modal', function (event) {
+            var currentCenter = map.getCenter();
+            google.maps.event.trigger(map, 'resize');
+            map.setCenter(currentCenter); // Re-set previous center
+        })
 
         $('#Modal-Voter').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget); // Button that triggered the modal
