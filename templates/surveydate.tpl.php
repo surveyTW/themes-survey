@@ -77,7 +77,7 @@ if ($form['name']['#value'] == null) {
     <div id="second-step" class="hidden">
       <div class="row">
         <div class="col-md-9">
-          <form class="form-horizontal">
+          <div class="form-horizontal">
             <div class="col-md-12 form-group">
               <label for="meet-location" class="col-md-2">
                 <span class="glyphicon glyphicon-map-marker"></span>&nbsp;地點
@@ -85,7 +85,7 @@ if ($form['name']['#value'] == null) {
               <?php print render($form['location']); ?>
               <div id="surveymap" class="col-md-12 form-group"></div>
             </div>
-          </form>
+          </div>
           <div class="col-md-12 btn-group ">
             <?php print render($form['submit']); ?>
             <a href="#" type="button" id="second-Prev" class="btn pull-right"></a>
