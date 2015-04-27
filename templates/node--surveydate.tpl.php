@@ -176,7 +176,7 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
                   <table class="table">
                       <thead>
                           <tr>
-                              <th class="col-xs-1"></th>
+                              <th class="col-xs-1" style="min-width: 30px;"></th><!-- add min-width for small screen checkbox disapear bug -->
                               <th class="col-xs-3">日期</th>
                               <th class="col-xs-3">時間</th>
                               <th class="col-xs-2">與會人數</th>
