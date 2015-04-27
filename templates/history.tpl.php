@@ -41,7 +41,7 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/user-profile.js');
                                    
                  foreach ($result as $i => $row) {
                     $private_nid = $row->nid;
-                    $private_node = node_load($private_nid);dpm($private_node);
+                    $private_node = node_load($private_nid);
                                   
                     $nid = $private_node->field_nid[LANGUAGE_NONE][0]['value'];
                     $conditions = array();
