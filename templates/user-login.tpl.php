@@ -15,7 +15,7 @@ drupal_add_css(drupal_get_path('theme', 'survey') . '/css/font-awesome.min.css',
     <?php
     print render($form['actions']['submit']);
     ?>
-    <a href="/user/simple-fb-connect" type="button" class="btn btn-primary" ><i class="fa fa-facebook-official"></i> FB一鍵登入</a>
+    <a href="/user/simple-fb-connect?current=<?php print $_GET['current']; ?>" type="button" class="btn btn-primary" ><i class="fa fa-facebook-official"></i> FB一鍵登入</a>
     <a href="/user/register" type="button" class="btn btn-success" >註冊</a>
   </div>
 </div>
