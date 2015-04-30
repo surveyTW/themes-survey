@@ -122,7 +122,6 @@
 <div class="htmlmail-body">
 <div class="container">
 <div class="form-group col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-    <div><?php print $theme_path $theme;?></div>
     <div style="width:100%;height:1px; background:#E0E0E0;"></div>
     <div>嗨，<?php print $params['name'];?>:</div>
     <div>你剛發起了一個聚會</div>
