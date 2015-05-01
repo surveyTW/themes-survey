@@ -133,8 +133,8 @@
         <div style="margin-bottom:10px">趕快把這個網址分享出去吧!</div>
         <div style="margin-bottom:10px"><?php print $params['survey_url'];?></div>
         <div> 
-            <a class="" style="padding-left:6px;padding-right:6px" href="https://www.facebook.com/sharer/sharer.php?app_id=<?php print variable_get('simple_fb_connect_appid', 0); ?>&sdk=joey&u=<?php print $params['survey_url']; ?>&display=popup&ref=plugin&src=share_button" target="_blank"><img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" height="18" alt="LINE分享給好友" title="LINE分享給好友"></a>
-            <a class="" style="padding-left:6px;padding-right:6px" href="http://line.naver.jp/R/msg/text/?<?php print $params['survey_url']; ?>"><img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" height="18" alt="LINE分享給好友" title="LINE分享給好友"></a>
+            <a class="" style="padding-left:6px;padding-right:6px" href="https://www.facebook.com/sharer/sharer.php?app_id=<?php print variable_get('simple_fb_connect_appid', 0); ?>&sdk=joey&u=<?php print $params['survey_url']; ?>&display=popup&ref=plugin&src=share_button" target="_blank"><img src="http://divasmobilesolutions.com/wp-content/uploads/2012/02/fbicon-e1329880206895.png" height="25" alt="LINE分享給好友" title="LINE分享給好友"></a>
+            <a class="" style="padding-left:6px;padding-right:6px" href="http://line.naver.jp/R/msg/text/?<?php print $params['survey_url']; ?>"><img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" height="25" alt="LINE分享給好友" title="LINE分享給好友"></a>
         </div>
         <div style="margin-bottom:10px"><br></div>
         <div style="width:100%;height:1px; background:#E0E0E0;"></div>
