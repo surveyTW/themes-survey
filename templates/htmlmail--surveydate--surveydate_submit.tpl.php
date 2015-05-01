@@ -141,7 +141,7 @@
         <div style="text-align:center; color:#969696;font-size:13px">
         <div style="margin-bottom:10px"><br></div>
             <div style="margin-bottom:10px">祝您使用愉快 !</div>
-            <div style="margin-bottom:10px">EZmeet工作團隊 :-)</div>
+            <div style="margin-bottom:10px">EZMEET工作團隊 :-)</div>
             <div style="margin-bottom:10px">完整掌握EZmeet第一手資訊，請追蹤我們的<a href="https://www.facebook.com/pages/Ezmeet/639697109494184">臉書粉絲團</a></div>
         </div>
     </div>
