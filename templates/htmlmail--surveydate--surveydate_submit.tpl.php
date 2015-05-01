@@ -119,27 +119,31 @@
   drupal_add_js('https://apis.google.com/js/platform.js');
 ?>
 
-<div class="htmlmail-body">
-<div class="container">
-<div class="form-group col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-    <div style="width:100%;height:1px; background:#E0E0E0;"></div>
-    <div>嗨，<?php print $params['name'];?>:</div>
-    <div>你剛發起了一個聚會</div>
-    <div>"<?php print $params['title']?>"</div>
-    <div>趕快把這個網址分享出去吧!</div>
-    <div><?php print $params['survey_url'];?></div>
-    <div style="width:100%;height:1px; background:#E0E0E0;"></div>
-    <div class="text-center">祝您使用愉快!</div>
-    <div class="text-center">EZmeet工作團隊 :-)</div>
-    <div class="text-center">完整掌握EZmeet第一手資訊，請追蹤我們的臉書粉絲團</div>
+<div style="margin:0;padding:0;font-family:arial;color:#333;background-color:#fff;text-align:center">
+<div><a href="<?php print $base_url;?>"><img src="<?php print $base_url?>sites/all/themes/survey/logo.png"></a></div>
+    <div style="min-width:220px;max-width:440px;margin:0 auto;padding-top:6px;text-align:left;font-family:arial,sans-serif;color:#A07D5B">
+        <div style="width:100%;height:1px; background:#E0E0E0;"></div>
+        <div style="margin-bottom:10px"><br></div>
+        <div style="margin-bottom:10px">嗨，<?php print $params['name'];?>:</div>
+        <div style="margin-bottom:10px"><br></div>
+        <div style="margin-bottom:10px">你剛發起了一個聚會</div>
+        <div style="margin-bottom:10px">"<?php print $params['title']?>"</div>
+        <div style="margin-bottom:10px">趕快把這個網址分享出去吧!</div>
+        <div style="margin-bottom:10px"><?php print $params['survey_url'];?></div>
+        <div> 
+            <a class="" style="padding-left:6px;padding-right:6px" href="https://www.facebook.com/sharer/sharer.php?app_id=<?php print variable_get('simple_fb_connect_appid', 0); ?>&sdk=joey&u=<?php print $params['survey_url']; ?>&display=popup&ref=plugin&src=share_button" target="_blank"><img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" height="18" alt="LINE分享給好友" title="LINE分享給好友"></a>
+            <a class="" style="padding-left:6px;padding-right:6px" href="http://line.naver.jp/R/msg/text/?<?php print $params['survey_url']; ?>"><img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" height="18" alt="LINE分享給好友" title="LINE分享給好友"></a>
+        </div>
+        <div style="margin-bottom:10px"><br></div>
+        <div style="width:100%;height:1px; background:#E0E0E0;"></div>
+        <div style="text-align:center; color:#969696;font-size:13px">
+        <div style="margin-bottom:10px"><br></div>
+            <div style="margin-bottom:10px">祝您使用愉快 !</div>
+            <div style="margin-bottom:10px">EZmeet工作團隊 :-)</div>
+            <div style="margin-bottom:10px">完整掌握EZmeet第一手資訊，請追蹤我們的<a href="https://www.facebook.com/pages/Ezmeet/639697109494184">臉書粉絲團</a></div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-
-<div class="line_button"><a href="http://line.naver.jp/R/msg/text/?<?php print $params['survey_url']; ?>">
-      <img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="32" height="32" alt="LINE分享給好友" title="LINE分享給好友"></a>
-</div>
-
 
 
 
