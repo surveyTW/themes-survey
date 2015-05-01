@@ -125,9 +125,9 @@
 <div><a href="<?php print $base_url;?>"><img src="<?php print $base_url?>/sites/all/themes/survey/logo.png"></a></div>
     <div style="min-width:220px;max-width:440px;margin:0 auto;padding-top:6px;text-align:left;font-family:arial,sans-serif;color:#A07D5B">
         <div style="width:100%;height:1px; background:#E0E0E0;"></div>
-        <div style="margin-bottom:10px"><br></div>
-        <div style="margin-bottom:10px">嗨，<?php print $params['name'];?>:</div>
-        <div style="margin-bottom:10px"><br></div>
+        <div><br></div>
+        <div>嗨，<?php print $params['name'];?>:</div>
+        <div><br></div>
         <div style="margin-bottom:10px">你剛發起了一個聚會</div>
         <div style="margin-bottom:10px">"<?php print $params['title']?>"</div>
         <div style="margin-bottom:10px">趕快把這個網址分享出去吧!</div>
