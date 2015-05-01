@@ -106,6 +106,8 @@
  *
  * =========================================================== End instructions.
  */
+  global $base_url;
+
   $template_name = basename(__FILE__);
   $current_path = realpath(NULL);
   $current_len = strlen($current_path);
@@ -120,7 +122,7 @@
 ?>
 
 <div style="margin:0;padding:0;font-family:arial;color:#333;background-color:#fff;text-align:center">
-<div><a href="<?php print $base_url;?>"><img src="<?php print $base_url?>sites/all/themes/survey/logo.png"></a></div>
+<div><a href="<?php print $base_url;?>"><img src="<?php print $base_url?>/sites/all/themes/survey/logo.png"></a></div>
     <div style="min-width:220px;max-width:440px;margin:0 auto;padding-top:6px;text-align:left;font-family:arial,sans-serif;color:#A07D5B">
         <div style="width:100%;height:1px; background:#E0E0E0;"></div>
         <div style="margin-bottom:10px"><br></div>
