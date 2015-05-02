@@ -154,7 +154,7 @@
 </div>
 <footer class="footer">
   <p class="text-center">
-    <a href="#">EZMEET粉絲團</a> | 繁體中文
+    <a href="https://www.facebook.com/pages/Ezmeet/639697109494184">EZMEET粉絲團</a> | 繁體中文
   </p>
   <p class="text-center copyright">Copyrights © EZMEET. All right reserved.</p>
   <?php //print render($page['footer']); ?>
