@@ -1,6 +1,7 @@
 <?php
 
 /**
+ *
  * @file
  * Default template for HTML Mail
  *
