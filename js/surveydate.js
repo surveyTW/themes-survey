@@ -164,6 +164,9 @@
 
             ayDate.push(localAyDate);
         });
+        //always add 無法參加
+        ayDate.push('無法參加');
+
         $('#edit-date').val(ayDate.join());
     }
 
