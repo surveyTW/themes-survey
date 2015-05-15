@@ -53,6 +53,25 @@
         $('.voted').text(voted_count);
     }
 
+    function checkCantMakeIt() {
+        var result = false;
+        if (user_uid != 0) {
+
+            ayVoter = getVoterByUid(user_uid);
+
+            if (ayVoter.length != 0) {
+                var cantMakeItKey = $('input[name="cant-make-it"]')[0].id;
+                $.each(ayVoter[0], function(key, value){
+                    if(key == cantMakeItKey && value == 1){
+                        result = true;
+                    }
+                });
+            }
+        }
+
+        return result;
+    }
+
     function setMeetList() {
         var ayDate = $('#date').text().split(",");
         //為了再最後確認有勾無法參加的話 要把正常checkbox disable掉
@@ -105,7 +124,7 @@
         $('.checkmeet-list table tbody').append(html);
 
         //diable normal date checkbox if isCantMakeIt
-        if(isCantMakeIt){
+        if(isCantMakeIt && checkCantMakeIt()){
             $('.normal-date-checkbox').attr("disabled", true);
         }
     }
