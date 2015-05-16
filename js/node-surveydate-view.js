@@ -51,6 +51,7 @@
     function setMeet() {
         voted_count = aySurvey.length;
         $('.voted').text(voted_count);
+        $('.voted').attr("data-title", "已投票" + voted_count + "人");
     }
 
     function checkCantMakeIt() {
@@ -314,14 +315,21 @@
             var vote_date_key = button.data('votedatekey');
 
             var modal = $(this);
-            modal.find('.modal-title').text(title);
-
-            ayVoters = getVotersByDate(vote_date_key);
-
             var Voters = [];
-            $.each(ayVoters, function (key, obj) {
-                Voters.push(obj.name);
-            });
+            modal.find('.modal-title').text(title);
+            //99 means all voter
+            if(vote_date_key == 99){
+                $.each(aySurvey, function (key, obj) {
+                    Voters.push(obj.name);
+                });
+            }
+            else{
+                ayVoters = getVotersByDate(vote_date_key);
+
+                $.each(ayVoters, function (key, obj) {
+                    Voters.push(obj.name);
+                });
+            }
             modal.find('.modal-body').text(Voters.join(", "));
         })
 

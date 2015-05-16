@@ -157,7 +157,8 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
                       <h4><span class="glyphicon glyphicon-stats"></span></h4>
                   </div>
                   <div class="col-xs-11">
-                      <h4><span>已投票&nbsp;</span><span class="voted"></span><span>&nbsp;人</span></h4>
+                      <!-- use votedatekey 99 to mean all voter -->
+                      <h4><span>已投票&nbsp;</span><a href="#" class="voted showvoter" data-toggle="modal" data-target="#Modal-Voter" data-votedatekey=99></a><span>&nbsp;人</span></h4>
                   </div>
               </div>
           </div>
