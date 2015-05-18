@@ -75,6 +75,8 @@
 
 global $base_url;
 global $domain;
+
+print "";
 ?>
 <header id="navbar" role="banner" class="navbar navbar-default">
   <div class="container">
@@ -82,7 +84,7 @@ global $domain;
       <?php if ($logo): ?>
       <a class="logo navbar-btn pull-left" href=""
         <?php print $front_page; ?>" title="<?php print t('Home'); ?>">
-        <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+        <img class="img-responsive" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
       </a>
       <?php endif; ?>
 
@@ -112,12 +114,14 @@ global $domain;
     <?php endif; ?>
   </div>
 </header>
-<div class="homepage-jumbotron">
-  <div class="jumbotron">
-    <div class="container">
-      <a id="gomeet" href="surveydate" title="馬上約" class="btn btn-lg center-block"></a>
+<div class="homepage-container container">
+	<div class="row">
+		<div class="homepage-jumbotron ">
+			<div class="jumbotron">
+      		<a id="gomeet" href="surveydate" title="馬上約" class="btn btn-xlg center-block "></a>
+  			</div>
+  		</div>  
     </div>
-  </div>
 </div>
 
 <div class="main-container container">
