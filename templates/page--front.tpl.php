@@ -124,7 +124,7 @@ print "";
     </div>
 </div>
 
-<div class="main-container container">
+<div class="main-container container hidden-xs">
 
   <header role="banner" id="page-header">
     <?php if (!empty($site_slogan)): ?>

@@ -59,7 +59,7 @@ if ($form['name']['#value'] == null) {
         </div>
         <div class="col-md-4 form-group">
           <label for="meet-calendar">
-            <span class="glyphicon glyphicon-calendar"></span>日期<span>[可複選]</span>
+            <span class="glyphicon glyphicon-calendar"></span>日期<span style="color:#B5B5B5;">  [可複選]</span>
           </label>
           <div id="selectdate"></div>
         </div>

@@ -117,46 +117,46 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
       <div class="row checkmeet-meet">
           <div class="col-xs-6">
               <div class="row">
-                  <div class="col-xs-1 text-center">
+                  <div class="col-xs-2 text-center">
                       <h2><span class="glyphicon glyphicon-bookmark"></span></h2>
                   </div>
-                  <div class="col-xs-11">
+                  <div class="col-xs-10">
                       <h2><?php print $title; ?></h2>
                   </div>
               </div>
               <div class="row">
-                  <div class="col-xs-1 text-center">
+                  <div class="col-xs-2 text-center">
                       <h4><span class="glyphicon glyphicon-user"></span></h4>
                   </div>
-                  <div class="col-xs-11">
+                  <div class="col-xs-10">
                       <h4><?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></h4>
                   </div>
               </div>
               <div class="row">
-                  <div class="col-xs-1 text-center">
+                  <div class="col-xs-2 text-center">
                       <h4><span class="glyphicon glyphicon-map-marker"></span></h4>
                   </div>
-                  <div class="col-xs-11">
+                  <div class="col-xs-10">
                       <h4>
                          <?php print $field_location . $field_location_map; ?>
                       </h4>
                   </div>
               </div>
               <div class="row">
-                  <div class="col-xs-1 text-center">
+                  <div class="col-xs-2 text-center">
                       <h4><span class="glyphicon glyphicon-file"></span></h4>
                   </div>
-                  <div class="col-xs-11">
+                  <div class="col-xs-10">
                       <h4>
                          <?php print $field_description; ?>
                       </h4>
                   </div>
               </div>
               <div class="row">
-                  <div class="col-xs-1 text-center">
+                  <div class="col-xs-2 text-center">
                       <h4><span class="glyphicon glyphicon-stats"></span></h4>
                   </div>
-                  <div class="col-xs-11">
+                  <div class="col-xs-10">
                       <!-- use votedatekey 99 to mean all voter -->
                       <h4><span>已投票&nbsp;</span><a href="#" class="voted showvoter" data-toggle="modal" data-target="#Modal-Voter" data-votedatekey=99></a><span>&nbsp;人</span></h4>
                   </div>
@@ -166,11 +166,11 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
       <div class="row checkmeet-list">
           <div class="col-xs-6">
               <div class="row">
-                  <div class="col-xs-1 text-center">
+                  <div class="col-xs-2 text-center">
                       <h2><span class="glyphicon glyphicon-th-list"></span></h2>
                   </div>
-                  <div class="col-xs-11">
-                      <h2>投票 & 統計清單</h2>
+                  <div class="col-xs-10">
+                      <h2>投票清單</h2>
                   </div>
               </div>
               <div class="col-xs-12">
@@ -180,7 +180,7 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
                               <th class="col-xs-1" style="min-width: 30px;"></th><!-- add min-width for small screen checkbox disapear bug -->
                               <th class="col-xs-3">日期</th>
                               <th class="col-xs-3">時間</th>
-                              <th class="col-xs-2">與會人數</th>
+                              <th class="col-xs-2">人數</th>
                               <th class="col-xs-3"></th>
                           </tr>
                       </thead>
