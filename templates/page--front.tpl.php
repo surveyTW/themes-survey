@@ -116,7 +116,7 @@ print "";
 </header>
 <div class="homepage-container container">
 	<div class="row">
-		<div class="homepage-jumbotron ">
+		<div class="homepage-jumbotron">
 			<div class="jumbotron">
       		<a id="gomeet" href="surveydate" title="馬上約" class="btn btn-xlg center-block "></a>
   			</div>

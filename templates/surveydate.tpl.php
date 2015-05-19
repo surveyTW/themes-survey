@@ -29,7 +29,7 @@ if ($form['name']['#value'] == null) {
   <div id="survey-body">
     <div id="first-step" class="show">
       <h1 class="text-left">
-        <img src="sites/all/themes/survey/img/surveydate.png" alt="建立聚會">&nbsp;&nbsp;建立聚會基本資料
+        <img src="sites/all/themes/survey/img/surveydate.png" alt="建立聚會">&nbsp;&nbsp;聚會資料
       </h1>
       <form>
         <div id="alert" class="alert alert-danger" role="alert"></div>
@@ -106,9 +106,10 @@ if ($form['name']['#value'] == null) {
     </div>
   </div> 
   <div id="survey-end">
-    <div class="jumbotron text-center">
-      <h3>問卷製作完成!</h3>
-      <p>
+    <div class="container">
+	<div class="jumbotron text-center">
+      	<h3>問卷製作完成!</h3>
+      	<p>
         分享問卷網址 <a id="text-to-copy" href="
           <?php print $form['survey_path']['#value'] ?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['survey_path']['#value'] ?>
         </a>
@@ -118,7 +119,8 @@ if ($form['name']['#value'] == null) {
          <a class="btn btn-default" href="http://line.naver.jp/R/msg/text/?<?php print $form['survey_path']['#value']; ?>"><img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="18" height="18" alt="LINE分享給好友" title="LINE分享給好友"></a>
       </div>     
     </div>
-  </div>
+   </div>	  
+ </div>
 </div>
 
 <?php print render($form['date']); ?>

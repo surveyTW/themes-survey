@@ -795,7 +795,7 @@ pre code {
 }
 @media (min-width: 338px) {
   .homepage-container {
-    width: 400px;
+    width: 390px;
     max-height: 320px;
     
   }
@@ -7055,7 +7055,7 @@ body.front.navbar-is-fixed-top {
     height:100%; /*18em;*/
     display:block;
     background:transparent url('../img/home_link1.png') center top no-repeat;
-    background-size: 50%;
+    background-size: 60%;
     background-position: 50% 45%;
    
 }
@@ -7064,7 +7064,7 @@ body.front.navbar-is-fixed-top {
     background-image: url('../img/home_link2.png');
 }
 .btn-xlg {
-  padding: 70px 16px;
+  padding: 90px 16px;
   font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
