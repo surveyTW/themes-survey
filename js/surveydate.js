@@ -55,7 +55,7 @@
     {
         var mapholder = document.getElementById('surveymap');
         mapholder.style.height = '380px';
-        mapholder.style.width = '100%';
+        mapholder.style.width = '90%';
         //mapholder.style.width = '540px';
 
         geocoder = new google.maps.Geocoder();

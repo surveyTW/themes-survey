@@ -83,7 +83,7 @@ if ($form['name']['#value'] == null) {
                 <span class="glyphicon glyphicon-map-marker"></span>&nbsp;地點
               </label>
               <?php print render($form['location']); ?>
-              <div id="surveymap" class="col-md-12 form-group"></div>
+              <div id="surveymap" class="col-md-12 form-group" style="margin-left:0.9em;"></div>
             </div>
           </div>
           <div class="col-md-12 btn-group ">
