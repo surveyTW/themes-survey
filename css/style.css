@@ -9372,8 +9372,8 @@ li.L9 {
 #survey-end {
     background-image: url("../img/surveyend.png");
     background-repeat: repeat;
-    height:100vh;
-    margin-left:-90px;
+ /*   height:100vh;*/
+/*    margin-left:-90px;*/
 }
 #survey-end h3 {
     color:#6A3906;
