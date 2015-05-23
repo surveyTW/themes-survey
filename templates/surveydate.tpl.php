@@ -9,7 +9,9 @@ drupal_add_js(drupal_get_path('theme', 'survey') . '/js/MultiDatesPicker/jquery-
 //drupal_add_js(drupal_get_path('theme', 'survey') . '/js/MultiDatesPicker/js/jquery.ui.datepicker.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/MultiDatesPicker/js/jquery.ui.datepicker-zh-TW.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/BootstrapTimepicker/bootstrap-timepicker.min.js');
+drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-clockpicker.min.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/surveydate.js');
+drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-clockpicker.min.css', array('group' => CSS_THEME, 'type' => 'file'));
 
 //  drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-timepicker.min.css', array('group' => CSS_THEME, 'type' => 'file'));
 ?>
