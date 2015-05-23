@@ -7,6 +7,7 @@
 
 /**
  * Implements hook_theme().
+ * krammer pull test
  */
 function survey_theme(&$existing, $type, $theme, $path) {
   $hook_theme = array(

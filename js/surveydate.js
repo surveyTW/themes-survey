@@ -55,7 +55,7 @@
     {
         var mapholder = document.getElementById('surveymap');
         mapholder.style.height = '380px';
-        mapholder.style.width = '100%';
+        mapholder.style.width = '90%';
         //mapholder.style.width = '540px';
 
         geocoder = new google.maps.Geocoder();
@@ -164,6 +164,9 @@
 
             ayDate.push(localAyDate);
         });
+        //always add 無法參加
+        ayDate.push('無法參加');
+
         $('#edit-date').val(ayDate.join());
     }
 

@@ -51,15 +51,45 @@
     function setMeet() {
         voted_count = aySurvey.length;
         $('.voted').text(voted_count);
+        $('.voted').attr("data-title", "已投票" + voted_count + "人");
+    }
+
+    function checkCantMakeIt() {
+        var result = false;
+        if (user_uid != 0) {
+
+            ayVoter = getVoterByUid(user_uid);
+
+            if (ayVoter.length != 0) {
+                var cantMakeItKey = $('input[name="cant-make-it"]')[0].id;
+                $.each(ayVoter[0], function(key, value){
+                    if(key == cantMakeItKey && value == 1){
+                        result = true;
+                    }
+                });
+            }
+        }
+
+        return result;
     }
 
     function setMeetList() {
         var ayDate = $('#date').text().split(",");
+        //為了再最後確認有勾無法參加的話 要把正常checkbox disable掉
+        var isCantMakeIt = 0;
 
         $.each(ayDate, function (key, value) {
             if (value != '') {
+                var cantMakeIt = '無法參加';
                 var tmp = value.split(' ');
-                vote_date = tmp[0] + ' ' + getWeekday(tmp[0]);
+                //無法參加不需要getWeekday
+                if(!cantMakeIt.localeCompare(tmp[0])){
+                    isCantMakeIt = 1;
+                    vote_date = tmp[0];
+                }
+                else{
+                    vote_date = tmp[0] + ' ' + getWeekday(tmp[0]);
+                }
                 vote_time = '';
 
                 if (tmp.length >= 3) {
@@ -73,8 +103,14 @@
                    voted_count_by_date = ayVote_result[key];
                    voted_percent = ayVote_result[key] / voted_count * 100;
                 } 
-
-                html = '<tr><td><input id="' + key + '" type="checkbox" class="form-control input-sm checkbox"></td>';
+                
+                //無法參加用特別的name方便接收change event
+                if(!cantMakeIt.localeCompare(tmp[0])){
+                    html = '<tr><td><input id="' + key + '" type="checkbox" name="cant-make-it" class="form-control input-sm checkbox"></td>';
+                }
+                else{
+                    html = '<tr><td><input id="' + key + '" type="checkbox" class="form-control input-sm checkbox normal-date-checkbox"></td>';
+                }
                 html += '<td data-date="' + value + '">' + vote_date + '</td>';
                 html += '<td>' + vote_time + '</td>';
                 html += '<td><a href="#" class="showvoter" data-title="' + vote_date + ' ' + vote_time + ' ' + voted_count_by_date + '人" data-votedatekey="' + key + '" data-toggle="modal" data-target="#Modal-Voter">' + voted_count_by_date + '</a></td>';
@@ -88,6 +124,10 @@
         html = '<tr><td></td><td class="col-xs-3 tmp-username"><input type="text" class="form-control" placeholder="姓名"></td><td class="col-xs-3"><button class="btn btn-danger" id="update-survey" type="submit" data-thmr="thmr_178">送出投票</button></td><td></td><td></td></tr>';
         $('.checkmeet-list table tbody').append(html);
 
+        //diable normal date checkbox if isCantMakeIt
+        if(isCantMakeIt && checkCantMakeIt()){
+            $('.normal-date-checkbox').attr("disabled", true);
+        }
     }
 
     function setUser() {
@@ -251,6 +291,17 @@
             map = showPosition(latlng.substr(0, n), latlng.substr(n + 2, latlng.length), $('#location').text());
         }
 
+        //for 無法參加
+        $('input[type="checkbox"][name="cant-make-it"]').change(function() {
+            if(this.checked) {
+                $('.normal-date-checkbox').removeAttr('checked');
+                $('.normal-date-checkbox').attr("disabled", true);
+            }
+            else{
+                $('.normal-date-checkbox').removeAttr('disabled');
+            }
+        });
+
         //need to resize when we change div size
         $('#Modal-Map').on('shown.bs.modal', function (event) {
             var currentCenter = map.getCenter();
@@ -264,14 +315,21 @@
             var vote_date_key = button.data('votedatekey');
 
             var modal = $(this);
-            modal.find('.modal-title').text(title);
-
-            ayVoters = getVotersByDate(vote_date_key);
-
             var Voters = [];
-            $.each(ayVoters, function (key, obj) {
-                Voters.push(obj.name);
-            });
+            modal.find('.modal-title').text(title);
+            //99 means all voter
+            if(vote_date_key == 99){
+                $.each(aySurvey, function (key, obj) {
+                    Voters.push(obj.name);
+                });
+            }
+            else{
+                ayVoters = getVotersByDate(vote_date_key);
+
+                $.each(ayVoters, function (key, obj) {
+                    Voters.push(obj.name);
+                });
+            }
             modal.find('.modal-body').text(Voters.join(", "));
         })
 
