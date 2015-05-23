@@ -92,8 +92,8 @@
                 }
                 vote_time = '';
 
-                if (tmp.length >= 3) {
-                    vote_time = tmp[1] + ' ' + tmp[2];
+                if (tmp.length >= 2) {
+                    vote_time = tmp[1];
                 }
 
                 voted_percent = 0;
