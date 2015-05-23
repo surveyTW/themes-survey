@@ -8,7 +8,7 @@ drupal_add_js('http://media.line.me/js/line-button.js?v=20140411');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/MultiDatesPicker/jquery-ui.multidatespicker.js');
 //drupal_add_js(drupal_get_path('theme', 'survey') . '/js/MultiDatesPicker/js/jquery.ui.datepicker.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/MultiDatesPicker/js/jquery.ui.datepicker-zh-TW.js');
-drupal_add_js(drupal_get_path('theme', 'survey') . '/js/BootstrapTimepicker/bootstrap-timepicker.min.js');
+//drupal_add_js(drupal_get_path('theme', 'survey') . '/js/BootstrapTimepicker/bootstrap-timepicker.min.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/bootstrap-clockpicker.min.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/surveydate.js');
 drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-clockpicker.min.css', array('group' => CSS_THEME, 'type' => 'file'));
