@@ -1,4 +1,4 @@
-﻿<?php
+﻿﻿<?php
 /**
  * @file
  * Default theme implementation to display a node.
@@ -244,7 +244,9 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
   //drupal_set_message('Thanks for your time!');
   //drupal_get_messages('status');
 
-  print render($content['links']);
+  if ( ! user_is_logged_in() ) {
+     print render($content['links']);
+  }
 
   print render($content['comments']);
   
