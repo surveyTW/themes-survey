@@ -9422,6 +9422,15 @@ font-size: 7pt;
   color: #b5b5b5;
   line-height: 44pt;
 }
-#comment-form #edit-author--2,label,#edit-subject,#edit-preview {
+#comment-form #edit-author--2 {
+display:none;
+}
+#comment-form label {
+display:none;
+}
+#comment-form #edit-subject {
+display:none;
+}
+#comment-form #edit-preview {
 display:none;
 }

@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 /**
  * @file
@@ -43,7 +43,7 @@
             <h2><span class="glyphicon glyphicon-comment"></span></h2>
          </div>
       <div class="col-xs-10">
-         <h2>¯d¨¥ª©</h2>
+         <h2>ç•™è¨€ç‰ˆ</h2>
       </div>
    </div>
    <div class="col-xs-12">
