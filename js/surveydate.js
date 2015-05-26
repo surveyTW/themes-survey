@@ -180,7 +180,7 @@
 
         var input_time = document.createElement('input');
         input_time.className = 'form-control clockpicker';
-        $(input_time).clockpicker({ defaultTime: false });
+        $(input_time).clockpicker({ twelvehour: true, defaultTime: false });
         $(input_time).attr('type', 'text');
 
         var button_clockpicker = document.createElement('button');
