@@ -115,7 +115,7 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
   </div>
   <div class="container text-left" id="checkmeet">
       <div class="row checkmeet-meet">
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-md-6">
               <div class="row">
                   <div class="col-xs-2 text-center">
                       <h2><span class="glyphicon glyphicon-bookmark"></span></h2>
@@ -164,7 +164,7 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
           </div>
       </div>      
       <div class="row checkmeet-list">
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-md-6">
               <div class="row">
                   <div class="col-xs-2 text-center">
                       <h2><span class="glyphicon glyphicon-th-list"></span></h2>
@@ -190,10 +190,6 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
                   </table>
                   <div id="alert-message" class="alert alert-danger" role="alert">...</div>
               </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-xs-6">
           </div>
       </div>
   </div>  

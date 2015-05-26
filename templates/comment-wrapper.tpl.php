@@ -37,17 +37,16 @@
  */
 ?>
 <div id="comments" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-   <div class="col-xs-6">
+   <div class="col-xs-12 col-md-6">
       <div class="row">
          <div class="col-xs-2 text-center">
             <h2><span class="glyphicon glyphicon-comment"></span></h2>
          </div>
-      <div class="col-xs-10">
-         <h2>留言版</h2>
+         <div class="col-xs-10">
+            <h2>留言版</h2>
+         </div>
       </div>
-   </div>
-   <div class="col-xs-12">
-  <?php if ($content['comments'] && $node->type != 'forum'): ?>
+    <?php if ($content['comments'] && $node->type != 'forum'): ?>
     <?php print render($title_prefix); ?>
     <?php print render($title_suffix); ?>
   <?php endif; ?>
