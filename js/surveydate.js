@@ -134,7 +134,7 @@
         $('#selecttime .row').each(function (index, date) {
             var localAyDate = [];
             var otherTime = 0;
-            $(this).find('.bootstrap-timepicker').each(function (index1, time) {
+            $(this).find('.clockpicker').each(function (index1, time) {
                 var duplicate = 0;
                 var tmpTime = $(date).find('.date').eq(0).val() + ' ' + $(time).val();
                 if ($(time).val() != '') {
@@ -179,22 +179,23 @@
         div_input_group.className = 'input-group';
 
         var input_time = document.createElement('input');
-        input_time.className = 'form-control bootstrap-timepicker';
-        $(input_time).timepicker({ defaultTime: false });
+        input_time.className = 'form-control clockpicker';
+        $(input_time).clockpicker({ twelvehour: true, defaultTime: false });
         $(input_time).attr('type', 'text');
 
-        var button_timepicker = document.createElement('button');
-        button_timepicker.className = 'btn btn-default timepicker';
-        $(button_timepicker).attr('type', 'button');
-        $(button_timepicker).append('<span class="glyphicon glyphicon-time"></span>');
-        $(button_timepicker).click(function () {
+        var button_clockpicker = document.createElement('button');
+        button_clockpicker.className = 'btn btn-default';
+        $(button_clockpicker).attr('type', 'button');
+        $(button_clockpicker).append('<span class="glyphicon glyphicon-time"></span>');
+        $(button_clockpicker).click(function (e) {
             var div = $(this).parents('div .input-group').eq(0);
-            $(div).find('input').eq(0).click();
+            e.stopPropagation();
+            $(div).find('input').eq(0).clockpicker('show');
         });
 
         var span = document.createElement('span');
         span.className = 'input-group-btn';
-        $(span).append(button_timepicker);
+        $(span).append(button_clockpicker);
 
         $(div_input_group).append(input_time);
         $(div_input_group).append(span);

@@ -92,8 +92,8 @@
                 }
                 vote_time = '';
 
-                if (tmp.length >= 3) {
-                    vote_time = tmp[1] + ' ' + tmp[2];
+                if (tmp.length >= 2) {
+                    vote_time = tmp[1];
                 }
 
                 voted_percent = 0;
@@ -315,22 +315,39 @@
             var vote_date_key = button.data('votedatekey');
 
             var modal = $(this);
-            var Voters = [];
+            var Voters = [];//all voters or who can join
+            var cantJoin = [];//voters whn can't join
             modal.find('.modal-title').text(title);
+            modal.find('.modal-body').empty();//clear body first
             //99 means all voter
             if(vote_date_key == 99){
                 $.each(aySurvey, function (key, obj) {
                     Voters.push(obj.name);
                 });
+                modal.find('.modal-body').text(Voters.join(", "));
             }
-            else{
+            else if($('input[name="cant-make-it"]').length && ($('input[name="cant-make-it"]')[0].id == vote_date_key)){//don't show can't join.....
                 ayVoters = getVotersByDate(vote_date_key);
-
                 $.each(ayVoters, function (key, obj) {
                     Voters.push(obj.name);
                 });
+                modal.find('.modal-body').text(Voters.join(", "));
             }
-            modal.find('.modal-body').text(Voters.join(", "));
+            else{
+                $.each(aySurvey, function (key, obj) {
+                    if(obj[vote_date_key]){
+                        Voters.push(obj.name);
+                    }
+                    else{
+                        cantJoin.push(obj.name);
+                    }
+                });
+
+                modal.find('.modal-body').append("<h4>可參加今日</h4>");
+                modal.find('.modal-body').append(Voters.join(", "));
+                modal.find('.modal-body').append("<h4>無法參加今日</h4>");
+                modal.find('.modal-body').append(cantJoin.join(", "));
+            }
         })
 
         $('#update-survey').click(function () {
