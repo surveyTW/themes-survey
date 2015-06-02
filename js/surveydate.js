@@ -173,7 +173,7 @@
     function addDivTime(row) 
     {
         var div_time = document.createElement('div');
-        div_time.className = 'col-md-3';
+        div_time.className = 'col-md-4';
 
         var div_input_group = document.createElement('div');
         div_input_group.className = 'input-group';
