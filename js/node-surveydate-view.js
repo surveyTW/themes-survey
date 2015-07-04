@@ -124,9 +124,33 @@
         html = '<tr><td></td><td class="col-xs-3 tmp-username"><input type="text" class="form-control" placeholder="姓名"></td><td class="col-xs-3"><button class="btn btn-danger" id="update-survey" type="submit" data-thmr="thmr_178">送出投票</button></td><td></td><td></td></tr>';
         $('.checkmeet-list table tbody').append(html);
 
+        //stop date select
+        html = '';
+        $.each(ayDate, function (key, value) {
+            if (value != '') {
+                var cantMakeIt = '無法參加';
+                var tmp = value.split(' ');
+                if(cantMakeIt.localeCompare(tmp[0])){
+                    html += '<option value="' + value + '">' + value + '</option>';
+                }
+            }
+        });
+        $('#edit-stopdate').append(html);
+
         //diable normal date checkbox if isCantMakeIt
         if(isCantMakeIt && checkCantMakeIt()){
             $('.normal-date-checkbox').attr("disabled", true);
+        }
+
+        //disable all checkbox if stopdate
+        if($('#stop-date').text() != ''){
+            $('.normal-date-checkbox').attr("disabled", true);
+            $('input[type="checkbox"][name="cant-make-it"]').attr("disabled", true);
+            $('.checkmeet-list table tbody tr:last').hide();
+            $('.checkmeet-stop').hide();
+        }
+        else{
+            $('.checkmeet-afterstop').hide();
         }
     }
 
@@ -233,6 +257,84 @@
                     }
                 });
                 //console.log(data);
+                //showMessage(false, data);
+            },
+            complete: function () {
+                //$('#loading-indicator').hide();
+            }
+        });
+    }
+
+    function stopMeet(){
+        if ($('.checkmeet-stop').find('select option:selected').val() == '') {
+            alert('請選擇有效聚會時間');
+            return;
+        }
+        if (confirm ('你選定了' + $('.checkmeet-stop').find('select option:selected').val() + '\n' + "選定之後將不能重新開啟投票，確定送出?")){
+        }
+        else{
+            return;
+        }
+        //Block UI...by Dun
+        $.blockUI({
+            css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            }
+        });
+        //Block UI end
+
+        var curpath = $(location).attr('pathname');
+        var pathary = curpath.split('/');
+        curpath = pathary[pathary.length - 1];
+
+        var inputs = $('.checkmeet-stop').find('select option:selected').val();
+
+        var oSend = new Object();
+
+        oSend.path = curpath;
+        oSend.data = inputs;
+
+        $.ajax({
+            url: 'stop_surveydate',
+            type: 'post',
+            dataType: 'json',
+            data: JSON.stringify(oSend),
+            beforeSend: function () {
+                //$('#loading-indicator').show();
+            },
+            success: function (data) {
+                 console.log(data);
+                if (data.code == '1') {
+
+                    $.unblockUI({
+                        onUnblock: function () {
+                            alert(data.message);
+                            location.reload();
+                        }
+                    });
+                     alert(data.message);
+                    //    location.reload();
+                } else {
+                    $.unblockUI({
+                        onUnblock: function () {
+                            alert(data.message);
+                        }
+                    });
+                }
+            },
+            error: function (data) {
+                $.unblockUI({
+                    onUnblock: function () {
+                        alert(data.message);
+                    }
+                });
+                console.log(data);
                 //showMessage(false, data);
             },
             complete: function () {
@@ -352,6 +454,10 @@
 
         $('#update-survey').click(function () {
             updateMeet();
+        });
+
+        $('#stop-survey').click(function () {
+            stopMeet();
         });
 
         if ($('#weather-content').length) {

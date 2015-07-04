@@ -114,6 +114,11 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
     ?>
   </div>
   <div class="container text-left" id="checkmeet">
+      <div class="row checkmeet-afterstop">
+          <div >
+              <h2>主辦人已選定聚會時間:<?php print $node->field_stopdate[LANGUAGE_NONE][0]['value']; ?></h2>
+          </div>
+      </div>
       <div class="row checkmeet-meet">
           <div class="col-xs-12 col-md-6">
               <div class="row">
@@ -192,6 +197,14 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
               </div>
           </div>
       </div>
+      <div class="row checkmeet-stop" <?php if($node->uid != $user->uid) print 'style="display:none"'; ?>>
+          <div class="col-md-2 col-xs-3 text-center">
+              <select class="form-control" id="edit-stopdate">
+                  <option selected disabled value="">選擇聚會時間</option>
+              </select>
+          </div>
+          <button class="btn btn-danger" id="stop-survey" type="submit">XXX</button>
+      </div>
   </div>  
     
     
@@ -256,6 +269,7 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
     <div id="latlng"><?php print $node->field_latlng[LANGUAGE_NONE][0]['value']; ?></div>
     <div id="user-uid"><?php print $user->uid; ?></div>
     <div id="user-name"><?php print $user->name; ?></div>
+    <div id="stop-date"><?php print $node->field_stopdate[LANGUAGE_NONE][0]['value']; ?></div>
   </div>
 
 </div>
