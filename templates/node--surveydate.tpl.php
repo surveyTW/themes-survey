@@ -82,6 +82,7 @@
 
 <?php
 drupal_add_js('https://maps.googleapis.com/maps/api/js?key=AIzaSyDeEOpZjMXl2yzxcYS-UbHaSO6PdnBblVE&sensor=false&libraries=places', 'external');
+drupal_add_js('https://addthisevent.com/libs/1.6.0/ate.min.js','external');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/zweatherfeed/jquery.zweatherfeed.min.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/node-surveydate-view.js');
 drupal_add_js(drupal_get_path('theme', 'survey') . '/js/blockUI/jqueryblockUI.min.js');
@@ -106,17 +107,29 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
   <div class="content"<?php print $content_attributes; ?>>
-    <?php
-    // We hide the comments and links now so that we can render them later.
-    hide($content['comments']);
-    hide($content['links']);
-    //print render($content);
-    ?>
+<?php
+// We hide the comments and links now so that we can render them later.
+hide($content['comments']);
+hide($content['links']);
+//print render($content);
+?>
   </div>
   <div class="container text-left" id="checkmeet">
       <div class="row checkmeet-afterstop">
           <div >
               <h2>主辦人已選定聚會時間:<?php print $node->field_stopdate[LANGUAGE_NONE][0]['value']; ?></h2>
+          </div>
+          <div title="Add to Calendar" class="addthisevent">
+              <span class="start"><?php print $node->field_stopdate[LANGUAGE_NONE][0]['value']; ?></span>
+              <span class="timezone">Asia/Taipei</span>
+              <span class="title"><?php print $title; ?></span>
+              <span class="description"><?php print $field_description; ?></span>
+              <span class="location"><?php print $field_location; ?></span>
+              <span class="organizer"><?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></span>
+              <span class="all_day_event">true</span>
+              <span class="date_format">MM/DD/YYYY</span>
+              <span class="alarm_reminder">30</span>
+              <span class="recurring">FREQ=DAILY;COUNT=10</span>
           </div>
       </div>
       <div class="row checkmeet-meet">
@@ -190,7 +203,7 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
                           </tr>
                       </thead>
                       <tbody>
- 
+
                       </tbody>
                   </table>
                   <div id="alert-message" class="alert alert-danger" role="alert">...</div>
@@ -206,8 +219,8 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
           <button class="btn btn-danger" id="stop-survey" type="submit">XXX</button>
       </div>
   </div>  
-    
-    
+
+
   <!-- MAP Modal -->
   <div class="modal fade" id="Modal-Map" tabindex="-1" role="dialog" aria-labelledby="MapModalLabel" aria-hidden="true">
      <div class="modal-dialog">
@@ -222,7 +235,7 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
         </div>
      </div>
   </div>
- 
+
 
   <!-- Voter Modal -->
   <div class="modal fade" id="Modal-Voter" tabindex="-1" role="dialog" aria-labelledby="VoterModalLabel" aria-hidden="true">
@@ -233,33 +246,33 @@ if ($node->field_location[LANGUAGE_NONE][0]['value']) {
               <h4 class="modal-title" id="VoterModalLabel">Voter</h4>
            </div>
            <div class="modal-body text-center">
-             
+
            </div>
         </div>
      </div>
   </div>
- 
 
 
-  <?php
-  $nodeWoeid = $node->field_woeid[LANGUAGE_NONE][0]['value'];
-  //if ($nodeWoeid != 0) {
-  //  print "<div id=\"wheather-description\">";
-  //  print "<h3>聚會地區的天氣預報</h3>";
-  //  print "<div id=\"weather-content\" value=\"" . $nodeWoeid . "\"></div>";
-  //  print "</div>";
-  //}
 
-  //drupal_set_message('Thanks for your time!');
-  //drupal_get_messages('status');
+<?php
+$nodeWoeid = $node->field_woeid[LANGUAGE_NONE][0]['value'];
+//if ($nodeWoeid != 0) {
+//  print "<div id=\"wheather-description\">";
+//  print "<h3>聚會地區的天氣預報</h3>";
+//  print "<div id=\"weather-content\" value=\"" . $nodeWoeid . "\"></div>";
+//  print "</div>";
+//}
 
-  if ( ! user_is_logged_in() ) {
-     print render($content['links']);
-  }
+//drupal_set_message('Thanks for your time!');
+//drupal_get_messages('status');
 
-  print render($content['comments']);
-  
-  ?>
+if ( ! user_is_logged_in() ) {
+    print render($content['links']);
+}
+
+print render($content['comments']);
+
+?>
 
   <div class="hidden">  
     <div id="location"><?php print $node->field_location[LANGUAGE_NONE][0]['value']; ?></div>
