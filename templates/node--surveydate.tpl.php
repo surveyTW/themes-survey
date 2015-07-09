@@ -126,8 +126,7 @@ hide($content['links']);
               <span class="description"><?php print $field_description; ?></span>
               <span class="location"><?php print $field_location; ?></span>
               <span class="organizer"><?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></span>
-              <span class="all_day_event">true</span>
-              <span class="date_format">MM/DD/YYYY</span>
+              <span class="date_format">YYYY/MM/DD</span>
               <span class="alarm_reminder">30</span>
               <span class="recurring">FREQ=DAILY;COUNT=10</span>
           </div>
