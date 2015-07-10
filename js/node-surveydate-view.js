@@ -318,7 +318,7 @@
                             location.reload();
                         }
                     });
-                     alert(data.message);
+                    // alert(data.message);
                     //    location.reload();
                 } else {
                     $.unblockUI({
