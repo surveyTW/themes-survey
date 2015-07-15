@@ -274,7 +274,13 @@
                 e.cancel = true;
             }
         };
-
+       if($('#edit-name').val() == ""){
+        document.getElementById('modalLoginLabel').innerHTML='請先登入或註冊會員!';
+        $('.close').removeClass('show').addClass('hidden');
+        $('.modal-footer').removeClass('show').addClass('hidden');
+        $('#login-modal').modal('show');
+        }
+ //       window.location.replace('surveydate');
         $('#alert').hide();
         $('#edit-date').hide();
         $('#edit-location').attr('class', 'col-md-9');

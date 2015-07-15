@@ -17,16 +17,6 @@ drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-clockpicker.
 ?>
 
 
-<?php
-if ($form['name']['#value'] == null) {
-  $message = '請先登入或註冊會員!!!';
-  $url_user = $base_url . '/user';
-//        	    dvm($url_user);
-  echo "<script type='text/javascript'>alert('$message');</script>";
-  header("Refresh: 0; url=$url_user");
-};
-?>
-
 <div id="survey-date" class="container">
   <div id="survey-body">
     <div id="first-step" class="show">
