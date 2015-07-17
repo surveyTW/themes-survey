@@ -116,19 +116,23 @@ hide($content['links']);
   </div>
   <div class="container text-left" id="checkmeet">
       <div class="row checkmeet-afterstop">
-          <div >
-              <h2>主辦人已選定聚會時間:<?php print $node->field_stopdate[LANGUAGE_NONE][0]['value']; ?></h2>
-          </div>
-          <div title="Add to Calendar" class="addthisevent">
-              <span class="start"><?php print $node->field_stopdate[LANGUAGE_NONE][0]['value']; ?></span>
-              <span class="timezone">Asia/Taipei</span>
-              <span class="title"><?php print $title; ?></span>
-              <span class="description"><?php print $field_description; ?></span>
-              <span class="location"><?php print $field_location; ?></span>
-              <span class="organizer"><?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></span>
-              <span class="date_format">YYYY/MM/DD</span>
-              <span class="alarm_reminder">30</span>
-              <span class="recurring">FREQ=DAILY;COUNT=10</span>
+          <div class="col-xs-12 col-md-6">
+              <div class="col-xs-12">
+                  <div >
+                      <h2>主辦人已選定聚會時間<br><?php print $node->field_stopdate[LANGUAGE_NONE][0]['value']; ?></h2>
+                  </div>
+                  <div title="Add to Calendar" class="addthisevent">加入行事曆
+                      <span class="start"><?php print $node->field_stopdate[LANGUAGE_NONE][0]['value']; ?></span>
+                      <span class="timezone">Asia/Taipei</span>
+                      <span class="title"><?php print $title; ?></span>
+                      <span class="description"><?php print $field_description; ?></span>
+                      <span class="location"><?php print $field_location; ?></span>
+                      <span class="organizer"><?php print $node->field_name[LANGUAGE_NONE][0]['value']; ?></span>
+                      <span class="date_format">YYYY/MM/DD</span>
+                      <span class="alarm_reminder">30</span>
+                      <span class="recurring">FREQ=DAILY;COUNT=10</span>
+                  </div>
+              </div>
           </div>
       </div>
       <div class="row checkmeet-meet">
@@ -180,6 +184,14 @@ hide($content['links']);
               </div>
           </div>
       </div>      
+      <div class="row checkmeet-stop" <?php if($node->uid != $user->uid) print 'style="display:none"'; else print 'style="padding-top: 30px;margin-top: 30px;margin-left: 0;"'; ?>>
+          <div class="col-md-2 col-xs-3 text-center" style="min-width: 150px;">
+              <select class="form-control" id="edit-stopdate">
+                  <option selected disabled value="">選擇聚會時間</option>
+              </select>
+          </div>
+          <button class="btn btn-danger" id="stop-survey" type="submit">停止投票</button>
+      </div>
       <div class="row checkmeet-list">
           <div class="col-xs-12 col-md-6">
               <div class="row">
@@ -208,14 +220,6 @@ hide($content['links']);
                   <div id="alert-message" class="alert alert-danger" role="alert">...</div>
               </div>
           </div>
-      </div>
-      <div class="row checkmeet-stop" <?php if($node->uid != $user->uid) print 'style="display:none"'; ?>>
-          <div class="col-md-2 col-xs-3 text-center">
-              <select class="form-control" id="edit-stopdate">
-                  <option selected disabled value="">選擇聚會時間</option>
-              </select>
-          </div>
-          <button class="btn btn-danger" id="stop-survey" type="submit">XXX</button>
       </div>
   </div>  
 

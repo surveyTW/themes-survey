@@ -7021,6 +7021,10 @@ body.front.navbar-is-fixed-top {
     color: #000000;
     text-decoration:underline;
 }
+.checkmeet-afterstop h2{
+    color: #e99415;
+    border-top: none;
+}
 .tmp-username .form-control{
     background-color: #f0efef;
     color: #8a8a8a;
