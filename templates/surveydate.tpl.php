@@ -17,16 +17,6 @@ drupal_add_css(drupal_get_path('theme', 'survey') . '/css/bootstrap-clockpicker.
 ?>
 
 
-<?php
-if ($form['name']['#value'] == null) {
-  $message = '請先登入或註冊會員!!!';
-  $url_user = $base_url . '/user';
-//        	    dvm($url_user);
-  echo "<script type='text/javascript'>alert('$message');</script>";
-  header("Refresh: 0; url=$url_user");
-};
-?>
-
 <div id="survey-date" class="container">
   <div id="survey-body">
     <div id="first-step" class="show">
@@ -113,12 +103,12 @@ if ($form['name']['#value'] == null) {
       	<h3>問卷製作完成!</h3>
       	<p>
         分享問卷網址 <a id="text-to-copy" href="
-          <?php print $form['survey_path']['#value'] ?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['survey_path']['#value'] ?>
+          <?php print $form['shorturl']['#value'] ?>" data-toggle="tooltip" data-placement="bottom" title="請複製網址"><?php print $form['shorturl']['#value'] ?>
         </a>
       </p>
       <div class="btn-group"> 
-         <a class="btn btn-default" href="https://www.facebook.com/sharer/sharer.php?app_id=<?php print variable_get('simple_fb_connect_appid', 0); ?>&sdk=joey&u=<?php print $form['survey_path']['#value']; ?>&display=popup&ref=plugin&src=share_button" target="_blank"><i class="fa fa-facebook fa-lg fb"></i></a>
-         <a class="btn btn-default" href="http://line.naver.jp/R/msg/text/?<?php print $form['survey_path']['#value']; ?>"><img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="18" height="18" alt="LINE分享給好友" title="LINE分享給好友"></a>
+         <a class="btn btn-default" href="https://www.facebook.com/sharer/sharer.php?app_id=<?php print variable_get('simple_fb_connect_appid', 0); ?>&sdk=joey&u=<?php print $form['shorturl']['#value']; ?>&display=popup&ref=plugin&src=share_button" target="_blank"><i class="fa fa-facebook fa-lg fb"></i></a>
+         <a class="btn btn-default" href="http://line.naver.jp/R/msg/text/?<?php print $form['shorturl']['#value']; ?>"><img src="http://img1.cna.com.tw/www/images/linebutton_32x32.png" width="18" height="18" alt="LINE分享給好友" title="LINE分享給好友"></a>
       </div>     
     </div>
    </div>	  
