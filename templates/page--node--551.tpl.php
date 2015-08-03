@@ -96,10 +96,10 @@ print "";
                 </div>
             </div>
             <div class="inner cover">
-                <h1 class="cover-heading">EZMEET</h1>
-                <p class="lead">輕鬆解決聚會大小事 讓你不再為橋時間 忘記聚會日期而煩惱</p>
+                <h1 class="cover-heading">輕鬆解決聚會大小事</br>讓你不再為橋時間而煩惱</h1>
+                <p class="lead"></p>
                 <p class="lead">
-                    <a href="#" class="btn btn-lg btn-primary">馬上試用</a>
+                    <a href="<?php print $base_url;?>/surveydate" class="btn btn-lg btn-danger">馬上試用</a>
                 </p>
             </div>
             <div class="mastfoot">
