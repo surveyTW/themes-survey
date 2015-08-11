@@ -87,10 +87,68 @@ print "";
                 <div class="inner">
                     <a class="masthead-brand" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><img class="img-responsive" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
                     <nav>
+                      <?php if(!user_is_logged_in()){?>
+                             <?php $form=drupal_get_form('user_login'); ?>
+                             <div class="modal fade" id="login-modal" role="dialog" aria-labelledby="modalLoginLabel" aria-hidden="true">
+        			<div class="modal-dialog">
+          			<div class="modal-content">
+            			<div class="modal-header">
+              			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"> t('Close')</span></button>
+              			<h4 class="modal-title" id="modalLoginLabel"> 登入 </h4>
+            			</div>
+      				<div class="modal-body">
+  
+  
+   <?php print drupal_render($form); ?> 
+    <a href="<?php print $base_url;?>/user/password">忘記密碼?</br></a> 
+
+  
+   <a href="<?php print $base_url;?>/user/simple-fb-connect?current=<?php print current_path();?>" type="button" class="btn btn-primary" ><i class="fa fa-facebook-official"></i> FB一鍵登入</a>
+    <a href=" <?php print @base_url; ?>/user/register" type="button" class="btn btn-success" >註冊</a>
+			<div class="hidden">
+  			<?php print drupal_render_children($form); ?>
+			</div>      
+
+			</div>
+      			<div class="modal-footer">
+        		<button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+      			</div>
+          		</div>
+       			 </div>
+     			 </div>
+                        
+                         
+ 			 <?php if (variable_get('user_register', USER_REGISTER_VISITORS)) { ?>
+    			<?php $register_form = drupal_get_form('user_register_form');?>
+     			 <div class="modal fade" id="register-modal" role="dialog" aria-labelledby="modalRegisterLabel" aria-hidden="true">
+        		 <div class="modal-dialog">
+          		 <div class="modal-content">
+                         <div class="modal-header">
+              		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"> Close</span></button>
+              		<h4 class="modal-title" id="modalRegisterLabel">註冊</h4>
+            		</div>
+      			<div class="modal-body">
+      			<?php print drupal_render($register_form);?>
+      			</div>
+      			<div class="modal-footer">
+        		<button type="button" class="btn btn-danger" data-dismiss="modal">關閉</button>
+      			</div>
+         		 </div>
+        		</div>
+      			</div>
+     
+                        <?php }; ?>
+                        <?php }; ?>
+
                     <ul class="nav masthead-nav">
                         <li><a href="<?php print $base_url;?>/about">關於</a></li>
+                        <?php if(!user_is_logged_in()){?>
+                             <?php $form=drupal_get_form('user_login'); ?>
                         <li class="active"><a href="#" data-toggle="modal" data-target="#login-modal">登入</a></li>
-                        <li><a href="#">註冊</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#register-modal" >註冊</a></li>
+                        <?php }else{ ?>
+                        <li><a href="<?php print $base_url?>/user/logout" >登出</a></li>
+                        <?php }; ?>
                     </ul>
                     </nav>
                 </div>
@@ -99,7 +157,7 @@ print "";
                 <h1 class="cover-heading">輕鬆解決聚會大小事</br>讓你不再為橋時間而煩惱</h1>
                 <p class="lead"></p>
                 <p class="lead">
-                    <a href="<?php print $base_url;?>/surveydate" class="btn btn-lg btn-danger">馬上試用</a>
+                    <a href="<?php print $base_url;?>/surveydate" class="btn btn-lg btn-danger">馬上約</a>
                 </p>
             </div>
             <div class="mastfoot">
