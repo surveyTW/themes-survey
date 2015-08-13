@@ -7,7 +7,6 @@
 
 function survey_preprocess_page(&$vars) {
       $alias_parts = explode('/', drupal_get_path_alias());
-      dvm($alias_parts);
 
       if (count($alias_parts) && $alias_parts[0] == 'front2') {
           $vars['theme_hook_suggestions'][] = 'page__front2';
